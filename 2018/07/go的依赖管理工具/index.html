@@ -1,0 +1,1005 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.41-DEV with theme Tranquilpeak 0.4.3-BETA">
+    <title>Go的依赖管理工具</title>
+    <meta name="author" content="润民">
+    <meta name="keywords" content="">
+
+    <link rel="icon" href="/favicon.png">
+    
+
+    
+    <meta name="description" content="go语言与js和python类似, 依靠社区来丰富自己的组件库, 各种第三方库遍地开花. 因为go还是一门相当年轻的语言, 特性和接口还在不断更新, 加上社区活跃程度高, 就出现了这样的场景: 新的第三方库不断增加, 旧有的库的特性和接口也频繁变更.(这一点跟目前js社区一片热火朝天的景象很类似)
+
+">
+    <meta property="og:description" content="go语言与js和python类似, 依靠社区来丰富自己的组件库, 各种第三方库遍地开花. 因为go还是一门相当年轻的语言, 特性和接口还在不断更新, 加上社区活跃程度高, 就出现了这样的场景: 新的第三方库不断增加, 旧有的库的特性和接口也频繁变更.(这一点跟目前js社区一片热火朝天的景象很类似)
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Go的依赖管理工具">
+    <meta property="og:url" content="/2018/07/go%E7%9A%84%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/">
+    <meta property="og:site_name" content="Don&#39;t Panic">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Don&#39;t Panic">
+    <meta name="twitter:description" content="go语言与js和python类似, 依靠社区来丰富自己的组件库, 各种第三方库遍地开花. 因为go还是一门相当年轻的语言, 特性和接口还在不断更新, 加上社区活跃程度高, 就出现了这样的场景: 新的第三方库不断增加, 旧有的库的特性和接口也频繁变更.(这一点跟目前js社区一片热火朝天的景象很类似)
+
+">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="/author.jpg">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
+    
+    
+
+    
+      
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-42775487-5', 'auto');
+ga('send', 'pageview');
+</script>
+
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="/">Don&#39;t Panic</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="/author.jpg" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="/#about">
+          <img class="sidebar-profile-picture" src="/author.jpg" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">润民</h4>
+        
+          <h5 class="sidebar-profile-bio">Don&rsquo;t Panic</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Go的依赖管理工具
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2018-07-20T10:52:48&#43;08:00">
+        
+  七月 20, 2018
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="/categories/knowledge">knowledge</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>go语言与js和python类似, 依靠社区来丰富自己的组件库, 各种第三方库遍地开花. 因为go还是一门相当年轻的语言, 特性和接口还在不断更新, 加上社区活跃程度高, 就出现了这样的场景: 新的第三方库不断增加, 旧有的库的特性和接口也频繁变更.(这一点跟目前js社区一片热火朝天的景象很类似)</p>
+
+<p></p>
+
+<h1 id="table-of-contents">目录</h1><nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#历史存在问题">历史存在问题</a></li>
+<li><a href="#python的依赖管理">python的依赖管理</a></li>
+<li><a href="#js的依赖管理">js的依赖管理</a></li>
+<li><a href="#官方工具dep">官方工具dep</a>
+<ul>
+<li><a href="#安装">安装</a></li>
+<li><a href="#在新项目中使用">在新项目中使用</a></li>
+<li><a href="#常用操作">常用操作</a>
+<ul>
+<li><a href="#新增依赖">新增依赖</a></li>
+<li><a href="#更新依赖">更新依赖</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#第三方工具govendor">第三方工具govendor</a>
+<ul>
+<li><a href="#安装-1">安装</a></li>
+<li><a href="#指令详情">指令详情</a></li>
+<li><a href="#操作">操作</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+
+<h2 id="历史存在问题">历史存在问题</h2>
+
+<p>go一开始就有依赖管理的, 当我们在程序中需要import一个第三方库时, 通常我们是通过<code>go get</code>指令:</p>
+
+<pre><code>go get github.com/org/libname
+</code></pre>
+
+<p>这种方式相对简单粗糙, 只能说是安装依赖而不能说是管理依赖. 一旦第三方库的接口做了不兼容改动(这在大版本更新很常见), 依赖这个库的程序后续很可能就无法通过编译, 或者出现执行时异常. 在go1.5版本之后, 官方就通过引入vendor来试图解决这个问题, 后来也推出了工具dep. 在官方解决这个问题之前, 社区出现了多个致力于解决依赖问题的工具, 比较出名的就包括govendor, glide, godep等.</p>
+
+<p>在提到go依赖管理工具的设计之前, 先来看下python和js是如何解决这个问题的.</p>
+
+<h2 id="python的依赖管理">python的依赖管理</h2>
+
+<p>python的最常用的依赖管理工具是setuptools和pip. 对于打包的程序而言, 在setup.py里面指明依赖的库和版本号, 打包安装时会自动下载这些依赖. 对于非打包的程序, 常用<code>easy_install</code>和<code>pip</code>两个命令行程序. 在执行<code>easy_install libname</code>或<code>pip install libname</code>后, 工具将下载的第三方库代码存放到python安装目录下的<code>site-packages</code>目录下, 这样python程序可以在任何地方导入这些第三方库. <code>pip</code>做了更细致的操作, 它允许安装第三方库时指定版本号, 比如<code>pip install libname==1.0.0</code>; 更进一步的, 它支持从文件中读取依赖列表, 通常<code>pip install -r requirements.txt</code>就可以一键安装项目所需所有依赖.</p>
+
+<h2 id="js的依赖管理">js的依赖管理</h2>
+
+<p>js最流行使用npm来进行依赖管理. 程序的基本信息和依赖项列表都集中放置在packages.json文件中. 该文件指定程序的常规依赖, 开发环境依赖和&rdquo;同伴依赖&rdquo;(dependencies, devDependencies, peerDenpendencies)等, 并指定了版本号(一般而言, 其实是程序所需的最低版本号). 每一个使用npm包管理器的程序都如此操作, 最终得到一个依赖关系网. npm将这些依赖包下载并统一放置在程序目录下的node_modules目录下, 然后根据依赖关系创建软链.<br />
+npm这种&rdquo;指定最低版本号&rdquo;的做法无法避免依赖库更新后接口变更导致的问题, 因此后续出现了npm-freeze, npm shrinkwrap和yarn等工具, 除了依旧维护packages.json文件外, 还额外维护一个.lock文件, 指定了依赖的安装地址和详细版本以及最近提交的commit哈希. 这样程序在安装时就遵照这份清单去下载依赖.</p>
+
+<h2 id="官方工具dep">官方工具dep</h2>
+
+<p>官方工具dep, 第一个释出版本是17年5月的0.1.0, 到18年1月释出版本0.4.1至今.</p>
+
+<p>使用官方工具的优点是它是&rdquo;官方&rdquo;的, 后续的更新有保证, 并可能逐渐成为标准和唯一推荐的工具. 另外, 如果你继续往下看dep的使用, 你会爱上这个工具的.</p>
+
+<p>需要明确的是, dep是设计给开发者使用的, 而不是给最终用户使用的. 最终用户安装go程序用的应该是go get.</p>
+
+<h3 id="安装">安装</h3>
+
+<p><strong>二进制安装</strong>:</p>
+
+<pre><code class="language-bash">curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
+</code></pre>
+
+<p><strong>MacOS</strong></p>
+
+<pre><code class="language-bash">brew install dep
+brew upgrade dep
+</code></pre>
+
+<p><strong>Arch Linux</strong></p>
+
+<pre><code>pacman -S dep
+</code></pre>
+
+<p><strong>源码安装</strong><br />
+下面的代码段从源代码安装最新版本的dep，并在二进制文件中设置版本，以便dep版本按预期工作。</p>
+
+<pre><code class="language-bash">go get -d -u github.com/golang/dep
+cd $(go env GOPATH)/src/github.com/golang/dep
+DEP_LATEST=$(git describe --abbrev=0 --tags)
+git checkout $DEP_LATEST
+go install -ldflags=&quot;-X main.version=$DEP_LATEST&quot; ./cmd/dep
+git checkout master
+</code></pre>
+
+<p><strong>开发</strong><br />
+如果想查看或修改dep源码, 直接go get就可以</p>
+
+<pre><code class="language-bash">go get -u github.com/golang/dep/cmd/dep
+</code></pre>
+
+<h3 id="在新项目中使用">在新项目中使用</h3>
+
+<p>假设现在有个新的项目要开展, 并且目录将是</p>
+
+<pre><code class="language-bash">$GOPATH/src/github.com/me/example
+</code></pre>
+
+<p>现在, 创建并进入该目录并初始化dep</p>
+
+<pre><code class="language-bash">mkdir -p $GOPATH/src/github.com/me/example
+cd $GOPATH/src/github.com/me/example
+dep init
+</code></pre>
+
+<p>执行完可以看到当前目录下有两个新文件和一个vendor目录, 这样就初始化完毕了.</p>
+
+<pre><code class="language-bash">Gopkg.toml
+Gopkg.lock
+vendor/
+</code></pre>
+
+<p>基本上, 文件结构和命名方式跟npm相似度很高</p>
+
+<p>此时可以加上git版本控制, 或者直接创建go文件开始编码, 又或者, 如果知道将要依赖某个第三方库, 也可以先安装它</p>
+
+<pre><code class="language-bash">dep ensure -add github.com/foo/bar github.com/baz/quux
+</code></pre>
+
+<h3 id="常用操作">常用操作</h3>
+
+<p>为了节省开发者的时间和精力, dep用了最简设计, 仅需掌握两个指令就能完全发挥dep的功能.</p>
+
+<ul>
+<li><strong>dep ensure</strong> 最主要的指令, 也是唯一一个会修改文件状态的指令<br /></li>
+<li><strong>dep status</strong> 显示当前项目状态和依赖视图</li>
+</ul>
+
+<p>dep的使用基本就是围绕<code>dep ensure</code>. <strong>ensure</strong>这个词表达了这样的意思: 它将保证维护一种状态, 而不仅仅是执行一些离散的操作. 官方的说法是:</p>
+
+<blockquote>
+<p>The verb is &ldquo;ensure&rdquo; to imply that the action is not just some single, discrete action (like adding a dependency), but enforcing some kind of broader guarantee. If we wanted to express the dep ensure guarantee as a sentence, it would go something like this:</p>
+
+<p>Hey dep, please make sure that my project is in sync: that Gopkg.lock satisfies all the imports in my project, and all the rules in Gopkg.toml, and that vendor/ contains exactly what Gopkg.lock says it should.&rdquo;</p>
+</blockquote>
+
+<p>也就是说, 该指令将保证(正常情况下)</p>
+
+<ul>
+<li>项目处于完全同步的状态</li>
+<li>.lock文件与项目实际导入的库和.toml的描述完全相符</li>
+<li>vendor目录也确实包含了.lock文件中指定要安装的库</li>
+</ul>
+
+<p>并且官方也保证了, 在遇到意外情况时, 这个指令的操作结果也是可以预料到的. 这些意外情况包括:</p>
+
+<ul>
+<li>指令执行到一半被kill</li>
+<li>机器断电</li>
+<li>其他致命错误</li>
+</ul>
+
+<p>也就是说该指令要么完全成功, 要么完全不成功(不成功将会报错). 在不成功的状态下, 硬盘上的文件状态相较之前都不会有变化, 不会存在一个中间状态, 不会产生污染. 换句话说, 这个指令是事务的, 一致的.</p>
+
+<p>在四种情况下我们会用<code>dep ensure</code></p>
+
+<ol>
+<li>新增一个依赖</li>
+<li>更新现有依赖</li>
+<li>捕捉项目代码中首次导入的依赖, 或移除不再需要的依赖</li>
+<li>捕捉Gopkg.toml中的规则变更</li>
+</ol>
+
+<p>当然还有第五种情况: 当不确定上述情况之一是否已经发生时:). 总之<code>dep ensure</code>能让我们的项目处于正确的状态下并且无论何时执行总是安全的. 总之就是要多用, 不要慌.(在项目任何子目录下执行也都可以)</p>
+
+<p>好了, 具体对应到上述几种情况, 操作方式分别是</p>
+
+<h4 id="新增依赖">新增依赖</h4>
+
+<p>比如需要依赖于github.com/pkg/erros, 则直接执行下方指令即可</p>
+
+<pre><code>dep ensure -add github.com/pkg/errors
+</code></pre>
+
+<p>上述指令将会更新<code>Gopkg.lock</code>文件和<code>vendor</code>目录, 并将<code>github.com/pkg/errors</code>的最佳猜测版本约束注入我们的<code>Gopkg.toml</code>文件中. 不过, 该指令也可能会提示如下错误</p>
+
+<pre><code class="language-bash">&quot;github.com/pkg/errors&quot; is not imported by your project, and has been temporarily added to Gopkg.lock and vendor/.
+If you run &quot;dep ensure&quot; again before actually importing it, it will disappear from Gopkg.lock and vendor/.
+</code></pre>
+
+<p>正如报错信息所说, 我们应该尽快在代码中加入<code>import github.com/pkg/errors</code>, 以防止下次执行<code>dep ensure</code>时dep将该依赖标记为&rdquo;未使用&rdquo;而自动将其移除出<code>vendor</code>和<code>Gopkg.lock</code>(注意, 不包括.toml). 这也意味着, 如果我们需要一次添加多个依赖, 我们应该在一条指令中搞定, 而不是一个一个来</p>
+
+<pre><code>dep ensure -add github.com/pkg/errors github.com/foo/bar
+</code></pre>
+
+<p>之所以会这样是因为dep会静态分析项目代码以确认哪些依赖是真实必须存在的. 这个设计思想与&rdquo;无用的依赖不要导入&rdquo;是一致的.</p>
+
+<p>如果觉得麻烦, 也可以不用这个<code>dep ensure -add</code>指令. 直接在代码中import然后执行<code>dep ensure</code>就好了. 不过在这种情况下, 最好检查一下.toml文件内容(依赖项的限制条件)是否如意料一样.</p>
+
+<h4 id="更新依赖">更新依赖</h4>
+
+<p>更新某个依赖可以执行</p>
+
+<pre><code class="language-bash">dep ensure -update github.com/foo/bar
+</code></pre>
+
+<p>也可以不带参数更新所有依赖, 但是不怎么推荐, 尤其是依赖项很多而且项目稍微有点历史的情况下.</p>
+
+<pre><code class="language-bash">dep ensure -update
+</code></pre>
+
+<p>根据Gopkg.toml里对依赖项的限制条件不同, 执行update指令后, 某些依赖能主动进行更新, 有些可能就需要修改.toml了. 如果想知道有哪些依赖项将会更新, 可以执行<code>dep status</code>查看<code>LATEST</code>. 如果想知道具体这些限制条件有何区别, 可以参考<a href="https://golang.github.io/dep/docs/ensure-mechanics.html#update-and-constraint-types">官方指引</a></p>
+
+<h2 id="第三方工具govendor">第三方工具govendor</h2>
+
+<p>第三方工具govendor不得不提, 因为很多开源项目使用govendor进行依赖管理, 如需分析源码或贡献代码的话就需要掌握其使用.</p>
+
+<p>govendor是go发展了vendor后出现的, 因此该工具也将依赖包的代码存放在vendor目录下, 并根据vendor/vendor.json文件进行管理.</p>
+
+<p>在govendor眼中, 项目中的包有以下几种状态(第二列括号内字母为缩写):</p>
+
+<pre><code>	+local    (l) 项目本身的包
+	+external (e) 外部包(已在$GOPATH中)
+	+vendor   (v) 放在vendor目录下的包
+	+std      (s) 标准库里的包
+
+	+excluded (x) vendor指定要排除的外部包
+	+unused   (u) vendor目录中的无用包
+	+missing  (m) 缺失(无法找到, 还没下载)的外部包
+
+	+program  (p) 该包可执行的程序
+
+	+outside  外部包, 包含已下载(到$GOPATH)和未下载
+	+all      所有包
+</code></pre>
+
+<p>这些状态词对应一类包集合, 比如可以通过如下指令列出所有外部包</p>
+
+<pre><code class="language-bash">govendor list +external
+</code></pre>
+
+<h3 id="安装-1">安装</h3>
+
+<pre><code>go get -u github.com/kardianos/govendor
+</code></pre>
+
+<h3 id="指令详情">指令详情</h3>
+
+<pre><code>	init     创建vendor目录和vendor.json文件
+	list     列出当前项目的依赖和包
+	add      从$GOPATH中添加包(到vendor)
+	update   从$GOPATH中更新包(到vendor)
+	remove   从vendor目录中移除包
+	status   列出包状态(缺失, 过期, 已修改等等)
+	fetch    从远程仓库中拉取或更新包到vendor
+	sync     根据vendor.json文件变更从远程仓库同步vendor目录
+	migrate  Move packages from a legacy tool to the vendor folder with metadata.
+	get      作用类似&quot;go get&quot;但是将依赖包放进vendor目录中
+	license  List discovered licenses for the given status or import paths.
+	shell    Run a &quot;shell&quot; to make multiple sub-commands more efficient for large
+	             projects.
+
+	go tool commands that are wrapped:
+	  `+&lt;status&gt;` package selection may be used with them
+	fmt, build, install, clean, test, vet, generate, tool
+</code></pre>
+
+<h3 id="操作">操作</h3>
+
+<p>govendor也需要一个初始化的过程,</p>
+
+<pre><code class="language-bash">cd $GOPATH/src/myname/myapp
+govendor init
+</code></pre>
+
+<p><code>govendor init</code>指令创建了vendor目录, 并在该目录下创建文件vendor.json</p>
+
+<p>然后, 如果你的项目已经有导入第三方库, 则执行</p>
+
+<pre><code class="language-bash">govendor add -e  # 将已导入的$GOPATH中的第三方包拷贝到vendor目录
+</code></pre>
+
+<p>然后可以执行<code>govendor list</code>查看各类包的情况, 或者<code>govendor list -v packageName</code>查看某个包.</p>
+
+<p>如果需要新增一个依赖, 可以指定该依赖的包版本</p>
+
+<pre><code class="language-bash">govendor fetch golang.org/x/net/context@a4bbce9fcae005b22ae5443f6af064d80a6f5a55   # 抓取截止到某个提交的代码
+govendor fetch golang.org/x/net/context@v1   # 抓取取名为v1的分支或tag的最新版本, 如v1.1.2
+govendor fetch golang.org/x/net/context@=v1  # 抓取名为v1的分支或tag
+</code></pre>
+
+<p>如需更新依赖, 则指令与新增的基本一致, 只需要去掉版本限制</p>
+
+<pre><code>govendor fetch golang.org/x/net/context
+</code></pre>
+
+<p>在项目开发前期, 如果没有用govendor而是直接go get, 那么可以继续用这种方式开发, 到项目结束时使用<code>govendor add -e</code>将这些包拷贝到vendor目录即可, 拷贝的包不会包含.git目录.</p>
+
+<p>在使用git时, 我们通常会将vendor目录内的包代码排除出版本控制, 但是又需要保留<code>vendor/vendor.json</code>文件, 可以在.gitignore中添加</p>
+
+<pre><code>vendor/*/
+</code></pre>
+
+<p>其他开发者下载代码后, 只需执行</p>
+
+<pre><code>govendor sync
+</code></pre>
+
+<p>就可以将第三方依赖都下载下来了</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="/tags/go/">go</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2018/07/%E5%A4%A7%E8%AF%9D%E5%AD%98%E5%82%A8%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" data-tooltip="《大话存储》读书笔记">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2018/07/restful-api%E7%9A%84%E8%AE%BE%E8%AE%A1/" data-tooltip="RESTful API的设计">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2019 润民. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2018/07/%E5%A4%A7%E8%AF%9D%E5%AD%98%E5%82%A8%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" data-tooltip="《大话存储》读书笔记">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2018/07/restful-api%E7%9A%84%E8%AE%BE%E8%AE%A1/" data-tooltip="RESTful API的设计">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="/author.jpg" alt="作者的图片" />
+    
+    <h4 id="about-card-name">润民</h4>
+    
+      <div id="about-card-bio">Don&rsquo;t Panic</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        DEV
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        GuangZhou
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/10/postgresql%E5%8D%B3%E5%AD%A6%E5%8D%B3%E7%94%A8%E6%91%98%E5%BD%95/">
+                <h3 class="media-heading">《PostgreSQL即学即用》摘录</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Oct 10, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>摘录了部分我觉得容易遗忘或者值得注意的点. 详细信息还应查阅原文或官方文档.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/09/%E6%8F%90%E9%AB%98pdf%E7%9A%84%E5%AF%B9%E6%AF%94%E5%BA%A6/">
+                <h3 class="media-heading">提高PDF的对比度</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>借助imageMagick这个工具可以实现, 该工具支持多个平台(windows, MacOS, Linux, IOS)
+<div class="alert success no-icon ">
+  <p><strong>用到的所有工具都是免费的</strong></p>
+</div>
+
+<!--toc--></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/09/%E6%AD%A6%E5%8A%9F%E5%B1%B1%E4%B8%A4%E6%97%A5%E5%8F%8D%E7%A9%BF/">
+                <h3 class="media-heading">武功山两日反穿</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>武功山在江西萍乡, 主峰金顶海拔1918.3米, 距广州大约3小时的高铁车程.<br />
+武功山素有&rdquo;户外天堂&rdquo;的美称, 最主要是可以看到高山草甸. 驴友们开辟了多条穿越路线, 难度各有不同. 这次穿越选择的是从龙山村到景区大门的2日反穿路线.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/%E5%A4%A7%E8%AF%9D%E5%AD%98%E5%82%A8%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+                <h3 class="media-heading">《大话存储》读书笔记</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/go%E7%9A%84%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/">
+                <h3 class="media-heading">Go的依赖管理工具</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>go语言与js和python类似, 依靠社区来丰富自己的组件库, 各种第三方库遍地开花. 因为go还是一门相当年轻的语言, 特性和接口还在不断更新, 加上社区活跃程度高, 就出现了这样的场景: 新的第三方库不断增加, 旧有的库的特性和接口也频繁变更.(这一点跟目前js社区一片热火朝天的景象很类似)</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/restful-api%E7%9A%84%E8%AE%BE%E8%AE%A1/">
+                <h3 class="media-heading">RESTful API的设计</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这是一篇写于两年多前的旧文了. 这里先贴下, 有空再更新</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/docker%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/">
+                <h3 class="media-heading">Docker常用指令</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>接触docker到现在也有很长一段时间了. 因为不经常用以至于每次使用都需要查找相关操作指令, 这里先将其罗列出来</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/go%E4%B8%AD%E6%95%B0%E7%BB%84%E5%92%8C%E5%88%87%E7%89%87%E7%9A%84%E5%A3%B0%E6%98%8E%E6%96%B9%E5%BC%8F/">
+                <h3 class="media-heading">Go中数组和切片的声明方式</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>在go中, 数组和切片是两种不同的数据类型, 这两种类型表现类似, 声明方法也只存在细微差异</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/postgresql%E5%B0%8F%E8%AE%B0/">
+                <h3 class="media-heading">PostgreSQL小记</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>postgresql是一个强大的数据库, 支持多种复杂的数据结构和数学计算.
+mysql的使用者迁移到postgresql不是零成本的, 需要注意一些差异.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/%E7%AC%AC%E4%B8%80%E5%BA%A7%E9%9B%AA%E5%B1%B1-%E5%9B%9B%E5%A7%91%E5%A8%98%E5%B1%B1%E4%BA%8C%E5%B3%B0/">
+                <h3 class="media-heading">第一座雪山 四姑娘山二峰</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>登雪山是一件看上去非常酷非常专业的事情. 不过雪山攀登难度也有分等级的, 最好的例子就是四姑娘山的四个峰, 难度从大峰开始到幺妹峰依次递增, 大峰二峰有一定户外经验的非专业人士即可登顶, 而幺妹峰即便专业人士也很难登顶. 像我等战五渣要爬雪山, 大峰二峰是个不错的选择.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         71 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('/images/cover.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/languages/go.min.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = '\/2018\/07\/go%E7%9A%84%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7\/';
+          
+            this.page.identifier = '\/2018\/07\/go%E7%9A%84%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'dont-panic-1';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

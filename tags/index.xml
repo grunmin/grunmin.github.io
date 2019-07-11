@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Don&#39;t Panic</title>
+    <link>/tags/</link>
+    <description>Recent content in Tags on Don&#39;t Panic</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 02 Jan 2014 16:16:00 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Apache</title>
+      <link>/tags/apache/</link>
+      <pubDate>Thu, 02 Jan 2014 16:16:00 +0800</pubDate>
+      
+      <guid>/tags/apache/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Atom</title>
+      <link>/tags/atom/</link>
+      <pubDate>Thu, 02 Jun 2016 20:10:50 +0800</pubDate>
+      
+      <guid>/tags/atom/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Css</title>
+      <link>/tags/css/</link>
+      <pubDate>Fri, 28 Aug 2015 20:41:23 +0800</pubDate>
+      
+      <guid>/tags/css/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Docker</title>
+      <link>/tags/docker/</link>
+      <pubDate>Thu, 19 Jul 2018 08:20:52 +0800</pubDate>
+      
+      <guid>/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Echarts</title>
+      <link>/tags/echarts/</link>
+      <pubDate>Fri, 28 Aug 2015 18:42:19 +0800</pubDate>
+      
+      <guid>/tags/echarts/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Elasticsearch</title>
+      <link>/tags/elasticsearch/</link>
+      <pubDate>Sun, 25 Mar 2018 16:22:34 +0800</pubDate>
+      
+      <guid>/tags/elasticsearch/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Git</title>
+      <link>/tags/git/</link>
+      <pubDate>Mon, 30 May 2016 20:56:26 +0800</pubDate>
+      
+      <guid>/tags/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Go</title>
+      <link>/tags/go/</link>
+      <pubDate>Fri, 20 Jul 2018 10:52:48 +0800</pubDate>
+      
+      <guid>/tags/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hexo</title>
+      <link>/tags/hexo/</link>
+      <pubDate>Sun, 05 Jun 2016 11:47:27 +0800</pubDate>
+      
+      <guid>/tags/hexo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Highcharts</title>
+      <link>/tags/highcharts/</link>
+      <pubDate>Thu, 03 Dec 2015 20:56:37 +0800</pubDate>
+      
+      <guid>/tags/highcharts/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hugo</title>
+      <link>/tags/hugo/</link>
+      <pubDate>Fri, 18 May 2018 13:19:11 +0800</pubDate>
+      
+      <guid>/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Javascript</title>
+      <link>/tags/javascript/</link>
+      <pubDate>Wed, 02 Sep 2015 18:28:49 +0800</pubDate>
+      
+      <guid>/tags/javascript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>/tags/linux/</link>
+      <pubDate>Thu, 13 Nov 2014 23:11:00 +0800</pubDate>
+      
+      <guid>/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Markdown</title>
+      <link>/tags/markdown/</link>
+      <pubDate>Wed, 12 Mar 2014 22:48:00 +0800</pubDate>
+      
+      <guid>/tags/markdown/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nginx</title>
+      <link>/tags/nginx/</link>
+      <pubDate>Wed, 01 Jun 2016 22:45:39 +0800</pubDate>
+      
+      <guid>/tags/nginx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Octopress</title>
+      <link>/tags/octopress/</link>
+      <pubDate>Mon, 04 Nov 2013 15:02:00 +0800</pubDate>
+      
+      <guid>/tags/octopress/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Php</title>
+      <link>/tags/php/</link>
+      <pubDate>Fri, 02 Aug 2013 00:15:00 +0800</pubDate>
+      
+      <guid>/tags/php/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Postgresql</title>
+      <link>/tags/postgresql/</link>
+      <pubDate>Thu, 04 Oct 2018 16:30:20 +0800</pubDate>
+      
+      <guid>/tags/postgresql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>/tags/python/</link>
+      <pubDate>Sun, 27 May 2018 10:53:05 +0800</pubDate>
+      
+      <guid>/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Shell</title>
+      <link>/tags/shell/</link>
+      <pubDate>Sat, 15 Mar 2014 23:28:00 +0800</pubDate>
+      
+      <guid>/tags/shell/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sublime Text</title>
+      <link>/tags/sublime-text/</link>
+      <pubDate>Fri, 11 Sep 2015 19:24:28 +0800</pubDate>
+      
+      <guid>/tags/sublime-text/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tornado</title>
+      <link>/tags/tornado/</link>
+      <pubDate>Wed, 02 Sep 2015 19:00:53 +0800</pubDate>
+      
+      <guid>/tags/tornado/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vim</title>
+      <link>/tags/vim/</link>
+      <pubDate>Sun, 17 Nov 2013 17:14:00 +0800</pubDate>
+      
+      <guid>/tags/vim/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>存储</title>
+      <link>/tags/%E5%AD%98%E5%82%A8/</link>
+      <pubDate>Sat, 21 Jul 2018 09:37:51 +0800</pubDate>
+      
+      <guid>/tags/%E5%AD%98%E5%82%A8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>户外</title>
+      <link>/tags/%E6%88%B7%E5%A4%96/</link>
+      <pubDate>Tue, 04 Sep 2018 17:10:35 +0800</pubDate>
+      
+      <guid>/tags/%E6%88%B7%E5%A4%96/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>旅行</title>
+      <link>/tags/%E6%97%85%E8%A1%8C/</link>
+      <pubDate>Mon, 16 Jul 2018 08:27:52 +0800</pubDate>
+      
+      <guid>/tags/%E6%97%85%E8%A1%8C/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>读书笔记</title>
+      <link>/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Sat, 21 Jul 2018 09:37:51 +0800</pubDate>
+      
+      <guid>/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>高可用</title>
+      <link>/tags/%E9%AB%98%E5%8F%AF%E7%94%A8/</link>
+      <pubDate>Sun, 25 Mar 2018 16:19:58 +0800</pubDate>
+      
+      <guid>/tags/%E9%AB%98%E5%8F%AF%E7%94%A8/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

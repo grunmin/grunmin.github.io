@@ -1,0 +1,921 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.41-DEV with theme Tranquilpeak 0.4.3-BETA">
+    <title>Echarts使用记录-实例</title>
+    <meta name="author" content="润民">
+    <meta name="keywords" content="">
+
+    <link rel="icon" href="/favicon.png">
+    
+
+    
+    <meta name="description" content="图片标记
+
+Echarts中markPoint用于标记特定的数据,比如地图上的描点,折线图的最值点等.第二版的Echarts支持用图片做为标记样式,例如
+
+markPoint : {
+    symbol: &#39;image:///assets/admin/images/details.png&#39;,
+    itemStyle:{normal:{label:{show:true,textStyle:{fontSize:&#39;20&#39;}}},emphasis:{label:{show:false}}},
+    data : [
+        {name : &#39;详情&#39;, x:&#39;10%&#39;, y:50, symbolSize:25}
+    ]
+}
+
+
+markPoint 二级元素,在series内部
+
+">
+    <meta property="og:description" content="图片标记
+
+Echarts中markPoint用于标记特定的数据,比如地图上的描点,折线图的最值点等.第二版的Echarts支持用图片做为标记样式,例如
+
+markPoint : {
+    symbol: &#39;image:///assets/admin/images/details.png&#39;,
+    itemStyle:{normal:{label:{show:true,textStyle:{fontSize:&#39;20&#39;}}},emphasis:{label:{show:false}}},
+    data : [
+        {name : &#39;详情&#39;, x:&#39;10%&#39;, y:50, symbolSize:25}
+    ]
+}
+
+
+markPoint 二级元素,在series内部
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Echarts使用记录-实例">
+    <meta property="og:url" content="/2015/08/echarts%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95-%E5%AE%9E%E4%BE%8B/">
+    <meta property="og:site_name" content="Don&#39;t Panic">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Don&#39;t Panic">
+    <meta name="twitter:description" content="图片标记
+
+Echarts中markPoint用于标记特定的数据,比如地图上的描点,折线图的最值点等.第二版的Echarts支持用图片做为标记样式,例如
+
+markPoint : {
+    symbol: &#39;image:///assets/admin/images/details.png&#39;,
+    itemStyle:{normal:{label:{show:true,textStyle:{fontSize:&#39;20&#39;}}},emphasis:{label:{show:false}}},
+    data : [
+        {name : &#39;详情&#39;, x:&#39;10%&#39;, y:50, symbolSize:25}
+    ]
+}
+
+
+markPoint 二级元素,在series内部
+
+">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="/author.jpg">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
+    
+    
+
+    
+      
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-42775487-5', 'auto');
+ga('send', 'pageview');
+</script>
+
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="/">Don&#39;t Panic</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="/author.jpg" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="/#about">
+          <img class="sidebar-profile-picture" src="/author.jpg" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">润民</h4>
+        
+          <h5 class="sidebar-profile-bio">Don&rsquo;t Panic</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Echarts使用记录-实例
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2015-08-28T18:42:19&#43;08:00">
+        
+  八月 28, 2015
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="/categories/knowledge">knowledge</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <h2 id="图片标记">图片标记</h2>
+
+<p>Echarts中markPoint用于标记特定的数据,比如地图上的描点,折线图的最值点等.第二版的Echarts支持用图片做为标记样式,例如</p>
+
+<pre><code>markPoint : {
+    symbol: 'image:///assets/admin/images/details.png',
+    itemStyle:{normal:{label:{show:true,textStyle:{fontSize:'20'}}},emphasis:{label:{show:false}}},
+    data : [
+        {name : '详情', x:'10%', y:50, symbolSize:25}
+    ]
+}
+</code></pre>
+
+<p><em>markPoint 二级元素,在series内部</em></p>
+
+<p></p>
+
+<h2 id="数据区域缩放">数据区域缩放</h2>
+
+<p>数据区域缩放可以让一个宽度固定的图表显示大量的数据,尤其是柱状图和折线图,可以通过拖动下方的按钮显示一定区域内的数据.</p>
+
+<pre><code>dataZoom:{
+    orient:&quot;horizontal&quot;, //横向
+    show:true, 
+    start:0, //默认起始点
+    end:70 //默认结束点
+},
+</code></pre>
+
+<p><em>dataZoom 一级元素,在option内部</em></p>
+
+<h2 id="动态添加数据">动态添加数据</h2>
+
+<p>某些应用场景需要实时显示数据,后端通过长连接发送数据,前端可利用Echarts的接口对图表数据进行更新,如下</p>
+
+<pre><code>var axisData
+timeTicket = setInterval(function (){
+    axisData = (new Date()).toLocaleTimeString().replace(/^\D*/,''); //获取当前时间
+    myChart.addData([
+        [
+            0, //数据系列索引(指定更新图表中哪条数据系列)
+            Math.round(Math.random() * 100), //y轴的值
+            true,  //是否删除原有数据,因为数据不断增加而宽度不变,一般选择true
+            false, //从队列尾部插入
+            axisData //x轴标签
+        ]
+    ]);
+}, 800);
+</code></pre>
+
+<p>myChart变量即为前面为指定dom初始化时赋值的变量,因此这段代码加在myChart.setOption(option)之后
+<em>延迟时间不能过短</em></p>
+
+<h2 id="双纵轴">双纵轴</h2>
+
+<p>一张柱状图或折线图通常会显示多条数据系列,但是图表最多支持两条横向坐标轴和两条纵向坐标轴,我们可以给不同坐标轴指定单位和数据系列</p>
+
+<pre><code>yAxis : [
+    {
+        type : 'value'
+    },
+    {
+        type : 'value'
+    }
+],
+series : [
+    {
+        name:'总支出',
+        type:'line',
+        data:{{imlist}},
+    },
+    {
+        name:'支出',
+        type:'bar',
+        data:{{imlist}},
+        yAxisIndex: 1,  //就是这里
+    }
+]
+</code></pre>
+
+<p>关键在于series里有一组数据包含参数yAxisIndex</p>
+
+<h2 id="绑定事件-图表交互">绑定事件(图表交互)</h2>
+
+<p>Echarts支持事件接口,<a href="http://echarts.baidu.com/doc/example/event.html">这里</a>是官方提供的调试页面.
+举个例子</p>
+
+<pre><code>var ecConfig = require('echarts/config');
+myChart.on(ecConfig.EVENT.CLICK, function(param){
+    var temp=&quot;&quot;;
+    for(var i in param){
+    temp += i+&quot;:&quot;+eval(&quot;param.&quot;+i)+&quot;\n&quot;; 
+    }alert(temp);
+});
+</code></pre>
+
+<p>这是一个单击事件,显示这次事件获取的变量名和数值,我们可以通过检测变量名得知用户单击了图表的哪个部分,并由此指定响应事件.,比如</p>
+
+<pre><code>var ecConfig = require('echarts/config');
+myChart.on(ecConfig.EVENT.CLICK, function(param){
+    for(var i in param){
+        if(eval(&quot;param.&quot;+i) == '详情'){
+            window.location.href = '/admin/cost_month'
+        }
+    }
+});
+</code></pre>
+
+<p>用户点击&rsquo;详情&rsquo;就会跳转到详情页,这里的&rsquo;详情&rsquo;是饼图的一个markPoint.</p>
+
+<h2 id="绘图网格-图表区域">绘图网格(图表区域)</h2>
+
+<p>Echarts图表被包装在一个指定高度的容器中,有时候图表显示的大小并不满足我们的需要,比如数据很多时,我们会把整个容器填满,减少空白区域,充分利用空间.此时需要指定grid参数</p>
+
+<pre><code>grid: {
+    x:'10%',
+    y:'15%',
+    x2:'5%',
+    y2:'25%'
+},
+</code></pre>
+
+<p>x,x2,y,y2分别指横向和纵向方向的起始和结束坐标,支持的单位为px(数字类型),百分比(字符类型,如上)
+x2和y2是相对容器右(底)端的坐标,如上面例子中,图表横向宽度为容器宽度的85%.
+当然也可以指定x和width两个参数以及y和height实现同样的效果</p>
+
+<h2 id="多图联动">多图联动</h2>
+
+<p>多图联动的例子可以看<a href="http://echarts.baidu.com/doc/example/mix8.html">这里</a>.我这里只截取关键部分.</p>
+
+<pre><code>option = {
+    ....
+    legend: {
+        data:['上证指数','虚拟数据']
+    },
+    series:[
+    {
+            name:'上证指数',
+            type:'k',
+            data:[ // 开盘，收盘，最低，最高
+                [2320.26,2302.6,2287.3,2362.94],
+            ]
+        },
+        {
+            name:'虚拟数据',
+            type:'bar',data:[]
+        }
+    ]
+    .....
+}
+
+option2 = {
+    ....
+    legend: {
+        data:['上证指数','虚拟数据'],
+        y: -30 //将图例遮起来
+    }
+    series: [
+        {
+            name:'虚拟数据',
+            type:'bar',
+            symbol: 'none',
+            data:[
+                560434
+            ],
+        }
+    ]
+    ....
+}
+myChart1 = echarts.init(document.getElementById('DOMID1'));
+myChart1.setOption(option1);
+myChart2 = echarts.init(document.getElementById('DOMID2'));
+myChart2.setOption(option2);
+
+myChart1.connect(myChart2);
+myChart2.connect(myChart1);
+</code></pre>
+
+<p>多图联动的一个关键是legend需是相同的,然后第一个图表中series也需将后面图表数据系列的参数加进来(可以不加数据),最后将两个图表connect起来.</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="/tags/echarts/">Echarts</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2015/08/%E5%88%86%E4%BA%AB%E4%B8%80%E4%B8%AA%E7%BA%AFcss%E5%AE%9E%E7%8E%B0%E7%9A%84loading%E6%95%88%E6%9E%9C/" data-tooltip="分享一个纯css实现的loading效果">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2015/08/echarts%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95-%E6%A6%82%E5%BF%B5%E5%92%8C%E5%8F%82%E6%95%B0/" data-tooltip="Echarts使用记录-概念和参数">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2019 润民. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2015/08/%E5%88%86%E4%BA%AB%E4%B8%80%E4%B8%AA%E7%BA%AFcss%E5%AE%9E%E7%8E%B0%E7%9A%84loading%E6%95%88%E6%9E%9C/" data-tooltip="分享一个纯css实现的loading效果">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2015/08/echarts%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95-%E6%A6%82%E5%BF%B5%E5%92%8C%E5%8F%82%E6%95%B0/" data-tooltip="Echarts使用记录-概念和参数">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="/author.jpg" alt="作者的图片" />
+    
+    <h4 id="about-card-name">润民</h4>
+    
+      <div id="about-card-bio">Don&rsquo;t Panic</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        DEV
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        GuangZhou
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/10/postgresql%E5%8D%B3%E5%AD%A6%E5%8D%B3%E7%94%A8%E6%91%98%E5%BD%95/">
+                <h3 class="media-heading">《PostgreSQL即学即用》摘录</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Oct 10, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>摘录了部分我觉得容易遗忘或者值得注意的点. 详细信息还应查阅原文或官方文档.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/09/%E6%8F%90%E9%AB%98pdf%E7%9A%84%E5%AF%B9%E6%AF%94%E5%BA%A6/">
+                <h3 class="media-heading">提高PDF的对比度</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>借助imageMagick这个工具可以实现, 该工具支持多个平台(windows, MacOS, Linux, IOS)
+<div class="alert success no-icon ">
+  <p><strong>用到的所有工具都是免费的</strong></p>
+</div>
+
+<!--toc--></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/09/%E6%AD%A6%E5%8A%9F%E5%B1%B1%E4%B8%A4%E6%97%A5%E5%8F%8D%E7%A9%BF/">
+                <h3 class="media-heading">武功山两日反穿</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>武功山在江西萍乡, 主峰金顶海拔1918.3米, 距广州大约3小时的高铁车程.<br />
+武功山素有&rdquo;户外天堂&rdquo;的美称, 最主要是可以看到高山草甸. 驴友们开辟了多条穿越路线, 难度各有不同. 这次穿越选择的是从龙山村到景区大门的2日反穿路线.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/%E5%A4%A7%E8%AF%9D%E5%AD%98%E5%82%A8%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+                <h3 class="media-heading">《大话存储》读书笔记</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/go%E7%9A%84%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/">
+                <h3 class="media-heading">Go的依赖管理工具</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>go语言与js和python类似, 依靠社区来丰富自己的组件库, 各种第三方库遍地开花. 因为go还是一门相当年轻的语言, 特性和接口还在不断更新, 加上社区活跃程度高, 就出现了这样的场景: 新的第三方库不断增加, 旧有的库的特性和接口也频繁变更.(这一点跟目前js社区一片热火朝天的景象很类似)</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/restful-api%E7%9A%84%E8%AE%BE%E8%AE%A1/">
+                <h3 class="media-heading">RESTful API的设计</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这是一篇写于两年多前的旧文了. 这里先贴下, 有空再更新</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/docker%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/">
+                <h3 class="media-heading">Docker常用指令</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>接触docker到现在也有很长一段时间了. 因为不经常用以至于每次使用都需要查找相关操作指令, 这里先将其罗列出来</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/go%E4%B8%AD%E6%95%B0%E7%BB%84%E5%92%8C%E5%88%87%E7%89%87%E7%9A%84%E5%A3%B0%E6%98%8E%E6%96%B9%E5%BC%8F/">
+                <h3 class="media-heading">Go中数组和切片的声明方式</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>在go中, 数组和切片是两种不同的数据类型, 这两种类型表现类似, 声明方法也只存在细微差异</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/postgresql%E5%B0%8F%E8%AE%B0/">
+                <h3 class="media-heading">PostgreSQL小记</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>postgresql是一个强大的数据库, 支持多种复杂的数据结构和数学计算.
+mysql的使用者迁移到postgresql不是零成本的, 需要注意一些差异.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/%E7%AC%AC%E4%B8%80%E5%BA%A7%E9%9B%AA%E5%B1%B1-%E5%9B%9B%E5%A7%91%E5%A8%98%E5%B1%B1%E4%BA%8C%E5%B3%B0/">
+                <h3 class="media-heading">第一座雪山 四姑娘山二峰</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>登雪山是一件看上去非常酷非常专业的事情. 不过雪山攀登难度也有分等级的, 最好的例子就是四姑娘山的四个峰, 难度从大峰开始到幺妹峰依次递增, 大峰二峰有一定户外经验的非专业人士即可登顶, 而幺妹峰即便专业人士也很难登顶. 像我等战五渣要爬雪山, 大峰二峰是个不错的选择.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         71 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('/images/cover.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/languages/go.min.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = '\/2015\/08\/echarts%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95-%E5%AE%9E%E4%BE%8B\/';
+          
+            this.page.identifier = '\/2015\/08\/echarts%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95-%E5%AE%9E%E4%BE%8B\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'dont-panic-1';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

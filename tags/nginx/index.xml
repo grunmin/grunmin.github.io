@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nginx on Don&#39;t Panic</title>
+    <link>/tags/nginx/</link>
+    <description>Recent content in Nginx on Don&#39;t Panic</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 01 Jun 2016 22:45:39 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>nginx X-Accel-Redirect头的利用</title>
+      <link>/2016/06/nginx-x-accel-redirect%E5%A4%B4%E7%9A%84%E5%88%A9%E7%94%A8/</link>
+      <pubDate>Wed, 01 Jun 2016 22:45:39 +0800</pubDate>
+      
+      <guid>/2016/06/nginx-x-accel-redirect%E5%A4%B4%E7%9A%84%E5%88%A9%E7%94%A8/</guid>
+      <description>&lt;p&gt;通常后端程序响应文件下载请求时，可以通过设定响应头和文件类型，读取文件内容加载到内容，然后在响应内容中输出文件流的方式实现。例如&lt;code&gt;python&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;self.set_header(&amp;quot;Content-Type&amp;quot;, &#39;application/dat; charset=&amp;quot;utf-8&amp;quot;&#39;)
+self.set_header(&amp;quot;Content-Disposition&amp;quot;, &amp;quot;attachment; filename=%s&amp;quot; % filename)
+self.set_status(200)
+with open(File, &#39;r&#39;) as f:
+    content = f.read()
+self.write(content)
+return
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git on Don&#39;t Panic</title>
+    <link>/tags/git/</link>
+    <description>Recent content in Git on Don&#39;t Panic</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 30 May 2016 20:56:26 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>git修改和合并历史提交</title>
+      <link>/2016/05/git%E4%BF%AE%E6%94%B9%E5%92%8C%E5%90%88%E5%B9%B6%E5%8E%86%E5%8F%B2%E6%8F%90%E4%BA%A4/</link>
+      <pubDate>Mon, 30 May 2016 20:56:26 +0800</pubDate>
+      
+      <guid>/2016/05/git%E4%BF%AE%E6%94%B9%E5%92%8C%E5%90%88%E5%B9%B6%E5%8E%86%E5%8F%B2%E6%8F%90%E4%BA%A4/</guid>
+      <description>&lt;p&gt;git忠实记录自己提交的每一次修改，修改历史记录不是一个好习惯。不过在日常使用中，偶尔也有遇到需要修改过去提交记录的情况，比如，commit之后发现message少写了一些功能说明（如果想撤回整个commit修改，请自行搜索*git revert*哈），有时候甚至是在十几次提交之后才发现某次提交说明有误。又比如，因为某个功能比较复杂，作者想通过多次commit来记录修改以便方便回退，但是在推到项目仓库，发出合并请求的时候，意识到主仓库不需要记录太多commit时，就有了将请求合并的需求。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on Don&#39;t Panic</title>
+    <link>/tags/linux/</link>
+    <description>Recent content in Linux on Don&#39;t Panic</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 13 Nov 2014 23:11:00 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>我的fedora应用列表</title>
+      <link>/2014/11/%E6%88%91%E7%9A%84fedora%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8/</link>
+      <pubDate>Thu, 13 Nov 2014 23:11:00 +0800</pubDate>
+      
+      <guid>/2014/11/%E6%88%91%E7%9A%84fedora%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8/</guid>
+      <description>&lt;p&gt;用fedora也有接近两年时间了，现在将自己所用的应用都列出来供参考。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Fedora 下安装金山快盘同步盘</title>
+      <link>/2014/11/fedora-%E4%B8%8B%E5%AE%89%E8%A3%85%E9%87%91%E5%B1%B1%E5%BF%AB%E7%9B%98%E5%90%8C%E6%AD%A5%E7%9B%98/</link>
+      <pubDate>Thu, 13 Nov 2014 23:07:00 +0800</pubDate>
+      
+      <guid>/2014/11/fedora-%E4%B8%8B%E5%AE%89%E8%A3%85%E9%87%91%E5%B1%B1%E5%BF%AB%E7%9B%98%E5%90%8C%E6%AD%A5%E7%9B%98/</guid>
+      <description>&lt;p&gt;金山快盘推出了linux系统下的同步盘客户端，但是很遗憾没有红帽系的rpm安装包。尽管如此，我们可以通过一些操作在fedora下安装（mate桌面）（其他红帽系的没有尝试）&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>linux服务器本地和百度云备份脚本小试</title>
+      <link>/2014/11/linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%9C%AC%E5%9C%B0%E5%92%8C%E7%99%BE%E5%BA%A6%E4%BA%91%E5%A4%87%E4%BB%BD%E8%84%9A%E6%9C%AC%E5%B0%8F%E8%AF%95/</link>
+      <pubDate>Thu, 13 Nov 2014 23:06:00 +0800</pubDate>
+      
+      <guid>/2014/11/linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%9C%AC%E5%9C%B0%E5%92%8C%E7%99%BE%E5%BA%A6%E4%BA%91%E5%A4%87%E4%BB%BD%E8%84%9A%E6%9C%AC%E5%B0%8F%E8%AF%95/</guid>
+      <description>&lt;h3 id=&#34;本地单文件上传脚本&#34;&gt;本地单文件上传脚本&lt;/h3&gt;
+
+&lt;p&gt;命名uf
+这是在本机上做的测试，利用&lt;code&gt;bpcs_uploader&lt;/code&gt;脚本实现，只是进行简单的封装，自动完善云端文件路径。&lt;/p&gt;
+
+&lt;p&gt;技术要点：使用&lt;code&gt;dirname&lt;/code&gt;获取文件所在目录，使用&lt;code&gt;pwd&lt;/code&gt;获取文件完整路径，并作为云端文件路径。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>双系统下修复grub2引导</title>
+      <link>/2014/11/%E5%8F%8C%E7%B3%BB%E7%BB%9F%E4%B8%8B%E4%BF%AE%E5%A4%8Dgrub2%E5%BC%95%E5%AF%BC/</link>
+      <pubDate>Thu, 13 Nov 2014 22:28:00 +0800</pubDate>
+      
+      <guid>/2014/11/%E5%8F%8C%E7%B3%BB%E7%BB%9F%E4%B8%8B%E4%BF%AE%E5%A4%8Dgrub2%E5%BC%95%E5%AF%BC/</guid>
+      <description>&lt;p&gt;我的电脑上装有fedora和windows两个系统。一般装系统的时候windows先装而linxu后装，因为linux能够查找windows系统并为其提供启动引导，而windows不能。因此当需要重装windows的时候需要修复grub2引导。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>android 下用脚本备份文件到dropbox的实现</title>
+      <link>/2014/03/android-%E4%B8%8B%E7%94%A8%E8%84%9A%E6%9C%AC%E5%A4%87%E4%BB%BD%E6%96%87%E4%BB%B6%E5%88%B0dropbox%E7%9A%84%E5%AE%9E%E7%8E%B0/</link>
+      <pubDate>Sat, 15 Mar 2014 23:28:00 +0800</pubDate>
+      
+      <guid>/2014/03/android-%E4%B8%8B%E7%94%A8%E8%84%9A%E6%9C%AC%E5%A4%87%E4%BB%BD%E6%96%87%E4%BB%B6%E5%88%B0dropbox%E7%9A%84%E5%AE%9E%E7%8E%B0/</guid>
+      <description>&lt;p&gt;前些日子寻找linux下上传文件到云的脚本，以实现远程服务器上资料的云端备份。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>fedora 下调节外放音量和屏幕亮度</title>
+      <link>/2014/03/fedora-%E4%B8%8B%E8%B0%83%E8%8A%82%E5%A4%96%E6%94%BE%E9%9F%B3%E9%87%8F%E5%92%8C%E5%B1%8F%E5%B9%95%E4%BA%AE%E5%BA%A6/</link>
+      <pubDate>Thu, 13 Mar 2014 00:43:00 +0800</pubDate>
+      
+      <guid>/2014/03/fedora-%E4%B8%8B%E8%B0%83%E8%8A%82%E5%A4%96%E6%94%BE%E9%9F%B3%E9%87%8F%E5%92%8C%E5%B1%8F%E5%B9%95%E4%BA%AE%E5%BA%A6/</guid>
+      <description>&lt;h3 id=&#34;声音&#34;&gt;声音&lt;/h3&gt;
+
+&lt;p&gt;fedora系统下笔记本外放功能可能有受到一些限制。接耳机的时候声音是正常的，但是拔下耳机后电脑并不能外放声音。网上搜到的方法是：&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>RHCE note 9</title>
+      <link>/2013/11/rhce-note-9/</link>
+      <pubDate>Sun, 03 Nov 2013 23:20:00 +0800</pubDate>
+      
+      <guid>/2013/11/rhce-note-9/</guid>
+      <description>&lt;h2 id=&#34;unit-2&#34;&gt;unit 2&lt;/h2&gt;
+
+&lt;h3 id=&#34;配置sudoers&#34;&gt;配置sudoers&lt;/h3&gt;
+
+&lt;p&gt;文件/etc/sudoers是只读文件，保存时需加！强制保存.&lt;br /&gt;
+实例：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[root@desktop31 ~]# ll /etc/sudoers
+-r--r-----. 1 root root 4002 Mar  2  2012 /etc/sudoers
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>RHCE note 1</title>
+      <link>/2013/11/rhce-note-1/</link>
+      <pubDate>Sun, 03 Nov 2013 02:07:00 +0800</pubDate>
+      
+      <guid>/2013/11/rhce-note-1/</guid>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>linux安装 Zend Frame 笔记</title>
+      <link>/2013/08/linux%E5%AE%89%E8%A3%85-zend-frame-%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Fri, 02 Aug 2013 00:15:00 +0800</pubDate>
+      
+      <guid>/2013/08/linux%E5%AE%89%E8%A3%85-zend-frame-%E7%AC%94%E8%AE%B0/</guid>
+      <description>&lt;h3 id=&#34;新建项目&#34;&gt;新建项目&lt;/h3&gt;
+
+&lt;p&gt;下载Zend Frame安装包(现在下载ZF要注册！可以用这条命令直接下载)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ wget http://framework.zend.com/releases/ZendFramework-1.11.11/ZendFramework-1.11.11-minimal.tar.gz
+$ php -i | grep include_path 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;(用源码包安装的php，若显示php命令不存在，就把php安装目录里bin文件下的php文件复制到可执行目录下，如/bin或/usr/bin)&lt;br /&gt;
+
+在服务器文件根目录apache2/htdocs下执行&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>linux安装wecenter笔记</title>
+      <link>/2013/07/linux%E5%AE%89%E8%A3%85wecenter%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Thu, 25 Jul 2013 20:32:00 +0800</pubDate>
+      
+      <guid>/2013/07/linux%E5%AE%89%E8%A3%85wecenter%E7%AC%94%E8%AE%B0/</guid>
+      <description>&lt;p&gt;&lt;em&gt;此文是前文配置lamp的延伸&lt;/em&gt;&lt;br /&gt;
+在前面的一片文章里，用源码包安装的方式搭建了lamp环境，wecenter需要服务器支持mysqli或者pdo模块,支持curl,GD图像处理库，原来安装lamp过程中并无相关方面的配置，鼓捣了半天之后其他条件都已满足，唯独GD图像处理库不能安装。&lt;br /&gt;
+
+谷歌了许多结果，一一尝试，一一失败，最后看到&lt;a href=&#34;http://tech.soft6.com/665/16/78687.html&#34;&gt;这篇文章&lt;/a&gt;，果断把之前编好的php删除了按照文中方法重装一遍，居然成功了！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>linux搭建lamp环境笔记</title>
+      <link>/2013/07/linux%E6%90%AD%E5%BB%BAlamp%E7%8E%AF%E5%A2%83%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Sun, 21 Jul 2013 11:20:00 +0800</pubDate>
+      
+      <guid>/2013/07/linux%E6%90%AD%E5%BB%BAlamp%E7%8E%AF%E5%A2%83%E7%AC%94%E8%AE%B0/</guid>
+      <description>&lt;p&gt;在学习php编程的过程中，了解了lamp环境的重要性，因此尝试自行搭建。在这个过程中经历了很多困难，为了便于查阅和再次搭建，在此将过程都记录下来。有错漏或可以改进的地方，欢迎指出拨正。&lt;br /&gt;
+
+此前都是用源码包安装，其实用rpm包安装省时省力。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

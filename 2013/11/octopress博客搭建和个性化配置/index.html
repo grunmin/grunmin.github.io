@@ -1,0 +1,922 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.41-DEV with theme Tranquilpeak 0.4.3-BETA">
+    <title>octopress博客搭建和个性化配置</title>
+    <meta name="author" content="润民">
+    <meta name="keywords" content="">
+
+    <link rel="icon" href="/favicon.png">
+    
+
+    
+    <meta name="description" content="使用octopress搭建博客的人，大概都会喜欢写关于如何搭建配置octopress的文章。因为它的高定制性，为极客们带来很多乐趣。从首页的配置，到分类，评论，个人信息，社会化分享等的配置，内容繁多。而且这是我第二次搭建octopress环境了，发现上一次的配置有一部分不能clone到本机上。因此，把配置的过程记录下来是十分有必要的。
+我的意愿是记录配置的过程，顺便整理大牛们关于这方面的一些说明。网络上相关资料有很多，没有实践过的没有摘录在这里。所有的代码实现都是直接引用前辈们的。另外，本博的配置环境是linux fedora 18.
+">
+    <meta property="og:description" content="使用octopress搭建博客的人，大概都会喜欢写关于如何搭建配置octopress的文章。因为它的高定制性，为极客们带来很多乐趣。从首页的配置，到分类，评论，个人信息，社会化分享等的配置，内容繁多。而且这是我第二次搭建octopress环境了，发现上一次的配置有一部分不能clone到本机上。因此，把配置的过程记录下来是十分有必要的。
+我的意愿是记录配置的过程，顺便整理大牛们关于这方面的一些说明。网络上相关资料有很多，没有实践过的没有摘录在这里。所有的代码实现都是直接引用前辈们的。另外，本博的配置环境是linux fedora 18.
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="octopress博客搭建和个性化配置">
+    <meta property="og:url" content="/2013/11/octopress%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%92%8C%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/">
+    <meta property="og:site_name" content="Don&#39;t Panic">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Don&#39;t Panic">
+    <meta name="twitter:description" content="使用octopress搭建博客的人，大概都会喜欢写关于如何搭建配置octopress的文章。因为它的高定制性，为极客们带来很多乐趣。从首页的配置，到分类，评论，个人信息，社会化分享等的配置，内容繁多。而且这是我第二次搭建octopress环境了，发现上一次的配置有一部分不能clone到本机上。因此，把配置的过程记录下来是十分有必要的。
+我的意愿是记录配置的过程，顺便整理大牛们关于这方面的一些说明。网络上相关资料有很多，没有实践过的没有摘录在这里。所有的代码实现都是直接引用前辈们的。另外，本博的配置环境是linux fedora 18.
+">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="/author.jpg">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
+    
+    
+
+    
+      
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-42775487-5', 'auto');
+ga('send', 'pageview');
+</script>
+
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="/">Don&#39;t Panic</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="/author.jpg" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="/#about">
+          <img class="sidebar-profile-picture" src="/author.jpg" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">润民</h4>
+        
+          <h5 class="sidebar-profile-bio">Don&rsquo;t Panic</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      octopress博客搭建和个性化配置
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2013-11-04T15:02:00&#43;08:00">
+        
+  十一月 4, 2013
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="/categories/knowledge">knowledge</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>使用octopress搭建博客的人，大概都会喜欢写关于如何搭建配置octopress的文章。因为它的高定制性，为极客们带来很多乐趣。从首页的配置，到分类，评论，个人信息，社会化分享等的配置，内容繁多。而且这是我第二次搭建octopress环境了，发现上一次的配置有一部分不能clone到本机上。因此，把配置的过程记录下来是十分有必要的。<br />
+我的意愿是记录配置的过程，顺便整理大牛们关于这方面的一些说明。网络上相关资料有很多，没有实践过的没有摘录在这里。所有的代码实现都是直接引用前辈们的。另外，本博的配置环境是linux fedora 18.<br />
+</p>
+
+<h4 id="octopress官方网站-http-octopress-org"><a href="http://octopress.org/">octopress官方网站</a></h4>
+
+<p>octopress的配置都可以在官网上找到。事实上，遇到问题查询官网文档是最有效率的方法。</p>
+
+<h3 id="github的设置">github的设置</h3>
+
+<h4 id="创建仓库">创建仓库</h4>
+
+<p>登陆github网站，注册一个用户，假设为grunmin。<br />
+创建一个仓库，命名为username.github.com，例如<code>grunmin.github.com</code></p>
+
+<h4 id="使用密钥登陆github">使用密钥登陆github</h4>
+
+<pre><code>[[ -f ~/.ssh/id_rsa.pub ]] || ssh-keygen -t rsa     #生成密钥对
+</code></pre>
+
+<p>按默认一直确认即可。<br />
+在github帐号设置里找到ssh的设置，添加一个ssh key。<br />
+进入~/.ssh/找到id_rsa.pub文件，把里面的内容填到key里，title不填。<br />
+这样做的好处是之后push到仓库上时可以不用输入密码。</p>
+
+<h3 id="安装ruby">安装ruby</h3>
+
+<p>查看ruby版本</p>
+
+<pre><code>ruby --version  # 必须显示1.9.3
+</code></pre>
+
+<p>安装方法：</p>
+
+<pre><code>curl -L https://get.rvm.io | bash -s stable --ruby
+rvm install 1.9.3
+rvm use 1.9.3
+rvm rubygems latest
+</code></pre>
+
+<p>若有显示命名未找到，直接下载安装即可。</p>
+
+<h3 id="安装octopress">安装octopress</h3>
+
+<p>在安装octopress之前，确保已安装git。</p>
+
+<pre><code>git clone git://github.com/imathis/octopress.git octopress
+cd octopress
+gem install bundler
+bundle install
+rake install
+</code></pre>
+
+<p>这里容易出现三个问题：<br />
+1、已安装rvm和bundler，但显示找不到命令。</p>
+
+<p>用绝对路径：<code>/home/username/.rvm/bin/rvm</code>
+<code>/home/username/.rvm/bin/bundler</code><br />
+2、执行bundler install时显示：GemfileNotFound error?</p>
+
+<p>可能在安装的过程中退出了octopress目录，进入后执行即可。<br />
+3、执行rake install时显示</p>
+
+<pre><code>rake aborted!
+No Rakefile found (looking for: rakefile, Rakefile, rakefile.rb, Rakefile.rb)
+</code></pre>
+
+<p>同理，进入安装目录即可。</p>
+
+<h3 id="将博客部署到github上">将博客部署到github上</h3>
+
+<pre><code>rake setup_github_pages 
+</code></pre>
+
+<p>此时会要求输入仓库的url，可以在github仓库内容业的右下角找到。<br />
+例如我的是<code>git@github.com:grunmin/grunmin.github.com.git</code><br />
+成功后即可用</p>
+
+<pre><code>rake new_post[&quot;title&quot;]
+</code></pre>
+
+<p>生成新文章，文章在source/_post/目录下，文件名构成为时间和标题的拼音。之后执行</p>
+
+<pre><code>rake generate
+rake preview   
+</code></pre>
+
+<p>此时可以预览(浏览器打开localhost:4000可看到效果。）如果没有问题，则执行</p>
+
+<pre><code>rake deploy 
+git add .
+git comment -m &quot;comment&quot;
+git push origin source 
+</code></pre>
+
+<p>保存到仓库。<br />
+需要注意的是执行git命令时应处于octopress目录，并且checkout到source分支，</p>
+
+<pre><code>cd octopress
+git checkout source
+git add .
+git commit -m &quot;comment&quot;
+git push origin souce
+</code></pre>
+
+<h3 id="octopress博客的个性化配置">octopress博客的个性化配置</h3>
+
+<h4 id="添加文章分类-category">添加文章分类（category)</h4>
+
+<p>1、增加category_list插件<br />
+将下面的代码写到<code>plugins/category_list_tag.rb</code></p>
+
+<pre><code>module Jekyll
+  class CategoryListTag &lt; Liquid::Tag
+    def render(context)
+      html = &quot;&quot;
+      categories = context.registers[:site].categories.keys
+      categories.sort.each do |category|
+        posts_in_category = context.registers[:site].categories[category].size
+        category_dir = context.registers[:site].config['category_dir']
+        category_url = File.join(category_dir, category.gsub(/_|\P{Word}/, '-').gsub(/-{2,}/, '-').downcase)
+        html &lt;&lt; &quot;&lt;li class='category'&gt;&lt;a href='/#{category_url}/'&gt;#{category} (#{posts_in_category})&lt;/a&gt;&lt;/li&gt;\n&quot;
+      end
+      html
+    end
+  end
+end
+
+Liquid::Template.register_tag('category_list', Jekyll::CategoryListTag)
+</code></pre>
+
+<p>2、增加侧边栏<br />
+将下面的代码写到<code>source/_includes/asides/category_list.html</code></p>
+
+<pre><code>&lt;section&gt;
+  &lt;h1&gt;Categories&lt;/h1&gt;
+  &lt;ul id=&quot;categories&quot;&gt;
+    {%raw%}{% category_list %}{%endraw%} 
+  &lt;/ul&gt;
+&lt;/section&gt;
+</code></pre>
+
+<p>修改_config.yml文件，找到<code>default_asides:</code><br />
+在中括号内添加
+<code>asides/category_list.html</code></p>
+
+<p>添加的位置决定在页面显示的位置，注意用逗号隔开。<br />
+用vim编辑器粘贴的话可能会自动缩进，启用粘贴模式或用其他编辑器即可。</p>
+
+<h4 id="添加社会化评论">添加社会化评论</h4>
+
+<p>octopress 产生静态网页，不支持评论功能，所以我们用第三方评论系统。好消息是octopress已为我们配置好了Disqus，我们只需要稍微填写以下信息即可。<br />
+1、首先在<a href="http://www.disqus.com/">Disqus</a> 注册一个帐号，点击添加到我的网页，添加站点信息，比如我的<code>grunmin.github.io</code><br />
+2、修改_config.yml文件，找到这一段：</p>
+
+<pre><code># Disqus Comments 
+disqus_short_name: 
+disqus_show_comment_count: false
+</code></pre>
+
+<p>添加你的disqus用户名，并把false修改成true即可。注意冒号后面有空格。<br />
+此外，可以用国内的多说系统，速度较快，且比较符合景德镇村民的需要。之前我用的就是这个，但是没有记录配置过程，这次克隆时多说系统没有成功启动，因此不折腾了，有需要的话可以自行谷歌。</p>
+
+<h4 id="导航栏设置">导航栏设置</h4>
+
+<p>导航栏的设置在<code>source\_includes\custom\navigation.html</code><br />
+我们可以将Blog和Archives修改为首页和归档，也可以在此添加一个标签页，此时应使用命令<code>rake new_page['about']</code>创建一个页面，页面路径为<code>source\about\index.markdown</code>;<br />
+修改后的文件如下：</p>
+
+<pre><code>&lt;ul class=&quot;main-navigation&quot;&gt; 
+  &lt;li&gt;&lt;a href=&quot;{{ root_url }}/&quot;&gt;首页&lt;/a&gt;&lt;/li&gt; 
+  &lt;li&gt;&lt;a href=&quot;{{ root_url }}/blog/archives&quot;&gt;归档&lt;/a&gt;&lt;/li&gt; 
+  &lt;li&gt;&lt;a href=&quot;{{ root_url }}/about&quot;&gt;关于&lt;/a&gt;&lt;/li&gt; 
+&lt;/ul&gt;
+</code></pre>
+
+<h3 id="从新电脑上恢复博客内容">从新电脑上恢复博客内容：</h3>
+
+<p>如果电脑重装了系统，或者要在另一台电脑编写博客，可以这样设置。
+找到博客仓库的url，执行</p>
+
+<pre><code>git clone -b source (url) octopress   #把source 克隆到本地octopress目录上
+</code></pre>
+
+<pre><code>cd octopress
+git clone (url) _deploy   #克隆master分支，它存放着博客内容。
+</code></pre>
+
+<pre><code>gem install bundler
+bundle install
+rake install
+rake setup_github_pages
+</code></pre>
+
+<p>之后操作同上，有问题照葫芦画瓢。</p>
+
+<h3 id="其他问题">其他问题</h3>
+
+<p>如果不能生成或者推送博客了，可以采取下述措施：</p>
+
+<ul>
+<li>在命令行输入<code>/bin/bash --login</code>，重试</li>
+<li>查看ruby的版本，如果不是1.9.3的话，执行<code>rvm use 1.9.3</code>
+
+
+<br /></li>
+</ul>
+
+<p><strong>持续更新…………</strong></p>
+
+<h4 id="参考文章">参考文章：</h4>
+
+<p><a href="http://beyondvincent.com/blog/2013/08/03/108-creating-a-github-blog-using-octopress/">利用Octopress搭建一个Github博客</a></p>
+
+<p><a href="http://www.yangzhiping.com/tech/octopress.html">Ruby开源项目介绍(1)：octopress——像黑客一样写博客</a></p>
+
+<p><a href="http://codemacro.com/2012/07/18/add-category-list-to-octopress/">为octopress添加分类(category)列表</a></p>
+
+<p><a href="http://www.cnblogs.com/oec2003/archive/2013/05/31/3109577.html">冯威的学习专栏&mdash;记录工作学习点滴</a></p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="/tags/octopress/">octopress</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2013/11/%E5%B9%BF%E5%B7%A5%E6%89%93%E9%93%81%E8%AE%B0/" data-tooltip="广工打铁记">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2013/11/rhce-note-9/" data-tooltip="RHCE note 9">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2019 润民. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2013/11/%E5%B9%BF%E5%B7%A5%E6%89%93%E9%93%81%E8%AE%B0/" data-tooltip="广工打铁记">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2013/11/rhce-note-9/" data-tooltip="RHCE note 9">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="/author.jpg" alt="作者的图片" />
+    
+    <h4 id="about-card-name">润民</h4>
+    
+      <div id="about-card-bio">Don&rsquo;t Panic</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        DEV
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        GuangZhou
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/10/postgresql%E5%8D%B3%E5%AD%A6%E5%8D%B3%E7%94%A8%E6%91%98%E5%BD%95/">
+                <h3 class="media-heading">《PostgreSQL即学即用》摘录</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Oct 10, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>摘录了部分我觉得容易遗忘或者值得注意的点. 详细信息还应查阅原文或官方文档.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/09/%E6%8F%90%E9%AB%98pdf%E7%9A%84%E5%AF%B9%E6%AF%94%E5%BA%A6/">
+                <h3 class="media-heading">提高PDF的对比度</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>借助imageMagick这个工具可以实现, 该工具支持多个平台(windows, MacOS, Linux, IOS)
+<div class="alert success no-icon ">
+  <p><strong>用到的所有工具都是免费的</strong></p>
+</div>
+
+<!--toc--></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/09/%E6%AD%A6%E5%8A%9F%E5%B1%B1%E4%B8%A4%E6%97%A5%E5%8F%8D%E7%A9%BF/">
+                <h3 class="media-heading">武功山两日反穿</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>武功山在江西萍乡, 主峰金顶海拔1918.3米, 距广州大约3小时的高铁车程.<br />
+武功山素有&rdquo;户外天堂&rdquo;的美称, 最主要是可以看到高山草甸. 驴友们开辟了多条穿越路线, 难度各有不同. 这次穿越选择的是从龙山村到景区大门的2日反穿路线.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/%E5%A4%A7%E8%AF%9D%E5%AD%98%E5%82%A8%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+                <h3 class="media-heading">《大话存储》读书笔记</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/go%E7%9A%84%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/">
+                <h3 class="media-heading">Go的依赖管理工具</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>go语言与js和python类似, 依靠社区来丰富自己的组件库, 各种第三方库遍地开花. 因为go还是一门相当年轻的语言, 特性和接口还在不断更新, 加上社区活跃程度高, 就出现了这样的场景: 新的第三方库不断增加, 旧有的库的特性和接口也频繁变更.(这一点跟目前js社区一片热火朝天的景象很类似)</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/restful-api%E7%9A%84%E8%AE%BE%E8%AE%A1/">
+                <h3 class="media-heading">RESTful API的设计</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这是一篇写于两年多前的旧文了. 这里先贴下, 有空再更新</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/docker%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/">
+                <h3 class="media-heading">Docker常用指令</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>接触docker到现在也有很长一段时间了. 因为不经常用以至于每次使用都需要查找相关操作指令, 这里先将其罗列出来</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/go%E4%B8%AD%E6%95%B0%E7%BB%84%E5%92%8C%E5%88%87%E7%89%87%E7%9A%84%E5%A3%B0%E6%98%8E%E6%96%B9%E5%BC%8F/">
+                <h3 class="media-heading">Go中数组和切片的声明方式</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>在go中, 数组和切片是两种不同的数据类型, 这两种类型表现类似, 声明方法也只存在细微差异</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/postgresql%E5%B0%8F%E8%AE%B0/">
+                <h3 class="media-heading">PostgreSQL小记</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>postgresql是一个强大的数据库, 支持多种复杂的数据结构和数学计算.
+mysql的使用者迁移到postgresql不是零成本的, 需要注意一些差异.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/%E7%AC%AC%E4%B8%80%E5%BA%A7%E9%9B%AA%E5%B1%B1-%E5%9B%9B%E5%A7%91%E5%A8%98%E5%B1%B1%E4%BA%8C%E5%B3%B0/">
+                <h3 class="media-heading">第一座雪山 四姑娘山二峰</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>登雪山是一件看上去非常酷非常专业的事情. 不过雪山攀登难度也有分等级的, 最好的例子就是四姑娘山的四个峰, 难度从大峰开始到幺妹峰依次递增, 大峰二峰有一定户外经验的非专业人士即可登顶, 而幺妹峰即便专业人士也很难登顶. 像我等战五渣要爬雪山, 大峰二峰是个不错的选择.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         71 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('/images/cover.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/languages/go.min.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = '\/2013\/11\/octopress%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%92%8C%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE\/';
+          
+            this.page.identifier = '\/2013\/11\/octopress%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%92%8C%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'dont-panic-1';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

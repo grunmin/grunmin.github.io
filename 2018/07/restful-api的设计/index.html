@@ -1,0 +1,1371 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.41-DEV with theme Tranquilpeak 0.4.3-BETA">
+    <title>RESTful API的设计</title>
+    <meta name="author" content="润民">
+    <meta name="keywords" content="">
+
+    <link rel="icon" href="/favicon.png">
+    
+
+    
+    <meta name="description" content="这是一篇写于两年多前的旧文了. 这里先贴下, 有空再更新
+
+">
+    <meta property="og:description" content="这是一篇写于两年多前的旧文了. 这里先贴下, 有空再更新
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="RESTful API的设计">
+    <meta property="og:url" content="/2018/07/restful-api%E7%9A%84%E8%AE%BE%E8%AE%A1/">
+    <meta property="og:site_name" content="Don&#39;t Panic">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Don&#39;t Panic">
+    <meta name="twitter:description" content="这是一篇写于两年多前的旧文了. 这里先贴下, 有空再更新
+
+">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="/author.jpg">
+    
+
+    
+      <meta property="og:image" content="/images/2018/RESTful%20API%E7%9A%84%E8%AE%BE%E8%AE%A1/6.png">
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
+    
+    
+
+    
+      
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-42775487-5', 'auto');
+ga('send', 'pageview');
+</script>
+
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="/">Don&#39;t Panic</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="/author.jpg" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="/#about">
+          <img class="sidebar-profile-picture" src="/author.jpg" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">润民</h4>
+        
+          <h5 class="sidebar-profile-bio">Don&rsquo;t Panic</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      RESTful API的设计
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2018-07-19T12:18:31&#43;08:00">
+        
+  七月 19, 2018
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="/categories/knowledge">knowledge</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>这是一篇写于两年多前的旧文了. 这里先贴下, 有空再更新</p>
+
+<p></p>
+
+<h1 id="table-of-contents">目录</h1><nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#概述">概述</a></li>
+<li><a href="#原则篇">原则篇</a>
+<ul>
+<li><a href="#api优先">API优先</a></li>
+<li><a href="#服务器">服务器</a>
+<ul>
+<li><a href="#只使用https">只使用https</a></li>
+</ul></li>
+<li><a href="#请求">请求</a>
+<ul>
+<li><a href="#使用正确的请求方法">使用正确的请求方法</a></li>
+<li><a href="#在请求body中接收json序列">在请求body中接收JSON序列</a></li>
+<li><a href="#使用一致的路径格式">使用一致的路径格式</a></li>
+<li><a href="#小写所有路径和属性">小写所有路径和属性</a></li>
+</ul></li>
+<li><a href="#响应">响应</a>
+<ul>
+<li><a href="#响应状态码">响应状态码</a></li>
+<li><a href="#嵌入外键数据">嵌入外键数据</a></li>
+<li><a href="#总是生成结构化的错误信息">总是生成结构化的错误信息</a></li>
+<li><a href="#其他备选">其他备选</a>
+<ul>
+<li><a href="#显示频率限制的状态">显示频率限制的状态</a></li>
+<li><a href="#在所有的响应中压缩json数据">在所有的响应中压缩JSON数据</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#文档及其他">文档及其他</a>
+<ul>
+<li><a href="#提供人类可读的文档">提供人类可读的文档</a></li>
+<li><a href="#提供可执行的示例">提供可执行的示例</a></li>
+<li><a href="#描述稳定性">描述稳定性</a></li>
+</ul></li>
+<li><a href="#数据交换格式">数据交换格式</a>
+<ul>
+<li><a href="#超文本驱动和资源发现">超文本驱动和资源发现</a></li>
+<li><a href="#json-api">JSON API</a></li>
+<li><a href="#分页相关">分页相关</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#架构篇">架构篇</a>
+<ul>
+<li><a href="#预处理">预处理</a>
+<ul>
+<li><a href="#访问频率控制">访问频率控制</a></li>
+<li><a href="#基本参数验证">基本参数验证</a></li>
+<li><a href="#自定义访问规则">自定义访问规则</a></li>
+<li><a href="#用户身份验证">用户身份验证</a></li>
+<li><a href="#访问权限判断">访问权限判断</a></li>
+<li><a href="#请求数据验证">请求数据验证</a></li>
+<li><a href="#请求参数预处理">请求参数预处理</a></li>
+</ul></li>
+<li><a href="#后续处理">后续处理</a>
+<ul>
+<li><a href="#响应数据格式化">响应数据格式化</a></li>
+<li><a href="#访问统计">访问统计</a></li>
+</ul></li>
+<li><a href="#其他">其他</a></li>
+</ul></li>
+<li><a href="#工具篇">工具篇</a>
+<ul>
+<li><a href="#raml-概述">raml 概述</a></li>
+<li><a href="#语法">语法</a></li>
+<li><a href="#编辑器相关">编辑器相关</a>
+<ul>
+<li><a href="#web编辑器">web编辑器</a></li>
+<li><a href="#编辑器插件">编辑器插件</a>
+<ul>
+<li><a href="#editor-tools">Editor Tools</a></li>
+</ul></li>
+<li><a href="#api-console">API Console</a></li>
+</ul></li>
+<li><a href="#文档生成">文档生成</a></li>
+<li><a href="#mock服务器">mock服务器</a></li>
+<li><a href="#raml解析器">RAML解析器</a></li>
+</ul></li>
+<li><a href="#python实现">python实现</a>
+<ul>
+<li><a href="#架构实现">架构实现</a></li>
+<li><a href="#跨域请求">跨域请求</a></li>
+<li><a href="#频率限制">频率限制</a></li>
+<li><a href="#请求参数验证">请求参数验证</a></li>
+</ul></li>
+<li><a href="#参考资料">参考资料</a></li>
+</ul></li>
+</ul>
+</nav>
+
+<h2 id="概述">概述</h2>
+
+<p>前后分离逐渐成为web开发的趋势。前后端通过api交换数据的架构迥异于以往的服务器端渲染。出于规范和扩展性考虑，根据RESTful API规范，整理出这份文档。</p>
+
+<p>文档分为<strong>原则篇，架构篇，工具篇，实现篇</strong>四个部分。原则篇通过收集网络上关于RESTful API设计的文档，筛选部分认为实用性较高的原则整理而来。架构篇采用<a href="https://www.zhihu.com/people/tchen">陈天</a>的知乎专栏中关于架构方面的设计。工具篇主要介绍raml及相关工具的使用。实现篇则提供了一个基于tornado框架的demo。</p>
+
+<h2 id="原则篇">原则篇</h2>
+
+<h3 id="api优先">API优先</h3>
+
+<h3 id="服务器">服务器</h3>
+
+<h4 id="只使用https">只使用https</h4>
+
+<blockquote>
+<p>总是使用TLS（就是https）来访问API，没有必要指出什么时候需要用，什么时候不需要用，只管任何时候都用它就好。</p>
+</blockquote>
+
+<p>目前大部分web服务器同时使用http和https两种协议对外服务，只有小部分网站做到了全站https，并设置了http到https重定向。</p>
+
+<p>API服务与普通web服务不同，不存在静态文件加速的考虑，因此实现全站https相对比较简单。另外，因为用户最初的请求通常是发送用户名密码获取token，若服务器允许http协议访问，则存在密码泄漏的风险。因此设置http到https的重定向是没有必要的。</p>
+
+<h3 id="请求">请求</h3>
+
+<h4 id="使用正确的请求方法">使用正确的请求方法</h4>
+
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>OPTIONS</td>
+<td>用于获取资源支持的所有 HTTP 方法</td>
+</tr>
+
+<tr>
+<td>HEAD</td>
+<td>用于只获取请求某个资源返回的头信息</td>
+</tr>
+
+<tr>
+<td>GET</td>
+<td>用于从服务器获取某个资源的信息</td>
+</tr>
+
+<tr>
+<td>POST</td>
+<td>用于创建新资源</td>
+</tr>
+
+<tr>
+<td>PUT</td>
+<td>用于完整的替换资源或者创建指定身份的资源，比如创建 id 为 123 的某个资源</td>
+</tr>
+
+<tr>
+<td>PATCH</td>
+<td>用于局部更新资源</td>
+</tr>
+
+<tr>
+<td>DELETE</td>
+<td>用于删除某个资源</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="在请求body中接收json序列">在请求body中接收JSON序列</h4>
+
+<blockquote>
+<p>不要将额外信息放到form-encoded里边，而是将其JSON序列放到PUT，PATCH或POST请求的Body中</p>
+</blockquote>
+
+<p>GET, DELETE, HEAD请求的参数放在url里面，POST, PUT, PATCH, OPTION请求的参数必须以json格式放在请求体内部，类型允许<code>application/x-www-form-urlencoded</code>,<code>multipart/form-data</code>,<code>application/json</code>3种。</p>
+
+<h4 id="使用一致的路径格式">使用一致的路径格式</h4>
+
+<blockquote>
+<p>使用复数来命名资源，除非该资源在系统中是单件（比如，在绝大多数系统中，一个用户只能拥有一个账户）。这样在引用特定资源时可以保持一致性。</p>
+</blockquote>
+
+<p>在RESTful API架构中，url代表某种资源，因此url中只能有名词，动词只能以参数形式传入。但是在某些文档的描述中，对独有资源的操作也可以通过在url中加动作来描述。</p>
+
+<p>采用哪种可以根据后端框架风格来决定。通常不建议在url中包含动作，一般的动作直接用请求方法区别即可。</p>
+
+<h4 id="小写所有路径和属性">小写所有路径和属性</h4>
+
+<p>路径的命名使用小写字母和减号，属性的命名使用小写字母和下划线，例如</p>
+
+<pre><code>/server-api/app-setups
+
+{
+    update_time: &quot;&quot;
+    expired_time: &quot;&quot;
+}
+</code></pre>
+
+<h3 id="响应">响应</h3>
+
+<h4 id="响应状态码">响应状态码</h4>
+
+<p>API的设计中，响应状态码的设计是最纠结的点之一。响应状态设计有两种风格，基于http状态码与error,msg风格。</p>
+
+<p>RESTful API的规范是通过http status code标识，这样无需分析响应内容就能得知请求的状态。而且，在设计的时候统一遵守这一规范可以避免混乱的设计，方便用户使用。</p>
+
+<blockquote>
+<p>很多REST API犯下的另一个错误是：返回数据时不遵循RFC定义的status code，而是一律200 ok + error message。这么做在client + API都是同一公司所为还凑合可用，但一旦把API暴露给第三方，不但贻笑大方，还会留下诸多互操作上的隐患。</p>
+</blockquote>
+
+<p>但目前而言，大部分的API不遵循这一规范，有部分理由是http status code存在某些不足</p>
+
+<ul>
+<li><p>对跨域请求，可能客户端无法识别除了200之外的其他状态码，以至于所有请求都是失败状态。</p></li>
+
+<li><p>国内网络现状，非200请求可能会被劫持</p></li>
+
+<li><p>相对而言，开发者对处理http status code较为陌生</p></li>
+</ul>
+
+<p>另外，http status code可能会让人困惑，一个404的请求可能是链接错误（在类似tornado框架中就是路由无匹配，无法进行正常逻辑），也可能正常的查询逻辑之后返回空结果（亦即找不到该资源）。如果是请求静态资源，那么404状态只有一个原因，但是对相对复杂的应用逻辑而言，没有找到资源即返回404是不妥的。</p>
+
+<p>结合上述情况，个人认为可以根据使用场景不同采纳不同的方案。</p>
+
+<ul>
+<li><p>前后分离使用的api采用error,msg风格，这类api仅内部使用，可以不参照标准，通过内部沟通的方式，确定最高效的方式。</p></li>
+
+<li><p>公共接口才用status code风格，这类api基本没有跨域访问的情况。参照标准的api才能称为RESTful api。</p></li>
+</ul>
+
+<p>两套API后端逻辑通过函数封装可以实现某种程度的共用，但是不可能做到真正合二为一，因为两者的认证模式是不同的。web api使用的是cookie加session的方式认证，而公共接口通常使用auth token。</p>
+
+<p>另外，也可以根据应用处理与否采用不同的方案。在后面架构篇中提到，在用户提交请求到请求被正常逻辑执行中间存在一系列预处理流程，比如频率限制，身份验证等。无法通过预处理的请求根据错误不过返回对应状态码，比如401要求身份验证，429请求过频等。通过预处理的请求一律以200返回，在返回内容中定义具体的状态码，类似<a href="http://mp.weixin.qq.com/wiki/17/fa4e1434e57290788bde25603fa2fcbd.html">微信API的全局返回码</a></p>
+
+<p>完整的http status code请见<em>文档-&gt;设计原则-&gt;http状态码参考</em></p>
+
+<h4 id="嵌入外键数据">嵌入外键数据</h4>
+
+<p>将外键引用通过序列化的嵌入对象显示：</p>
+
+<pre><code>{
+  &quot;name&quot;: &quot;service-production&quot;,
+  &quot;owner&quot;: {
+    &quot;id&quot;: &quot;5d8201b0...&quot;
+  },
+  ...
+}
+</code></pre>
+
+<p>而不是这样：</p>
+
+<pre><code>{
+  &quot;name&quot;: &quot;service-production&quot;,
+  &quot;owner_id&quot;: &quot;5d8201b0...&quot;,
+  ...
+}
+</code></pre>
+
+<h4 id="总是生成结构化的错误信息">总是生成结构化的错误信息</h4>
+
+<p>为错误生成一致的，结构化的响应Body。包含机器可读的id，人类可读的message，以及可选的url指向关于错误的更多信息，还有如何解决它：</p>
+
+<pre><code>HTTP/1.1 429 Too Many Requests
+{
+  &quot;id&quot;:      &quot;rate_limit&quot;,
+  &quot;message&quot;: &quot;Account reached its API rate limit.&quot;,
+  &quot;url&quot;:     &quot;https://docs.service.com/rate-limits&quot;
+}
+</code></pre>
+
+<p>为了同一套API可以给前端使用，建议多一个中文描述信息的字段。</p>
+
+<h4 id="其他备选">其他备选</h4>
+
+<h5 id="显示频率限制的状态">显示频率限制的状态</h5>
+
+<p>对客户端的频率限制可以保护服务的健康，并对其他的客户端提供高质量的服务。你可以使用<a href="http://en.wikipedia.org/wiki/Token_bucket">token bucket</a> 算法 来量化请求限制。</p>
+
+<p>在每次请求的响应头中，通过RateLimit-Remaining 返回剩余的请求次数。</p>
+
+<h5 id="在所有的响应中压缩json数据">在所有的响应中压缩JSON数据</h5>
+
+<p>额外的空格增大了响应的大小，而很多人性化的客户端可以自动美化JSON输出。所以最好将JSON响应进行压缩：</p>
+
+<pre><code>{&quot;beta&quot;:false,&quot;email&quot;:&quot;alice@heroku.com&quot;,&quot;id&quot;:&quot;01234567-89ab-cdef-0123-456789abcdef&quot;,&quot;last_login&quot;:&quot;2012-01-01T12:00:00Z&quot;, &quot;created_at&quot;:&quot;2012-01-01T12:00:00Z&quot;,&quot;updated_at&quot;:&quot;2012-01-01T12:00:00Z&quot;}
+</code></pre>
+
+<p>不要这样：</p>
+
+<pre><code>{
+  &quot;beta&quot;: false,
+  &quot;email&quot;: &quot;alice@heroku.com&quot;,
+  &quot;id&quot;: &quot;01234567-89ab-cdef-0123-456789abcdef&quot;,
+  &quot;last_login&quot;: &quot;2012-01-01T12:00:00Z&quot;,
+  &quot;created_at&quot;: &quot;2012-01-01T12:00:00Z&quot;,
+  &quot;updated_at&quot;: &quot;2012-01-01T12:00:00Z&quot;
+}
+</code></pre>
+
+<p>可以考虑提供一个可选的方式来为客户端输出更长的响应，比如通过请求参数（如?pretty=true）或者通过 Accept头（如Accept: application/vnd.heroku+json; version=3; indent=4;）。</p>
+
+<h3 id="文档及其他">文档及其他</h3>
+
+<!-- #### 提供机器可读的JSON格式
+
+提供机器可读的schema来描述你的API，可以用prmd来管理你的schema，用过prmd verify来确保它通过验证。 -->
+
+<h4 id="提供人类可读的文档">提供人类可读的文档</h4>
+
+<p>提供人类可读的文档帮助客户端开发者们理解你的API。</p>
+
+<p>除了endpoint级别的描述，还要提供概要级别的信息，比如：</p>
+
+<ul>
+<li><p>授权，包括获得和使用授权Token。</p></li>
+
+<li><p>API的稳定性和版本，包括如何选择现有的API版本。</p></li>
+
+<li><p>通用请求和响应头。</p></li>
+
+<li><p>错误的序列化格式。</p></li>
+
+<li><p>各种语言的客户端如何使用API的例子。</p></li>
+</ul>
+
+<h4 id="提供可执行的示例">提供可执行的示例</h4>
+
+<p>提供可执行的例子，这样用户可以直接在终端输入并看到可以用的API请求。最好的情况是，这些例子可以直接复制粘贴，以最小化用户试用API的成本</p>
+
+<h4 id="描述稳定性">描述稳定性</h4>
+
+<p>描述你API的稳定性，以及哪些endpoint依赖于其成熟度，比如使用prototype，development或者production的标识。</p>
+
+<p>可参考 Heroku API compatibility policy 了解哪些接口是稳定的，哪些可能有变动。</p>
+
+<p>一旦你的API宣布为 production-ready 和 稳定版，不要在该API版本上做任何不向前兼容的修改。如果你需要做不向前兼容的修改，创建一个新的版本号。</p>
+
+<h3 id="数据交换格式">数据交换格式</h3>
+
+<h4 id="超文本驱动和资源发现">超文本驱动和资源发现</h4>
+
+<p>这两篇文章(<a href="https://github.com/bolasblack/http-api-guide#user-content-%E5%88%86%E9%A1%B5">1</a>,<a href="http://www.infoq.com/cn/news/2008/12/restapi-must-be-hypertext-driven">2</a>)里均提到了RESTful API超文本驱动和资源发现的要求。</p>
+
+<blockquote>
+<p>REST 服务的要求之一就是超文本驱动，客户端不再需要将某些接口的 URI 硬编码在代码中，唯一需要存储的只是 API 的 HOST 地址，能够非常有效的降低客户端与服务端之间的耦合，服务端对 URI 的任何改动都不会影响到客户端的稳定。</p>
+</blockquote>
+
+<p>这样的描述可能会让人误解，更清楚的描述见<a href="https://book.douban.com/review/5450803/">怎么样才算是 RESTful？读 REST in Practice</a></p>
+
+<blockquote>
+<p>客户端不再和 URI 紧耦合。在第 1 级或者第 2 级的应用里面，客户端都需要知道资源使用的 URI 模版（如 /orders/{id}），然后要操作什么样的资源就生成什么样的 URI。超媒体客户端只知道入口 URI，之后的每一个 URI 都是通过超链接获得的。<br />
+还是用上述论坛例子来解释，假若这个论坛通过 Atom 协议支持非浏览器的客户端访问。客户端是不需要知道论坛帖子的 URI 模版的，因为客户端可以通过帖子列表的 Atom 获得帖子的超链接，然后在用户选择浏览帖子时获取对应 URI 的内容。获取回来的结果不会带有 form，但会带有 <link rel="reply" />，通过这个 link 客户端又知道了用户提交的回复应该发往哪个 URI。</p>
+</blockquote>
+
+<p>简而言之，在一个RESTful响应中，需要带有资源相关的方法以及相关资源的超链接，使得客户端可以通过响应来发现资源，无需强耦合先行指定url。</p>
+
+<p>基于超文本驱动的api格式，根据<a href="https://github.com/bolasblack/http-api-guide">HTTP 接口设计指北</a>归纳，有下列4种。</p>
+
+<ul>
+<li><a href="http://tools.ietf.org/html/draft-kelly-json-hal-07">JSON HAL</a> ，示例可以参考 <a href="http://stateless.co/hal_specification.html">JSON HAL 作者自己的介绍</a></li>
+<li><a href="https://developer.github.com/v3/#hypermedia">GitHub API 使用的方案</a> ，应该是一种 JSON HAL 的变体</li>
+<li><a href="http://jsonapi.org/">JSON API</a> ，（这里有 <a href="https://github.com/justjavac">@迷渡</a> 发起的 <a href="http://jsonapi.org.cn/">中文版</a> ），另外一种类似 JSON HAL 的方案</li>
+<li><a href="http://micro-api.org/">Micro API</a> ，一种试图与 <a href="http://json-ld.org/">JSON-LD</a> 兼容的方案</li>
+</ul>
+
+<p>个人观点，在进行中小项目开发的时候，设计和维护一份规范的API文档既可以规避资源发现的要求，也降低了开发API的工作量（如何维护见工具篇）。就个人接触的项目现状，一个API链接通常只响应一个具体的操作，在没有成熟的框架的情况下，额外加入资源关联（资源发现）不仅会导致工作量增加，而且会给团队协作造成不便（如果同个模块多人维护更是雪上加霜）。</p>
+
+<h4 id="json-api">JSON API</h4>
+
+<p>JSON API 是数据交互规范，用以定义客户端如何获取与修改资源，以及服务器如何响应对应请求。</p>
+
+<p><a href="http://jsonapi.org.cn/format/">文档</a>，<a href="http://www.infoq.com/cn/articles/apis-json-discovery-format">介绍</a></p>
+
+<p>JSON API 是RESTful格式的一种，选择这一种的原因是有详细的中文文档。内容很多，无法一一列举，筛选也较为困难，最佳方法是在设计API的时候参考这份规范。</p>
+
+<h4 id="分页相关">分页相关</h4>
+
+<h2 id="架构篇">架构篇</h2>
+
+<p>API结构设计主要借鉴<a href="https://zhuanlan.zhihu.com/p/20691649?refer=prattle">再谈 API 的撰写 - 架构</a>这篇文章。</p>
+
+<p>一个API的处理流程可以概括为:发送请求-&gt;预处理-&gt;业务逻辑-&gt;后续处理-&gt;响应。对开发者而言，最理想的情况是只进行业务逻辑的开发，预处理以及后续处理交给框架来实现。</p>
+
+<h3 id="预处理">预处理</h3>
+
+<p>预处理逻辑可能包括：</p>
+
+<ul>
+<li><p>访问频率控制</p></li>
+
+<li><p>基本参数验证</p></li>
+
+<li><p>自定义访问规则</p></li>
+
+<li><p>用户身份验证</p></li>
+
+<li><p>访问权限判断</p></li>
+
+<li><p>请求数据验证</p></li>
+
+<li><p>请求数据预处理</p></li>
+</ul>
+
+<h4 id="访问频率控制">访问频率控制</h4>
+
+<p>不出意外，访问频率控制是接收请求的第一道门户（不计算系统防火墙等）。</p>
+
+<p>在python实现中，访问频率控制有基于IP和基于用户身份两种。对外公开服务的API通常做法是基于IP的控制，能够有效屏蔽爬虫类程序的频繁请求。对内服务的API因为用户可能具有相同的IP而才用IP白名单，对白名单内的用户进行基于用户身份的控制。</p>
+
+<p>RESTful API是无状态的，服务器无从得知用户的多次请求之间存在何种联系。在python实现中使用的是jwt(JSON Web Token)的方式验证，要求用户在请求头部包含用户的名称和token信息。因此基于身份的频率控制先对请求头进行判断，没有包含这两个基本信息的一律返回401错误。</p>
+
+<p>存在内部恶意用户伪造身份使正常用户无法登录的情况，只能通过查看访问日志进行排查。</p>
+
+<h4 id="基本参数验证">基本参数验证</h4>
+
+<p>在python实现中，基本参数包括用户名和Token两个。实际项目中，可能还包含请求的API版本号等。所有API请求都必须具有的参数在此验证</p>
+
+<h4 id="自定义访问规则">自定义访问规则</h4>
+
+<p>可定制的“防火墙”，建议将规则存放到数据库并提供交互界面以方便的进行规则的添加和修改。这里的规则通常以正则匹配为主，具有通用性，而单个API的控制尽量在API业务逻辑内部实现。</p>
+
+<h4 id="用户身份验证">用户身份验证</h4>
+
+<p>在通过前面3道关卡的验证后，请求者当前是一位正常的陌生访客。如果API只提供给指定授权用户访问，那么在这一步进行用户的身份验证，否则可以略过。API的身份验证机制不能使用基于浏览器的cookie和session组合，而应该使用jwt或者auth2等</p>
+
+<h4 id="访问权限判断">访问权限判断</h4>
+
+<p>这一步是Role Base ACL，根据授权用户分配的角色不同限制其访问范围。具体的权限控制列表应该在应用程序内设置好，因此该验证与应用耦合较高。</p>
+
+<h4 id="请求数据验证">请求数据验证</h4>
+
+<p>在基本参数之外，每一个API都对请求的内容和参数有一定的要求。因为要求可能五花八门，通常的做法是在每一个API业务逻辑内部验证。但是可以通过强制规范来对这些要求进行收集然后集中在这一步进行处理。</p>
+
+<p>在python实现中，使用raml规范API的设计并强制具体请求参数只能存在与url或者请求体中，通过提取解析raml规则，根据请求路由进行映射参数要求。</p>
+
+<h4 id="请求参数预处理">请求参数预处理</h4>
+
+<p>暂无实际实例</p>
+
+<h3 id="后续处理">后续处理</h3>
+
+<p>从实用角度而言，后续处理主要包括两个：</p>
+
+<ul>
+<li><p>响应数据格式化</p></li>
+
+<li><p>访问统计</p></li>
+</ul>
+
+<h4 id="响应数据格式化">响应数据格式化</h4>
+
+<p>大部分API响应JSON格式的数据，适应多种场景的API设计应该考虑到允许用户指定响应格式，比如linux shell脚本开发者。通过约定返回数据格式(比如每个API响应均带有xml和text字段，或者数据主体存放在一个指定字段内)，在这一步根据请求参数对响应进行过滤或者格式化</p>
+
+<h4 id="访问统计">访问统计</h4>
+
+<p>基于IP的统计，用户身份的统计，单位时间的统计，报警逻辑等等</p>
+
+<h3 id="其他">其他</h3>
+
+<p>篇首提到的文章有更详细的描述</p>
+
+<h2 id="工具篇">工具篇</h2>
+
+<p>在约定了原则，确定了架构之后，依然有十分棘手的问题摆在开发者面前。</p>
+
+<ol>
+<li>前后端分离的开发模式中，前后端对API具体格式和内容的约定</li>
+<li>对外服务API的代码和文档的同步</li>
+</ol>
+
+<p>使用工具就是为了解决这些痛点。</p>
+
+<ul>
+<li><a href="http://icodeit.org/2015/06/whats-next-after-separate-frontend-and-backend/">前后端分离了，然后呢？</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/20691806?refer=prattle">再谈 API 的撰写 - 契约</a></li>
+<li><a href="http://www.cnblogs.com/whitewolf/p/4686154.html">Swagger - 前后端分离后的契约</a></li>
+</ul>
+
+<h3 id="raml-概述">raml 概述</h3>
+
+<p>RESTful API火了许多年，但实际上没有一个统一的设计标准和流程。各类工具的优劣可以通过阅读大牛们的文章来了解（比如以上3篇）。简要概括:</p>
+
+<ul>
+<li><p>markdown适合写文档但是不适合用于描述API这种具有多层嵌套的复杂结构</p></li>
+
+<li><p>swagger功能强大且成熟，拥有完整的工具链</p></li>
+
+<li><p>raml近年逐渐发展，有取代swagger之势</p></li>
+</ul>
+
+<p>python实现里选择raml的主要原因是raml的工具相对而言更容易掌握，在工具链方面，已经拥有多语言解析器，web版编辑器，文档生成，api-console，编辑器插件，mock服务器，服务端代码生成等。下面介绍相关工具使用。</p>
+
+<p>这些工具的组合技是这样的。</p>
+
+<ul>
+<li><p>使用编辑器插件api-workbench的Editor tool辅助编写raml规范文档，该工具提供了自动补全和快捷按钮</p></li>
+
+<li><p>使用osprey-mock-service搭建一个简易的api服务器（基于raml文档生成），供前端开发者使用</p></li>
+
+<li><p>在编辑器内用api console简易测试，或者用谷歌浏览器插件postman测试</p></li>
+
+<li><p>编写业务逻辑</p></li>
+
+<li><p>使用raml2html生成并释出API文档</p></li>
+</ul>
+
+<p>从这些步骤可以看出，编写API业务逻辑已经排在了靠后的步骤。</p>
+
+<h3 id="语法">语法</h3>
+
+<ul>
+<li><p><a href="https://github.com/raml-org/raml-spec/blob/master/versions/raml-08/raml-08.md">官方说明</a></p></li>
+
+<li><p><a href="http://www.cnblogs.com/darrenji/p/5198524.html">使用RAML描述API文档信息的一些用法整理</a></p></li>
+</ul>
+
+<p>以及raml目录下的文档。</p>
+
+<p>raml与yaml语法基本一致，目前尚未全部吃透，仅指出一些例子</p>
+
+<h3 id="编辑器相关">编辑器相关</h3>
+
+<h4 id="web编辑器">web编辑器</h4>
+
+<p>swagger，blueprint，raml都提供了在线编辑器可以方便的编写规范文件并生成html文档，甚至提供内置测试脚本的文档。</p>
+
+<p>RAML提供了名为API Designer的工具，可自行下载搭建一个web编辑器，也可以直接使用<a href="https://anypoint.mulesoft.com/apiplatform/">该公司托管在服务器的web编辑器</a>。界面类似这样</p>
+
+<p><img src="/images/2018/RESTful API的设计/1.png" alt="web编辑器界面" /></p>
+
+<h4 id="编辑器插件">编辑器插件</h4>
+
+<p>RAML提供了名为api-workbench的基于Atom的编辑器插件，包含了生成模版，导入外部API，编辑工具，API测试页面等</p>
+
+<p><img src="/images/2018/RESTful API的设计/2.png" alt="编辑器插件菜单" /></p>
+
+<h5 id="editor-tools">Editor Tools</h5>
+
+<p>这是一个辅助编写RAML文件的工具，界面如图</p>
+
+<p><img src="/images/2018/RESTful API的设计/3.png" alt="Editor Tools" /></p>
+
+<p>编辑器工作区右侧划分为两个窗口，上侧显示API的树形结构，下侧显示当前光标停留的节点的信息，切换到Palette标签会出现快捷按钮，点击按钮能够自动生成对应代码（节点，描述等）。</p>
+
+<h4 id="api-console">API Console</h4>
+
+<p>这是一个RAML将生成的文档预览以及测试工具，操作很简单，界面如图</p>
+
+<p><img src="/images/2018/RESTful API的设计/4.png" alt="文档概览" /></p>
+
+<p><img src="/images/2018/RESTful API的设计/5.png" alt="url详情" /></p>
+
+<p><img src="/images/2018/RESTful API的设计/6.png" alt="API测试" /></p>
+
+<h3 id="文档生成">文档生成</h3>
+
+<p>文档生成用raml2html。</p>
+
+<p>安装方法</p>
+
+<pre><code>npm i -g raml2html
+</code></pre>
+
+<p>使用方法</p>
+
+<pre><code>raml2html api.raml &gt; api.html
+</code></pre>
+
+<p>生成的文档界面如图</p>
+
+<p><img src="/images/2018/RESTful API的设计/7.png" alt="首页" /></p>
+
+<p><img src="/images/2018/RESTful API的设计/8.png" alt="具体API" /></p>
+
+<p>在demo/docs目录下可以找到该文档</p>
+
+<h3 id="mock服务器">mock服务器</h3>
+
+<blockquote>
+<p>mock服务器可以启动一个简单的HTTP服务器，然后将一些静态的内容serve出来，以供前端代码使用。这样的好处很多:
+1.前后端开发相对独立
+2.后端的进度不会影响前端开发
+3.启动速度更快
+4.前后端都可以使用自己熟悉的技术栈（让前端的学maven，让后端的用gulp都会很不顺手）</p>
+</blockquote>
+
+<p>mock服务器目前使用的是<a href="https://github.com/mulesoft-labs/osprey-mock-service">osprey-mock-service</a></p>
+
+<p>安装方法</p>
+
+<pre><code>npm i -g osprey-mock-service
+</code></pre>
+
+<p>使用方法</p>
+
+<pre><code>osprey-mock-service -f api.raml -p 8000
+</code></pre>
+
+<p>服务器会监听本地8000端口接收API请求，返回每个API内example段设置的数据，请求不存在的url或者方法直接报错。</p>
+
+<p>前后端开发者共同维护一份raml文档，前端开发者在本地根据raml启动mock服务器即可进行接口开发（这可能要求example要尽可能丰富）</p>
+
+<h3 id="raml解析器">RAML解析器</h3>
+
+<p>RAML目前有多个语言的解析器，python版本最出名的是ramlfications，将整个RAML解析为python一个对象。在python实现部分<strong>用于生成请求数据验证代码</strong>。</p>
+
+<h2 id="python实现">python实现</h2>
+
+<h3 id="架构实现">架构实现</h3>
+
+<p>在架构篇里阐述了预处理以及后续处理一些流程，在python里可以很方便的使用装饰器达到此效果。</p>
+
+<p>在某个公共文件内声明一个装饰器函数<code>AC</code>，在具体API业务逻辑函数上使用。tornado框架根据路由匹配到某一业务逻辑函数时，装饰器先行进行频率控制，身份验证等步骤。在业务逻辑函数执行结束时，同样灵活地执行后续处理。</p>
+
+<p>tornado中也可以通过重写<code>RequestHandler.prepare()</code>，<code>RequestHandler.on_finish()</code>函数来实现类似的效果。</p>
+
+<h3 id="跨域请求">跨域请求</h3>
+
+<p>详细的cors介绍请看这里：</p>
+
+<ul>
+<li><p><a href="http://www.ruanyifeng.com/blog/2016/04/cors.html">跨域资源共享 CORS 详解</a></p></li>
+
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS">HTTP访问控制(CORS)</a></p></li>
+</ul>
+
+<p>要求tornado支持跨域请求，首先要在<code>tornado.web.RequestHandler</code>内重写options函数，使之能够响应外部请求</p>
+
+<pre><code>def options(self):
+    header = self.request.headers
+    self.set_header(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;)
+    self.set_header(&quot;Access-Control-Allow-Headers&quot;, header.get(&quot;Access-Control-Request-Headers&quot;))
+    self.set_header(&quot;Access-Control-Allow-Methods&quot;, &quot;GET,PUT,POST,DELETE&quot;)
+    self.set_header(&quot;Access-Control-Allow-Credentials&quot;, True)
+    self.set_header(&quot;Access-control-Max-Age&quot;, 100000)
+    self.finish()
+
+</code></pre>
+
+<p>另外，还需设定tornado默认响应头部信息，通过重写<code>set_default_headers</code>函数可以实现</p>
+
+<pre><code>def set_default_headers(self):
+    self.set_header(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;)
+    self.set_header(&quot;Access-Control-Allow-Headers&quot;, &quot;x-requested-with&quot;)
+    self.set_header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS')
+</code></pre>
+
+<h3 id="频率限制">频率限制</h3>
+
+<p>目前频率限制采用leaky bucket(token bucket)算法，关于此算法原理，参看<a href="http://blog.gssxgss.me/not-a-simple-problem-rate-limiting/">请求速率限制问题</a>。</p>
+
+<p>使用redis作为数据存储，对超出限制的请求一律返回429错误。后续可引入报警机制。</p>
+
+<h3 id="请求参数验证">请求参数验证</h3>
+
+<p>以往数据验证都是在业务逻辑函数内实现的，现在将其集中起来。</p>
+
+<p>实现方法是，在服务器程序启动时，利用ramlfications解析器解析raml文件，提取出每一个API对参数的要求，生成一个囊括了所有API数据要求的字典。在装饰器内部，根据请求的uri和方法在字典中找到对应的限制条件进行判断。</p>
+
+<h2 id="参考资料">参考资料</h2>
+
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/20034107">撰写安全合格的REST API</a></li>
+<li><a href="http://get.ftqq.com/343.get">来自HeroKu的HTTP API 设计指南(中文版)</a></li>
+<li><a href="https://github.com/bolasblack/http-api-guide">HTTP 接口设计指北</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2014/05/restful_api.html">RESTful API 设计指南</a></li>
+<li><a href="http://www.infoq.com/cn/news/2008/12/restapi-must-be-hypertext-driven">Roy Fielding：REST API必须是超文本驱动的！</a></li>
+<li><a href="https://book.douban.com/review/5450803/">怎么样才算是 RESTful？读 REST in Practice</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/20691649?refer=prattle">再谈 API 的撰写 - 架构</a></li>
+<li><a href="http://icodeit.org/2015/06/whats-next-after-separate-frontend-and-backend/">前后端分离了，然后呢？</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/20691806?refer=prattle">再谈 API 的撰写 - 契约</a></li>
+<li><a href="http://www.cnblogs.com/whitewolf/p/4686154.html">Swagger - 前后端分离后的契约</a></li>
+<li><a href="http://www.cnblogs.com/darrenji/p/5198524.html">使用RAML描述API文档信息的一些用法整理</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2016/04/cors.html">跨域资源共享 CORS 详解</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS">HTTP访问控制(CORS)</a></li>
+<li><a href="http://blog.gssxgss.me/not-a-simple-problem-rate-limiting/">请求速率限制问题</a></li>
+</ul>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2018/07/go%E7%9A%84%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" data-tooltip="Go的依赖管理工具">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2018/07/docker%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" data-tooltip="Docker常用指令">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2019 润民. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2018/07/go%E7%9A%84%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" data-tooltip="Go的依赖管理工具">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2018/07/docker%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" data-tooltip="Docker常用指令">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="/author.jpg" alt="作者的图片" />
+    
+    <h4 id="about-card-name">润民</h4>
+    
+      <div id="about-card-bio">Don&rsquo;t Panic</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        DEV
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        GuangZhou
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/10/postgresql%E5%8D%B3%E5%AD%A6%E5%8D%B3%E7%94%A8%E6%91%98%E5%BD%95/">
+                <h3 class="media-heading">《PostgreSQL即学即用》摘录</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Oct 10, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>摘录了部分我觉得容易遗忘或者值得注意的点. 详细信息还应查阅原文或官方文档.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/09/%E6%8F%90%E9%AB%98pdf%E7%9A%84%E5%AF%B9%E6%AF%94%E5%BA%A6/">
+                <h3 class="media-heading">提高PDF的对比度</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>借助imageMagick这个工具可以实现, 该工具支持多个平台(windows, MacOS, Linux, IOS)
+<div class="alert success no-icon ">
+  <p><strong>用到的所有工具都是免费的</strong></p>
+</div>
+
+<!--toc--></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/09/%E6%AD%A6%E5%8A%9F%E5%B1%B1%E4%B8%A4%E6%97%A5%E5%8F%8D%E7%A9%BF/">
+                <h3 class="media-heading">武功山两日反穿</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>武功山在江西萍乡, 主峰金顶海拔1918.3米, 距广州大约3小时的高铁车程.<br />
+武功山素有&rdquo;户外天堂&rdquo;的美称, 最主要是可以看到高山草甸. 驴友们开辟了多条穿越路线, 难度各有不同. 这次穿越选择的是从龙山村到景区大门的2日反穿路线.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/%E5%A4%A7%E8%AF%9D%E5%AD%98%E5%82%A8%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+                <h3 class="media-heading">《大话存储》读书笔记</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/go%E7%9A%84%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/">
+                <h3 class="media-heading">Go的依赖管理工具</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>go语言与js和python类似, 依靠社区来丰富自己的组件库, 各种第三方库遍地开花. 因为go还是一门相当年轻的语言, 特性和接口还在不断更新, 加上社区活跃程度高, 就出现了这样的场景: 新的第三方库不断增加, 旧有的库的特性和接口也频繁变更.(这一点跟目前js社区一片热火朝天的景象很类似)</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/restful-api%E7%9A%84%E8%AE%BE%E8%AE%A1/">
+                <h3 class="media-heading">RESTful API的设计</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这是一篇写于两年多前的旧文了. 这里先贴下, 有空再更新</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/docker%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/">
+                <h3 class="media-heading">Docker常用指令</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>接触docker到现在也有很长一段时间了. 因为不经常用以至于每次使用都需要查找相关操作指令, 这里先将其罗列出来</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/go%E4%B8%AD%E6%95%B0%E7%BB%84%E5%92%8C%E5%88%87%E7%89%87%E7%9A%84%E5%A3%B0%E6%98%8E%E6%96%B9%E5%BC%8F/">
+                <h3 class="media-heading">Go中数组和切片的声明方式</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>在go中, 数组和切片是两种不同的数据类型, 这两种类型表现类似, 声明方法也只存在细微差异</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/postgresql%E5%B0%8F%E8%AE%B0/">
+                <h3 class="media-heading">PostgreSQL小记</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>postgresql是一个强大的数据库, 支持多种复杂的数据结构和数学计算.
+mysql的使用者迁移到postgresql不是零成本的, 需要注意一些差异.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/%E7%AC%AC%E4%B8%80%E5%BA%A7%E9%9B%AA%E5%B1%B1-%E5%9B%9B%E5%A7%91%E5%A8%98%E5%B1%B1%E4%BA%8C%E5%B3%B0/">
+                <h3 class="media-heading">第一座雪山 四姑娘山二峰</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>登雪山是一件看上去非常酷非常专业的事情. 不过雪山攀登难度也有分等级的, 最好的例子就是四姑娘山的四个峰, 难度从大峰开始到幺妹峰依次递增, 大峰二峰有一定户外经验的非专业人士即可登顶, 而幺妹峰即便专业人士也很难登顶. 像我等战五渣要爬雪山, 大峰二峰是个不错的选择.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         71 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('/images/cover.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/languages/go.min.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = '\/2018\/07\/restful-api%E7%9A%84%E8%AE%BE%E8%AE%A1\/';
+          
+            this.page.identifier = '\/2018\/07\/restful-api%E7%9A%84%E8%AE%BE%E8%AE%A1\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'dont-panic-1';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

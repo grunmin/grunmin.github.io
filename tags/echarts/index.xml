@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Echarts on Don&#39;t Panic</title>
+    <link>/tags/echarts/</link>
+    <description>Recent content in Echarts on Don&#39;t Panic</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 28 Aug 2015 18:42:19 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/echarts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Echarts使用记录-实例</title>
+      <link>/2015/08/echarts%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95-%E5%AE%9E%E4%BE%8B/</link>
+      <pubDate>Fri, 28 Aug 2015 18:42:19 +0800</pubDate>
+      
+      <guid>/2015/08/echarts%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95-%E5%AE%9E%E4%BE%8B/</guid>
+      <description>&lt;h2 id=&#34;图片标记&#34;&gt;图片标记&lt;/h2&gt;
+
+&lt;p&gt;Echarts中markPoint用于标记特定的数据,比如地图上的描点,折线图的最值点等.第二版的Echarts支持用图片做为标记样式,例如&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;markPoint : {
+    symbol: &#39;image:///assets/admin/images/details.png&#39;,
+    itemStyle:{normal:{label:{show:true,textStyle:{fontSize:&#39;20&#39;}}},emphasis:{label:{show:false}}},
+    data : [
+        {name : &#39;详情&#39;, x:&#39;10%&#39;, y:50, symbolSize:25}
+    ]
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;markPoint 二级元素,在series内部&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Echarts使用记录-概念和参数</title>
+      <link>/2015/08/echarts%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95-%E6%A6%82%E5%BF%B5%E5%92%8C%E5%8F%82%E6%95%B0/</link>
+      <pubDate>Thu, 27 Aug 2015 20:02:44 +0800</pubDate>
+      
+      <guid>/2015/08/echarts%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95-%E6%A6%82%E5%BF%B5%E5%92%8C%E5%8F%82%E6%95%B0/</guid>
+      <description>&lt;p&gt;option对象包含一个图表的所需配置参数,这是一个多级嵌套的类json对象.&lt;/p&gt;
+
+&lt;h2 id=&#34;常用的第一级子元素&#34;&gt;常用的第一级子元素&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;名称&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;calculable&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;是否启用拖拽重计算特性，默认关闭&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;title&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;图表标题&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;toolbox&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;工具箱&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;toolip&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;提示框&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;legend&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;图例&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;dataRange&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;值域(作用于通常的y值)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;dataZoom&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;数据区域缩放(作用于通常的x值)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;grid&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;直角坐标系内绘图网格&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;xAxis&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;直角坐标系中横轴数组(x轴)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;yAxis&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;直角坐标系中纵轴数组(y轴)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;series&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;数据内容&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Echarts使用记录-导入</title>
+      <link>/2015/08/echarts%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95-%E5%AF%BC%E5%85%A5/</link>
+      <pubDate>Thu, 27 Aug 2015 19:18:34 +0800</pubDate>
+      
+      <guid>/2015/08/echarts%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95-%E5%AF%BC%E5%85%A5/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://echarts.baidu.com&#34;&gt;Echarts&lt;/a&gt;是百度商业前端数据可视化团队开发 的商业级数据图表,提供折线,柱状,散点,K线,饼图,雷达,和铉,力导向分布图,地图,仪表盘等多种数据图表.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

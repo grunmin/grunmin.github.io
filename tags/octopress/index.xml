@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Octopress on Don&#39;t Panic</title>
+    <link>/tags/octopress/</link>
+    <description>Recent content in Octopress on Don&#39;t Panic</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 04 Nov 2013 15:02:00 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/octopress/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>octopress博客搭建和个性化配置</title>
+      <link>/2013/11/octopress%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%92%8C%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Mon, 04 Nov 2013 15:02:00 +0800</pubDate>
+      
+      <guid>/2013/11/octopress%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%92%8C%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/</guid>
+      <description>&lt;p&gt;使用octopress搭建博客的人，大概都会喜欢写关于如何搭建配置octopress的文章。因为它的高定制性，为极客们带来很多乐趣。从首页的配置，到分类，评论，个人信息，社会化分享等的配置，内容繁多。而且这是我第二次搭建octopress环境了，发现上一次的配置有一部分不能clone到本机上。因此，把配置的过程记录下来是十分有必要的。&lt;br /&gt;
+我的意愿是记录配置的过程，顺便整理大牛们关于这方面的一些说明。网络上相关资料有很多，没有实践过的没有摘录在这里。所有的代码实现都是直接引用前辈们的。另外，本博的配置环境是linux fedora 18.&lt;br /&gt;
+&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

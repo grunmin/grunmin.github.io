@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Highcharts on Don&#39;t Panic</title>
+    <link>/tags/highcharts/</link>
+    <description>Recent content in Highcharts on Don&#39;t Panic</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 03 Dec 2015 20:56:37 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/highcharts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>用highcharts实现数据统计中时间对比功能</title>
+      <link>/2015/12/%E7%94%A8highcharts%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%E7%BB%9F%E8%AE%A1%E4%B8%AD%E6%97%B6%E9%97%B4%E5%AF%B9%E6%AF%94%E5%8A%9F%E8%83%BD/</link>
+      <pubDate>Thu, 03 Dec 2015 20:56:37 +0800</pubDate>
+      
+      <guid>/2015/12/%E7%94%A8highcharts%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%E7%BB%9F%E8%AE%A1%E4%B8%AD%E6%97%B6%E9%97%B4%E5%AF%B9%E6%AF%94%E5%8A%9F%E8%83%BD/</guid>
+      <description>&lt;h2 id=&#34;时间对比的错位问题&#34;&gt;时间对比的错位问题&lt;/h2&gt;
+
+&lt;p&gt;如果某个数据系列以某个时间为固定周期波动变化，我们通常会对其进行纵向的时间对比，比如某个生产服务器的带宽数据等等。&lt;/p&gt;
+
+&lt;p&gt;用echarts可以简单地实现多条数据系列同时显示，进行横向对比。但是在用其实现时间对比的时候遇到了麻烦，比如下图&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on Don&#39;t Panic</title>
+    <link>/tags/python/</link>
+    <description>Recent content in Python on Don&#39;t Panic</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 27 May 2018 10:53:05 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Go中的包和python中的模块</title>
+      <link>/2018/05/go%E4%B8%AD%E7%9A%84%E5%8C%85%E5%92%8Cpython%E4%B8%AD%E7%9A%84%E6%A8%A1%E5%9D%97/</link>
+      <pubDate>Sun, 27 May 2018 10:53:05 +0800</pubDate>
+      
+      <guid>/2018/05/go%E4%B8%AD%E7%9A%84%E5%8C%85%E5%92%8Cpython%E4%B8%AD%E7%9A%84%E6%A8%A1%E5%9D%97/</guid>
+      <description>&lt;p&gt;在python中， 程序由模块组成， 一个文件就是一个模块.&lt;/p&gt;
+
+&lt;p&gt;在go中, 程序是由包组成, 一个目录是一个包, 弱化单一文件的概念. 在同一个包内, 包级变量和函数在哪里声明都一样. 对于python开发者而言， go中的一个包都可以视为python的一个文件.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python实现的一个验证码服务降级的简单例子</title>
+      <link>/2018/03/python%E5%AE%9E%E7%8E%B0%E7%9A%84%E4%B8%80%E4%B8%AA%E9%AA%8C%E8%AF%81%E7%A0%81%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E7%9A%84%E7%AE%80%E5%8D%95%E4%BE%8B%E5%AD%90/</link>
+      <pubDate>Sun, 25 Mar 2018 16:19:58 +0800</pubDate>
+      
+      <guid>/2018/03/python%E5%AE%9E%E7%8E%B0%E7%9A%84%E4%B8%80%E4%B8%AA%E9%AA%8C%E8%AF%81%E7%A0%81%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E7%9A%84%E7%AE%80%E5%8D%95%E4%BE%8B%E5%AD%90/</guid>
+      <description>&lt;p&gt;在微服务设计场景, 当系统负载较高时, 可以通过抛弃部分非核心服务来保证核心服务高可用.&lt;/p&gt;
+
+&lt;p&gt;网上的文章都是讲降级的策略, 基本没有讲到如何具体去实现. 我自己用python为验证码服务写了一个例子.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>python shell md5生成注意事项</title>
+      <link>/2016/06/python-shell-md5%E7%94%9F%E6%88%90%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</link>
+      <pubDate>Sun, 05 Jun 2016 16:14:29 +0800</pubDate>
+      
+      <guid>/2016/06/python-shell-md5%E7%94%9F%E6%88%90%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</guid>
+      <description>python的md5加密类似这样
+import hashlib h = hashlib.md5() h.update(&#39;sweet &#39;) h.update(&#39;girl&#39;) h.hexdigest()  shell 的md5加密类似这样
+echo -n &#39;sweet girl&#39;|md5sum  需要注意的是，echo命令会自动在字符串后加换行符\n，因此需要加-n参数 另外，shell下的双引号和单引号作用不同，如果字符串中带有特殊字符比如$等，会被shell解析为变量，因此建议echo后的字符串统一用单引号</description>
+    </item>
+    
+    <item>
+      <title>运维业务报警微信接口开发(基于微信企业号)</title>
+      <link>/2016/06/%E8%BF%90%E7%BB%B4%E4%B8%9A%E5%8A%A1%E6%8A%A5%E8%AD%A6%E5%BE%AE%E4%BF%A1%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91%E5%9F%BA%E4%BA%8E%E5%BE%AE%E4%BF%A1%E4%BC%81%E4%B8%9A%E5%8F%B7/</link>
+      <pubDate>Sun, 05 Jun 2016 11:31:59 +0800</pubDate>
+      
+      <guid>/2016/06/%E8%BF%90%E7%BB%B4%E4%B8%9A%E5%8A%A1%E6%8A%A5%E8%AD%A6%E5%BE%AE%E4%BF%A1%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91%E5%9F%BA%E4%BA%8E%E5%BE%AE%E4%BF%A1%E4%BC%81%E4%B8%9A%E5%8F%B7/</guid>
+      <description>&lt;p&gt;当前业务场景中，如有需要及时处理的事务，通常结合邮件和qq弹窗提醒负责人。现在我们考虑多一种通知方式，以应对无法使用pc端qq时的紧急事务处理。经过查找，现在暂时锁定微信企业号。&lt;/p&gt;
+
+&lt;p&gt;微信企业号是微信公众号一种，另外两种分别是服务号和订阅号。类型不同，定位也不同。目前看来，微信企业号是比较适合当前需求的。比如发消息的自由度高，有组织结构和权限管理等。官方网站看&lt;a href=&#34;https://qy.weixin.qq.com&#34;&gt;这里&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>tornado 上传文件实例</title>
+      <link>/2015/09/tornado-%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E5%AE%9E%E4%BE%8B/</link>
+      <pubDate>Wed, 02 Sep 2015 19:00:53 +0800</pubDate>
+      
+      <guid>/2015/09/tornado-%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E5%AE%9E%E4%BE%8B/</guid>
+      <description>&lt;p&gt;使用tornado编程,有上传文件需求时一般有两种方案,一种是tornado自带的方法,一种是借助反向代理,比如nginx的上传模块.在业务需求简单的时候,用tornado自带的方法不失为一种高效的选择.&lt;/p&gt;
+
+&lt;p&gt;下面的代码实现了简单的文件上传,将上传的文件保存在配置文件规定的静态文件存放目录的子目录img下.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

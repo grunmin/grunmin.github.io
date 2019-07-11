@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Javascript on Don&#39;t Panic</title>
+    <link>/tags/javascript/</link>
+    <description>Recent content in Javascript on Don&#39;t Panic</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 02 Sep 2015 18:28:49 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>用ajax提交包含&#39;type=file&#39;字段的表单</title>
+      <link>/2015/09/%E7%94%A8ajax%E6%8F%90%E4%BA%A4%E5%8C%85%E5%90%ABtypefile%E5%AD%97%E6%AE%B5%E7%9A%84%E8%A1%A8%E5%8D%95/</link>
+      <pubDate>Wed, 02 Sep 2015 18:28:49 +0800</pubDate>
+      
+      <guid>/2015/09/%E7%94%A8ajax%E6%8F%90%E4%BA%A4%E5%8C%85%E5%90%ABtypefile%E5%AD%97%E6%AE%B5%E7%9A%84%E8%A1%A8%E5%8D%95/</guid>
+      <description>&lt;p&gt;html5提供了新的表单类型&lt;code&gt;&amp;lt;input type=&amp;quot;file&amp;quot; /&amp;gt;&lt;/code&gt;,用于上传文件.一般我们用诸如fileinput控件独立上传文件,与表单内的其他内容分开上传.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

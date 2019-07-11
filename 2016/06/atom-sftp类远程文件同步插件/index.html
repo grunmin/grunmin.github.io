@@ -1,0 +1,791 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.41-DEV with theme Tranquilpeak 0.4.3-BETA">
+    <title>Atom sftp类远程文件同步插件</title>
+    <meta name="author" content="润民">
+    <meta name="keywords" content="">
+
+    <link rel="icon" href="/favicon.png">
+    
+
+    
+    <meta name="description" content="sublime text 下babel插件好像优化不好，有一些性能问题。特别是在创建文件的时候，即便没有打开，插件也会尝试把文件树里的js类文件重新渲染一遍。因为js项目所用组件繁多，导致sublime text经常卡死。因此尝试用atom。
+
+">
+    <meta property="og:description" content="sublime text 下babel插件好像优化不好，有一些性能问题。特别是在创建文件的时候，即便没有打开，插件也会尝试把文件树里的js类文件重新渲染一遍。因为js项目所用组件繁多，导致sublime text经常卡死。因此尝试用atom。
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Atom sftp类远程文件同步插件">
+    <meta property="og:url" content="/2016/06/atom-sftp%E7%B1%BB%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%90%8C%E6%AD%A5%E6%8F%92%E4%BB%B6/">
+    <meta property="og:site_name" content="Don&#39;t Panic">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Don&#39;t Panic">
+    <meta name="twitter:description" content="sublime text 下babel插件好像优化不好，有一些性能问题。特别是在创建文件的时候，即便没有打开，插件也会尝试把文件树里的js类文件重新渲染一遍。因为js项目所用组件繁多，导致sublime text经常卡死。因此尝试用atom。
+
+">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="/author.jpg">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
+    
+    
+
+    
+      
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-42775487-5', 'auto');
+ga('send', 'pageview');
+</script>
+
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="/">Don&#39;t Panic</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="/author.jpg" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="/#about">
+          <img class="sidebar-profile-picture" src="/author.jpg" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">润民</h4>
+        
+          <h5 class="sidebar-profile-bio">Don&rsquo;t Panic</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Atom sftp类远程文件同步插件
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2016-06-02T20:10:50&#43;08:00">
+        
+  六月 2, 2016
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="/categories/knowledge">knowledge</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>sublime text 下babel插件好像优化不好，有一些性能问题。特别是在创建文件的时候，即便没有打开，插件也会尝试把文件树里的js类文件重新渲染一遍。因为js项目所用组件繁多，导致sublime text经常卡死。因此尝试用atom。</p>
+
+<p></p>
+
+<p>将本地代码文件与linux服务器上的同步一般用sftp类型的插件。在sublime text上可以用sftp。atom的插件大致查找一下，有这么3个：</p>
+
+<h2 id="remote-sync">remote-sync</h2>
+
+<p>与sublime text上的sftp插件相似度最高，配置文件是json格式，可以用用户名/密码组合，也可以使用key。配置文件名称是<code>.remote-sync.json</code>，例子如下</p>
+
+<pre><code>{
+  &quot;uploadOnSave&quot;: false,
+  &quot;useAtomicWrites&quot;: false,
+  &quot;deleteLocal&quot;: false,
+  &quot;hostname&quot;: &quot;IP OR HOSTNAME&quot;,
+  &quot;port&quot;: &quot;PORT&quot;,
+  &quot;target&quot;: &quot;REMOTE PATH&quot;,
+  &quot;ignore&quot;: [
+    &quot;.remote-sync.json&quot;,
+    &quot;.git/**&quot;,
+    &quot;.gitignore&quot;
+  ],
+  &quot;username&quot;: &quot;USERNAME&quot;,
+  &quot;keyfile&quot;: &quot;PUB KEY PATH&quot;,
+  &quot;watch&quot;: [FILE WILL AUTO UPLOAD WHILE CHANGE],
+  &quot;saveOnUpload&quot;: true,
+  &quot;transport&quot;: &quot;scp&quot;,
+  &quot;passphrase&quot;: &quot;PUB KEY PASSWORD&quot;
+}
+</code></pre>
+
+<p>和sublime text上的sftp插件使用基本一致，可以绑定快捷键，同步时窗口下方有日志输出，可以在保存时自动上传也可以上传时自动保存。</p>
+
+<p>相对来说，唯一的缺点是，公钥的密码是明文保存的，不是交互式输入，有安全隐患，希望作者早日改进吧。</p>
+
+<h2 id="remote-ftp">remote-ftp</h2>
+
+<p>当前下载次数最多的同类插件(与上一个差不多)，同样支持用户名/密码和key登录。配置文件名称是<code>.ftpconfig</code>，例子如下:</p>
+
+<pre><code>{
+    &quot;protocol&quot;: &quot;sftp&quot;,
+    &quot;host&quot;: &quot;IP&quot;, // string - Hostname or IP address of the server. Default: 'localhost'
+    &quot;port&quot;: 22, // integer - Port number of the server. Default: 22
+    &quot;user&quot;: &quot;root&quot;, // string - Username for authentication. Default: (none)
+    &quot;pass&quot;: &quot;pass&quot;, // string - Password for password-based user authentication. Default: (none)，如果是key登录，注释掉这行
+    &quot;promptForPass&quot;: true, // boolean - Set to true for enable password/passphrase dialog. This will prevent from using cleartext password/passphrase in this config. Default: false
+    &quot;remote&quot;: &quot;/&quot;, // try to use absolute paths starting with /
+    &quot;agent&quot;: &quot;&quot;, // string - Path to ssh-agent's UNIX socket for ssh-agent-based user authentication. Windows users: set to 'pageant' for authenticating with Pageant or (actual) path to a cygwin &quot;UNIX socket.&quot; Default: (none)
+    &quot;privatekey&quot;: &quot;C:/Users/orchid/.ssh/id_rsa_4399&quot;, // string - Path to the private key file (in OpenSSH format). Default: (none)
+    //&quot;passphrase&quot;: &quot;&quot;, // string - For an encrypted private key, this is the passphrase used to decrypt it. Default: (none) 如果要交互输入，注释掉这行
+    &quot;hosthash&quot;: &quot;&quot;, // string - 'md5' or 'sha1'. The host's key is hashed using this method and passed to the hostVerifier function. Default: (none)
+    &quot;ignorehost&quot;: true,
+    &quot;connTimeout&quot;: 10000, // integer - How long (in milliseconds) to wait for the SSH handshake to complete. Default: 10000
+    &quot;keepalive&quot;: 10000 // integer - How often (in milliseconds) to send SSH-level keepalive packets to the server (in a similar way as OpenSSH's ServerAliveInterval config option). Set to 0 to disable. Default: 10000
+    //&quot;watch&quot;:[ // array - Files that are watched and when edited outside of the atom editor are uploaded. Useful if using a build tool e.g Gulp. Default : []
+    //    &quot;./dist/stylesheets/main.css&quot; // reference file from the root of the project.
+    //]
+}
+</code></pre>
+
+<p>相对上个插件，一个重要的改进是key密码是交互式输入了，类似sublime text。</p>
+
+<p>然而让我困惑的是，这个插件同步的时候<strong>没有日志回显</strong>，没有任何迹象。以至于我不敢确定是否已经通过过去了，因此没有使用。</p>
+
+<p>另外，好像它的同步是整个项目的， 目前尚未证实。</p>
+
+<h2 id="sftp-deployment">sftp-deployment</h2>
+
+<p>配置文件名是<code>deployment-config.json</code>，例子如下:</p>
+
+<pre><code>{
+    &quot;type&quot;: &quot;sftp&quot;,
+    &quot;host&quot;: &quot;IP&quot;,
+    &quot;username&quot;: &quot;root&quot;, //这里是username，不是user，否则会报错&quot;Cannot established connection : invalid username&quot;。官网文档没有及时更新。
+    &quot;port&quot;: &quot;PORT&quot;,
+    &quot;remotePath&quot;: &quot;REMOTE PATH&quot;,
+    &quot;sshKeyFile&quot;: &quot;PUB KEY PATH&quot;,
+    &quot;passphrase&quot;: &quot;PUB KEY PASSWORD&quot;
+}
+</code></pre>
+
+<p>感觉这个插件目前没什么亮点，没有日志回显（不过同步时右上角有显示状态）。key的密码也是明文保存的。</p>
+
+<p>而且，插件只会识别第一个项目目录下的配置文件，如果导入了两个项目，第二个项目是无法读取到正确的配置的，至少目前是如此。</p>
+
+<p>Atom目前还是个年轻的编辑器，插件开发社区也十分活跃。相信目前存在的这些问题很快会得到改进，而且功能将会愈加完善。</p>
+
+<p>OK，还是得吐槽一下atom性能优化真是大问题，即使版本已经是1.6</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="/tags/atom/">Atom</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2016/06/%E8%BF%90%E7%BB%B4%E4%B8%9A%E5%8A%A1%E6%8A%A5%E8%AD%A6%E5%BE%AE%E4%BF%A1%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91%E5%9F%BA%E4%BA%8E%E5%BE%AE%E4%BF%A1%E4%BC%81%E4%B8%9A%E5%8F%B7/" data-tooltip="运维业务报警微信接口开发(基于微信企业号)">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2016/06/nginx-x-accel-redirect%E5%A4%B4%E7%9A%84%E5%88%A9%E7%94%A8/" data-tooltip="nginx X-Accel-Redirect头的利用">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2019 润民. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2016/06/%E8%BF%90%E7%BB%B4%E4%B8%9A%E5%8A%A1%E6%8A%A5%E8%AD%A6%E5%BE%AE%E4%BF%A1%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91%E5%9F%BA%E4%BA%8E%E5%BE%AE%E4%BF%A1%E4%BC%81%E4%B8%9A%E5%8F%B7/" data-tooltip="运维业务报警微信接口开发(基于微信企业号)">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2016/06/nginx-x-accel-redirect%E5%A4%B4%E7%9A%84%E5%88%A9%E7%94%A8/" data-tooltip="nginx X-Accel-Redirect头的利用">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="/author.jpg" alt="作者的图片" />
+    
+    <h4 id="about-card-name">润民</h4>
+    
+      <div id="about-card-bio">Don&rsquo;t Panic</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        DEV
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        GuangZhou
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/10/postgresql%E5%8D%B3%E5%AD%A6%E5%8D%B3%E7%94%A8%E6%91%98%E5%BD%95/">
+                <h3 class="media-heading">《PostgreSQL即学即用》摘录</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Oct 10, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>摘录了部分我觉得容易遗忘或者值得注意的点. 详细信息还应查阅原文或官方文档.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/09/%E6%8F%90%E9%AB%98pdf%E7%9A%84%E5%AF%B9%E6%AF%94%E5%BA%A6/">
+                <h3 class="media-heading">提高PDF的对比度</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>借助imageMagick这个工具可以实现, 该工具支持多个平台(windows, MacOS, Linux, IOS)
+<div class="alert success no-icon ">
+  <p><strong>用到的所有工具都是免费的</strong></p>
+</div>
+
+<!--toc--></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/09/%E6%AD%A6%E5%8A%9F%E5%B1%B1%E4%B8%A4%E6%97%A5%E5%8F%8D%E7%A9%BF/">
+                <h3 class="media-heading">武功山两日反穿</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>武功山在江西萍乡, 主峰金顶海拔1918.3米, 距广州大约3小时的高铁车程.<br />
+武功山素有&rdquo;户外天堂&rdquo;的美称, 最主要是可以看到高山草甸. 驴友们开辟了多条穿越路线, 难度各有不同. 这次穿越选择的是从龙山村到景区大门的2日反穿路线.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/%E5%A4%A7%E8%AF%9D%E5%AD%98%E5%82%A8%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+                <h3 class="media-heading">《大话存储》读书笔记</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/go%E7%9A%84%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/">
+                <h3 class="media-heading">Go的依赖管理工具</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>go语言与js和python类似, 依靠社区来丰富自己的组件库, 各种第三方库遍地开花. 因为go还是一门相当年轻的语言, 特性和接口还在不断更新, 加上社区活跃程度高, 就出现了这样的场景: 新的第三方库不断增加, 旧有的库的特性和接口也频繁变更.(这一点跟目前js社区一片热火朝天的景象很类似)</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/restful-api%E7%9A%84%E8%AE%BE%E8%AE%A1/">
+                <h3 class="media-heading">RESTful API的设计</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这是一篇写于两年多前的旧文了. 这里先贴下, 有空再更新</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/docker%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/">
+                <h3 class="media-heading">Docker常用指令</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>接触docker到现在也有很长一段时间了. 因为不经常用以至于每次使用都需要查找相关操作指令, 这里先将其罗列出来</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/go%E4%B8%AD%E6%95%B0%E7%BB%84%E5%92%8C%E5%88%87%E7%89%87%E7%9A%84%E5%A3%B0%E6%98%8E%E6%96%B9%E5%BC%8F/">
+                <h3 class="media-heading">Go中数组和切片的声明方式</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>在go中, 数组和切片是两种不同的数据类型, 这两种类型表现类似, 声明方法也只存在细微差异</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/postgresql%E5%B0%8F%E8%AE%B0/">
+                <h3 class="media-heading">PostgreSQL小记</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>postgresql是一个强大的数据库, 支持多种复杂的数据结构和数学计算.
+mysql的使用者迁移到postgresql不是零成本的, 需要注意一些差异.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/%E7%AC%AC%E4%B8%80%E5%BA%A7%E9%9B%AA%E5%B1%B1-%E5%9B%9B%E5%A7%91%E5%A8%98%E5%B1%B1%E4%BA%8C%E5%B3%B0/">
+                <h3 class="media-heading">第一座雪山 四姑娘山二峰</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>登雪山是一件看上去非常酷非常专业的事情. 不过雪山攀登难度也有分等级的, 最好的例子就是四姑娘山的四个峰, 难度从大峰开始到幺妹峰依次递增, 大峰二峰有一定户外经验的非专业人士即可登顶, 而幺妹峰即便专业人士也很难登顶. 像我等战五渣要爬雪山, 大峰二峰是个不错的选择.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         71 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('/images/cover.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/languages/go.min.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = '\/2016\/06\/atom-sftp%E7%B1%BB%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%90%8C%E6%AD%A5%E6%8F%92%E4%BB%B6\/';
+          
+            this.page.identifier = '\/2016\/06\/atom-sftp%E7%B1%BB%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%90%8C%E6%AD%A5%E6%8F%92%E4%BB%B6\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'dont-panic-1';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Markdown on Don&#39;t Panic</title>
+    <link>/tags/markdown/</link>
+    <description>Recent content in Markdown on Don&#39;t Panic</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 12 Mar 2014 22:48:00 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>sublime text 2 下的Markdown写作</title>
+      <link>/2014/03/sublime-text-2-%E4%B8%8B%E7%9A%84markdown%E5%86%99%E4%BD%9C/</link>
+      <pubDate>Wed, 12 Mar 2014 22:48:00 +0800</pubDate>
+      
+      <guid>/2014/03/sublime-text-2-%E4%B8%8B%E7%9A%84markdown%E5%86%99%E4%BD%9C/</guid>
+      <description>&lt;p&gt;作为Windows/Mac/Linux下强大的文本编辑器，st提供了对Markdown语言的支持。通过设置可实现markdown预览和转换功能。而本文介绍的&lt;code&gt;Markdown Preview&lt;/code&gt;支持Mathjax语法和目录自动生成。(Windows下）&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>用stackedit保存笔记</title>
+      <link>/2013/11/%E7%94%A8stackedit%E4%BF%9D%E5%AD%98%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Sat, 23 Nov 2013 16:49:00 +0800</pubDate>
+      
+      <guid>/2013/11/%E7%94%A8stackedit%E4%BF%9D%E5%AD%98%E7%AC%94%E8%AE%B0/</guid>
+      <description>&lt;p&gt;在&lt;a href=&#34;http://grunmin.github.io/blog/2013/11/23/yong-ma-ke-fei-xiang-xie-bo-ke/&#34;&gt;上一篇文章&lt;/a&gt;里写到用马克飞象写博客，不知对用印象笔记的读者有没有帮助。我对工具有近乎狂热的追求，花了很多时间来尝试不同工具，试图找出其中最高效率的，最简约的，最人性化的。比如云盘，云相册，linux发行版，以及各种编辑器等。在写上一篇博客的时候其实也用到了其他的工具，我在此将其写下来。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>用马克飞象写博客</title>
+      <link>/2013/11/%E7%94%A8%E9%A9%AC%E5%85%8B%E9%A3%9E%E8%B1%A1%E5%86%99%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Sat, 23 Nov 2013 15:46:00 +0800</pubDate>
+      
+      <guid>/2013/11/%E7%94%A8%E9%A9%AC%E5%85%8B%E9%A3%9E%E8%B1%A1%E5%86%99%E5%8D%9A%E5%AE%A2/</guid>
+      <description>&lt;p&gt;用octopress搭建博客之后，大爱markdown的简约，因此我对云笔记的要求又多了一项：支持markdown格式编辑和保存。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

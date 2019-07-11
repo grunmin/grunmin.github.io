@@ -1,0 +1,1033 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.41-DEV with theme Tranquilpeak 0.4.3-BETA">
+    <title>RHCE note 9</title>
+    <meta name="author" content="润民">
+    <meta name="keywords" content="">
+
+    <link rel="icon" href="/favicon.png">
+    
+
+    
+    <meta name="description" content="unit 2
+
+配置sudoers
+
+文件/etc/sudoers是只读文件，保存时需加！强制保存.
+实例：
+
+[root@desktop31 ~]# ll /etc/sudoers
+-r--r-----. 1 root root 4002 Mar  2  2012 /etc/sudoers
+
+
+">
+    <meta property="og:description" content="unit 2
+
+配置sudoers
+
+文件/etc/sudoers是只读文件，保存时需加！强制保存.
+实例：
+
+[root@desktop31 ~]# ll /etc/sudoers
+-r--r-----. 1 root root 4002 Mar  2  2012 /etc/sudoers
+
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="RHCE note 9">
+    <meta property="og:url" content="/2013/11/rhce-note-9/">
+    <meta property="og:site_name" content="Don&#39;t Panic">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Don&#39;t Panic">
+    <meta name="twitter:description" content="unit 2
+
+配置sudoers
+
+文件/etc/sudoers是只读文件，保存时需加！强制保存.
+实例：
+
+[root@desktop31 ~]# ll /etc/sudoers
+-r--r-----. 1 root root 4002 Mar  2  2012 /etc/sudoers
+
+
+">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="/author.jpg">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
+    
+    
+
+    
+      
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-42775487-5', 'auto');
+ga('send', 'pageview');
+</script>
+
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="/">Don&#39;t Panic</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="/author.jpg" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="/#about">
+          <img class="sidebar-profile-picture" src="/author.jpg" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">润民</h4>
+        
+          <h5 class="sidebar-profile-bio">Don&rsquo;t Panic</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      RHCE note 9
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2013-11-03T23:20:00&#43;08:00">
+        
+  十一月 3, 2013
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="/categories/knowledge">knowledge</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <h2 id="unit-2">unit 2</h2>
+
+<h3 id="配置sudoers">配置sudoers</h3>
+
+<p>文件/etc/sudoers是只读文件，保存时需加！强制保存.<br />
+实例：</p>
+
+<pre><code>[root@desktop31 ~]# ll /etc/sudoers
+-r--r-----. 1 root root 4002 Mar  2  2012 /etc/sudoers
+</code></pre>
+
+<p></p>
+
+<p>vi sudoers</p>
+
+<ol>
+<li><p>sudoers语法规则</p>
+
+<pre><code>user1   machine=(user2) command
+</code></pre>
+
+<p>实例：</p>
+
+<pre><code>[root@desktop31 ~]# cat /etc/sudoers | grep -v ^#
+root    ALL=(ALL)   ALL
+</code></pre>
+
+<p>说明:root能在所有机器上以所有用户的身份执行任何命令。</p></li>
+
+<li><p>授予组成员访问任何命令的权限</p>
+
+<pre><code>%groupname  ALL=    ALL
+</code></pre>
+
+<p>实例：</p>
+
+<pre><code>[root@desktop31 ~]# cat /etc/sudoers | grep %wheel
+%wheel  ALL=(ALL)   ALLj
+</code></pre>
+
+<p>说明：wheel组能在所有机器上以所有用户身份执行任何命令。</p></li>
+
+<li><p>无需提供密码的设置</p>
+
+<pre><code>user    machine=(user2) NOPASSWD: ALL
+</code></pre>
+
+<p>实例：</p>
+
+<pre><code>user1   ALL=(root)      NOPASSWD: ALL
+</code></pre></li>
+
+<li><p>授予多名用户具有sudo权限</p>
+
+<pre><code>User_Alias  username = user1, user2, user3
+username    machine=(user)  ALL
+</code></pre>
+
+<p>实例：</p>
+
+<pre><code>User_Alias ADMINS = user01, user001
+ADMIN   ALL=(ALL)       NOPASSWD: ALL
+</code></pre></li>
+
+<li><p>设置用户对特定命令列表具有sudo权限</p>
+
+<pre><code>Cmnd_Alias type = command, command
+username    ALL=(ALL)   type
+</code></pre>
+
+<p>实例：</p>
+
+<pre><code>Cmnd_Alias STORAGE = /sbin/fdisk, /sbin/sfdisk, /sbin/parted, /sbin/partprobe, /bin/mount, /bin/umount
+ADMINS  ALL=(ALL)       NOPASSWD: STORAGE
+</code></pre></li>
+</ol>
+
+<h3 id="kerberos配置">Kerberos配置</h3>
+
+<h4 id="安装">安装</h4>
+
+<pre><code>yum groupinstall -y directory-client
+yum install -y openldap-clients
+yum install -y krb5-workstation
+</code></pre>
+
+<h4 id="配置">配置</h4>
+
+<pre><code>authconfig --enableldap --ldapserver=instructor.example.com --enableldaptls --ldaploadcacert=ftp://instructor.example.com/pub/example-ca.crt --ldapbasedn=&quot;dc=example,dc=com&quot; --disableldapauth --enablekrb5 --krb5kdc=instructor.example.com --krb5adminserver=instructor.example.com --krb5realm=EXAMPLE.COM --enablesssd --enablesssdauth --update
+</code></pre>
+
+<pre><code>--enablceldaptls 开启tls
+--ldaploadcacert derberos证书下载目录
+--ldapbasedn 基准dn
+--disableldapauth 禁止ldap认证
+--krb5realm 域名
+--enablesssd --enablesssdauth 开启sssd认证
+</code></pre>
+
+<h4 id="测试配置">测试配置：</h4>
+
+<pre><code>getent passwd ldapuserX
+ssh ldapuserX@serverX
+</code></pre>
+
+<p>实例：</p>
+
+<pre><code>[root@demo cacerts]# getent passwd ldapuser1
+ldapuser1:*:1701:1701:LDAP Test User 1:/home/guests/ldapuser1:/bin/bash
+[root@demo cacerts]# ssh ldapuser1@serverX
+ldapuser1@serverX's password: kerberos
+</code></pre>
+
+<h2 id="unit-3">unit 3</h2>
+
+<h3 id="bash-编程">Bash 编程</h3>
+
+<ul>
+<li><p>包含bash命令的文件第一行应为：
+#!/bin/bash</p></li>
+
+<li><p>查看环境变量：<br />
+<code>echo $PATH</code><br />
+<code>set</code><br />
+<code>env</code><br />
+实例：</p>
+
+<pre><code>[root@desktop31 ~]# echo $PATH
+/usr/lib64/qt-3.3/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/root/bin
+</code></pre></li>
+
+<li><p>变量赋值,使用
+str=value
+$str 或者 ${str}</p></li>
+
+<li><p>添加目录到环境变量：<br />
+<code>PATH=$PATH:path</code><br />
+实例：<br />
+<code>PATH=$PATH:/root</code></p></li>
+
+<li><p>创建全局变量：<br />
+<code>export $NAME</code></p></li>
+
+<li><p>命令替换<br />
+<code>$( shell command)</code><br />
+`shell command`<br />
+实例1：</p>
+
+<pre><code>touch datafile.$(id -un)
+[root@desktop31 ~]# ls | grep datafile
+datafile.root
+</code></pre>
+
+<p>实例2：</p>
+
+<pre><code>[root@desktop31 ~]# echo $TODAY
+[root@desktop31 ~]# TODAY=`date +%Y-%m-%d`
+[root@desktop31 ~]# echo $TODAY
+2013-10-26
+</code></pre></li>
+
+<li><p>弱引用，强引用和转义</p></li>
+
+<li><p>bash编程实例：</p>
+
+<pre><code>添加用户  
+#!/bin/bash
+if grep &quot;^$1:&quot; /etc/passwd ; then
+echo &quot;$1 is exist&quot;
+else
+useradd $1;
+echo redhat |passwd --stdin $1;
+fi
+</code></pre>
+
+<pre><code>查看网络主机
+#!/bin/bash
+read -p &quot;Please input a ip addr:&quot; IP
+ping -c2 $IP &gt; /dev/null 2&gt;&amp;1
+if [ $? -eq 0 ];then
+echo &quot;$IP is up...&quot;
+else
+echo &quot;$IP is down...&quot;
+fi
+</code></pre>
+
+<pre><code>无题……
+#!/bin/bash
+read -p &quot;Please choice y/n&quot; YN
+if [ $YN == y -o $YN == Y  -o $YN == 'yes' ]; then
+echo &quot;Continue...&quot;
+elif [ $YN == n -o $YN == N -o $YN == 'no' ]; then
+exit 1
+else
+echo &quot;other&quot;
+fi
+</code></pre>
+
+<pre><code>检查服务运行状态
+#!/bin/bash
+read -p &quot;Plese input a service name:&quot; SN
+SERVICE=$(netstat -anutlp |grep $SN)
+if test -n &quot;$SERVICE&quot; ; then
+echo &quot;$SN is running...&quot;
+else
+echo &quot;$SN is down...&quot;
+fi
+</code></pre>
+
+<pre><code>添加用户
+#!/bin/bash
+for Name in usera userb userc a b c;
+do
+    if grep &quot;^$Name:&quot; /etc/passwd &gt; /dev/null 2&gt;&amp;1; then
+            echo &quot;User exist!&quot;;
+    else
+            useradd $Name;
+            echo &quot;Add user $Name succeed!&quot;;
+            echo &quot;redhat&quot; | passwd --stdin $Name &gt; /dev/null 2&gt;&amp;1;
+    fi
+done
+</code></pre>
+
+<pre><code>删除用户
+#!/bin/bash
+for Name in usera userb userc a b c;
+do
+    if grep &quot;^$Name:&quot; /etc/passwd &gt; /dev/null 2&gt;&amp;1 ; then
+            userdel $Name;
+            rm -rf /home/$Name;
+            rm -rf /var/mail/$Name;
+            echo &quot;user $Name delete succeed!&quot;;
+    fi
+done
+</code></pre></li>
+
+<li><p>比较文件内容diff<br />
+diff -Naur file1 file2 &gt; patchfile  可以制作补丁文件</p></li>
+
+<li><p>补丁命令patch
+实例：</p>
+
+<pre><code># patch issue patchfile
+patching file issue
+# patch -b &lt; patch file
+patching file hosts
+patching file network
+</code></pre></li>
+
+<li><p>过滤 grep
+几个需要记住的参数：<br />
+-i  不区分大小写<br />
+-v 返回不包含特定字符的行</p></li>
+
+<li><p>剪切cut<br />
+-f 指定第几个字段<br />
+-d 分隔符<br />
+实例：</p>
+
+<pre><code>cut -f3 -d: /etc/hosts //取出hosts文件中以:为分隔符的第3个字段
+[root@demo ~]# ip addr |grep &quot;inet &quot; |cut -d&quot; &quot; -f6 |cut -d/ -f1
+127.0.0.1
+192.168.0.250
+</code></pre></li>
+
+<li><p>tail 和 head<br />
+tail显示文件末尾10行（默认）<br />
+head显示文件开头10行（默认）<br />
+均可-n 参数后面接数字更改输出行数<br />
+tail -f可以持续显示文件的更新，例如<br />
+tail -f /var/log/messages<br />
+系统管理员常用</p></li>
+
+<li><p>wc显示文件信息<br />
+-l 行数<br />
+-w 字数<br />
+-c 字节数
+-m 字符数</p></li>
+
+<li><p>排序sort</p></li>
+
+<li><p>取唯一uniq</p></li>
+</ul>
+
+<h3 id="默认用户属性">默认用户属性</h3>
+
+<p>在/etc/login.defs及/etc/default/useradd中定义<br />
+chage命令可以调整属性</p>
+
+<h2 id="unit-4">unit 4</h2>
+
+<p>gpg的使用<br />
+  + 流程：<br />
+  由user1产生密钥对，公钥导出给需要向user1传送文件的主机user2。<br />
+  gpg &ndash;gen-key<br />
+  gpg -K 查看私钥<br />
+  gpg -k 查看公钥<br />
+  gpg &ndash;export &ndash;armor key-id -o &gt; file.key<br />
+  user2导入公钥加密文件，传送给user1。<br />
+  gpg &ndash;import file.key<br />
+  gpg -e -armor -r key-id file<br />
+  user1运用私钥解密文件，用私钥前需输入密码。<br />
+  gpg -d file &gt; file_without_encrypt</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="/tags/linux/">linux</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2013/11/octopress%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%92%8C%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/" data-tooltip="octopress博客搭建和个性化配置">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2013/11/rhce-note-1/" data-tooltip="RHCE note 1">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2019 润民. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2013/11/octopress%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%92%8C%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/" data-tooltip="octopress博客搭建和个性化配置">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2013/11/rhce-note-1/" data-tooltip="RHCE note 1">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="/author.jpg" alt="作者的图片" />
+    
+    <h4 id="about-card-name">润民</h4>
+    
+      <div id="about-card-bio">Don&rsquo;t Panic</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        DEV
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        GuangZhou
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/10/postgresql%E5%8D%B3%E5%AD%A6%E5%8D%B3%E7%94%A8%E6%91%98%E5%BD%95/">
+                <h3 class="media-heading">《PostgreSQL即学即用》摘录</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Oct 10, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>摘录了部分我觉得容易遗忘或者值得注意的点. 详细信息还应查阅原文或官方文档.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/09/%E6%8F%90%E9%AB%98pdf%E7%9A%84%E5%AF%B9%E6%AF%94%E5%BA%A6/">
+                <h3 class="media-heading">提高PDF的对比度</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>借助imageMagick这个工具可以实现, 该工具支持多个平台(windows, MacOS, Linux, IOS)
+<div class="alert success no-icon ">
+  <p><strong>用到的所有工具都是免费的</strong></p>
+</div>
+
+<!--toc--></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/09/%E6%AD%A6%E5%8A%9F%E5%B1%B1%E4%B8%A4%E6%97%A5%E5%8F%8D%E7%A9%BF/">
+                <h3 class="media-heading">武功山两日反穿</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>武功山在江西萍乡, 主峰金顶海拔1918.3米, 距广州大约3小时的高铁车程.<br />
+武功山素有&rdquo;户外天堂&rdquo;的美称, 最主要是可以看到高山草甸. 驴友们开辟了多条穿越路线, 难度各有不同. 这次穿越选择的是从龙山村到景区大门的2日反穿路线.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/%E5%A4%A7%E8%AF%9D%E5%AD%98%E5%82%A8%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+                <h3 class="media-heading">《大话存储》读书笔记</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/go%E7%9A%84%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/">
+                <h3 class="media-heading">Go的依赖管理工具</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>go语言与js和python类似, 依靠社区来丰富自己的组件库, 各种第三方库遍地开花. 因为go还是一门相当年轻的语言, 特性和接口还在不断更新, 加上社区活跃程度高, 就出现了这样的场景: 新的第三方库不断增加, 旧有的库的特性和接口也频繁变更.(这一点跟目前js社区一片热火朝天的景象很类似)</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/restful-api%E7%9A%84%E8%AE%BE%E8%AE%A1/">
+                <h3 class="media-heading">RESTful API的设计</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这是一篇写于两年多前的旧文了. 这里先贴下, 有空再更新</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/docker%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/">
+                <h3 class="media-heading">Docker常用指令</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>接触docker到现在也有很长一段时间了. 因为不经常用以至于每次使用都需要查找相关操作指令, 这里先将其罗列出来</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/go%E4%B8%AD%E6%95%B0%E7%BB%84%E5%92%8C%E5%88%87%E7%89%87%E7%9A%84%E5%A3%B0%E6%98%8E%E6%96%B9%E5%BC%8F/">
+                <h3 class="media-heading">Go中数组和切片的声明方式</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>在go中, 数组和切片是两种不同的数据类型, 这两种类型表现类似, 声明方法也只存在细微差异</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/postgresql%E5%B0%8F%E8%AE%B0/">
+                <h3 class="media-heading">PostgreSQL小记</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>postgresql是一个强大的数据库, 支持多种复杂的数据结构和数学计算.
+mysql的使用者迁移到postgresql不是零成本的, 需要注意一些差异.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/%E7%AC%AC%E4%B8%80%E5%BA%A7%E9%9B%AA%E5%B1%B1-%E5%9B%9B%E5%A7%91%E5%A8%98%E5%B1%B1%E4%BA%8C%E5%B3%B0/">
+                <h3 class="media-heading">第一座雪山 四姑娘山二峰</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>登雪山是一件看上去非常酷非常专业的事情. 不过雪山攀登难度也有分等级的, 最好的例子就是四姑娘山的四个峰, 难度从大峰开始到幺妹峰依次递增, 大峰二峰有一定户外经验的非专业人士即可登顶, 而幺妹峰即便专业人士也很难登顶. 像我等战五渣要爬雪山, 大峰二峰是个不错的选择.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         71 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('/images/cover.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/languages/go.min.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = '\/2013\/11\/rhce-note-9\/';
+          
+            this.page.identifier = '\/2013\/11\/rhce-note-9\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'dont-panic-1';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

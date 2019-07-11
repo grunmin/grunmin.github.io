@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hexo on Don&#39;t Panic</title>
+    <link>/tags/hexo/</link>
+    <description>Recent content in Hexo on Don&#39;t Panic</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 05 Jun 2016 11:47:27 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/hexo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>hexo静态资源文件目录(Asset Folders)的使用</title>
+      <link>/2016/06/hexo%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95asset-folders%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Sun, 05 Jun 2016 11:47:27 +0800</pubDate>
+      
+      <guid>/2016/06/hexo%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95asset-folders%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <description>&lt;p&gt;Markdown写文档最不方便的地方在于无法将图片嵌入到文档中。解决这个痛点通常的做法是将图片先上传到图床，然后引用url。我早期的博文就是这么做的。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Hexo博客迁移</title>
+      <link>/2016/05/hexo%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB/</link>
+      <pubDate>Mon, 30 May 2016 20:23:54 +0800</pubDate>
+      
+      <guid>/2016/05/hexo%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB/</guid>
+      <description>&lt;p&gt;托管我的博客的gitcafe已经不提供服务了，只好将博客迁移到coding上。
+得益于近期了解一些npm和js相关的技术，对hexo搭建和安装不再一脸懵逼的状况。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>搭建hexo博客记录</title>
+      <link>/2015/08/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Wed, 26 Aug 2015 21:06:54 +0800</pubDate>
+      
+      <guid>/2015/08/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2%E8%AE%B0%E5%BD%95/</guid>
+      <description>&lt;h2 id=&#34;前期工作&#34;&gt;前期工作&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;安装&lt;a href=&#34;https://nodejs.org/download/&#34;&gt;nodejs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;安装&lt;a href=&#34;https://git-scm.com/download/win&#34;&gt;git&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;环境安装&#34;&gt;环境安装&lt;/h2&gt;
+
+&lt;p&gt;可在git bash里执行&lt;code&gt;mkdir blog&lt;/code&gt;或者直接图形界面创建博客文件存放目录
+进入该目录,按住shift键点击鼠标右键,在当前位置打开命令窗口,或者鼠标右键后选择git bash here,输入下列命令&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

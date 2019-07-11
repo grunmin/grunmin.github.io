@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vim on Don&#39;t Panic</title>
+    <link>/tags/vim/</link>
+    <description>Recent content in Vim on Don&#39;t Panic</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 17 Nov 2013 17:14:00 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/vim/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>我的gvim安装和配置</title>
+      <link>/2013/11/%E6%88%91%E7%9A%84gvim%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Sun, 17 Nov 2013 17:14:00 +0800</pubDate>
+      
+      <guid>/2013/11/%E6%88%91%E7%9A%84gvim%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/</guid>
+      <description>&lt;p&gt;我将自己正在学习的小东西放到了github上，想要充分发挥云端服务器的优势，希望在其他windows电脑也能coding，因此草草配置了一下gvim。
+&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

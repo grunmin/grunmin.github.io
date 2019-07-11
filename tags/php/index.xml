@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Php on Don&#39;t Panic</title>
+    <link>/tags/php/</link>
+    <description>Recent content in Php on Don&#39;t Panic</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 02 Aug 2013 00:15:00 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/php/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>linux安装 Zend Frame 笔记</title>
+      <link>/2013/08/linux%E5%AE%89%E8%A3%85-zend-frame-%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Fri, 02 Aug 2013 00:15:00 +0800</pubDate>
+      
+      <guid>/2013/08/linux%E5%AE%89%E8%A3%85-zend-frame-%E7%AC%94%E8%AE%B0/</guid>
+      <description>&lt;h3 id=&#34;新建项目&#34;&gt;新建项目&lt;/h3&gt;
+
+&lt;p&gt;下载Zend Frame安装包(现在下载ZF要注册！可以用这条命令直接下载)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ wget http://framework.zend.com/releases/ZendFramework-1.11.11/ZendFramework-1.11.11-minimal.tar.gz
+$ php -i | grep include_path 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;(用源码包安装的php，若显示php命令不存在，就把php安装目录里bin文件下的php文件复制到可执行目录下，如/bin或/usr/bin)&lt;br /&gt;
+
+在服务器文件根目录apache2/htdocs下执行&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>linux安装wecenter笔记</title>
+      <link>/2013/07/linux%E5%AE%89%E8%A3%85wecenter%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Thu, 25 Jul 2013 20:32:00 +0800</pubDate>
+      
+      <guid>/2013/07/linux%E5%AE%89%E8%A3%85wecenter%E7%AC%94%E8%AE%B0/</guid>
+      <description>&lt;p&gt;&lt;em&gt;此文是前文配置lamp的延伸&lt;/em&gt;&lt;br /&gt;
+在前面的一片文章里，用源码包安装的方式搭建了lamp环境，wecenter需要服务器支持mysqli或者pdo模块,支持curl,GD图像处理库，原来安装lamp过程中并无相关方面的配置，鼓捣了半天之后其他条件都已满足，唯独GD图像处理库不能安装。&lt;br /&gt;
+
+谷歌了许多结果，一一尝试，一一失败，最后看到&lt;a href=&#34;http://tech.soft6.com/665/16/78687.html&#34;&gt;这篇文章&lt;/a&gt;，果断把之前编好的php删除了按照文中方法重装一遍，居然成功了！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>linux搭建lamp环境笔记</title>
+      <link>/2013/07/linux%E6%90%AD%E5%BB%BAlamp%E7%8E%AF%E5%A2%83%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Sun, 21 Jul 2013 11:20:00 +0800</pubDate>
+      
+      <guid>/2013/07/linux%E6%90%AD%E5%BB%BAlamp%E7%8E%AF%E5%A2%83%E7%AC%94%E8%AE%B0/</guid>
+      <description>&lt;p&gt;在学习php编程的过程中，了解了lamp环境的重要性，因此尝试自行搭建。在这个过程中经历了很多困难，为了便于查阅和再次搭建，在此将过程都记录下来。有错漏或可以改进的地方，欢迎指出拨正。&lt;br /&gt;
+
+此前都是用源码包安装，其实用rpm包安装省时省力。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

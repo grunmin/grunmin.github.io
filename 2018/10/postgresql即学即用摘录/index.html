@@ -1,0 +1,1436 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.41-DEV with theme Tranquilpeak 0.4.3-BETA">
+    <title>《PostgreSQL即学即用》摘录</title>
+    <meta name="author" content="润民">
+    <meta name="keywords" content="">
+
+    <link rel="icon" href="/favicon.png">
+    
+
+    
+    <meta name="description" content="摘录了部分我觉得容易遗忘或者值得注意的点. 详细信息还应查阅原文或官方文档.
+
+">
+    <meta property="og:description" content="摘录了部分我觉得容易遗忘或者值得注意的点. 详细信息还应查阅原文或官方文档.
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="《PostgreSQL即学即用》摘录">
+    <meta property="og:url" content="/2018/10/postgresql%E5%8D%B3%E5%AD%A6%E5%8D%B3%E7%94%A8%E6%91%98%E5%BD%95/">
+    <meta property="og:site_name" content="Don&#39;t Panic">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Don&#39;t Panic">
+    <meta name="twitter:description" content="摘录了部分我觉得容易遗忘或者值得注意的点. 详细信息还应查阅原文或官方文档.
+
+">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="/author.jpg">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
+    
+    
+
+    
+      
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-42775487-5', 'auto');
+ga('send', 'pageview');
+</script>
+
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="/">Don&#39;t Panic</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="/author.jpg" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="/#about">
+          <img class="sidebar-profile-picture" src="/author.jpg" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">润民</h4>
+        
+          <h5 class="sidebar-profile-bio">Don&rsquo;t Panic</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      《PostgreSQL即学即用》摘录
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2018-10-04T16:30:20&#43;08:00">
+        
+  十月 4, 2018
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="/categories/knowledge">knowledge</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>摘录了部分我觉得容易遗忘或者值得注意的点. 详细信息还应查阅原文或官方文档.</p>
+
+<p></p>
+
+<h1 id="table-of-contents">目录</h1><nav id="TableOfContents">
+<ul>
+<li><a href="#1-基础知识">1 基础知识</a>
+<ul>
+<li><a href="#1-2-管理工具">1.2 管理工具</a></li>
+<li><a href="#1-3-数据库对象">1.3 数据库对象</a></li>
+</ul></li>
+<li><a href="#2-数据库管理">2 数据库管理</a>
+<ul>
+<li><a href="#2-1-配置文件">2.1 配置文件</a>
+<ul>
+<li><a href="#2-1-2-pg-hba-conf">2.1.2 pg_hba.conf</a></li>
+<li><a href="#2-1-3-配置文件重载">2.1.3 配置文件重载</a></li>
+</ul></li>
+<li><a href="#2-2-连接管理">2.2 连接管理</a></li>
+<li><a href="#2-3-角色">2.3 角色</a>
+<ul>
+<li><a href="#2-3-1-可登录角色">2.3.1 可登录角色</a></li>
+<li><a href="#2-3-2-组角色">2.3.2 组角色</a></li>
+</ul></li>
+<li><a href="#2-4-创建database">2.4 创建database</a>
+<ul>
+<li><a href="#2-4-1-模板数据库">2.4.1 模板数据库</a></li>
+<li><a href="#2-4-2-schema的使用">2.4.2 schema的使用</a></li>
+</ul></li>
+<li><a href="#2-5-权限管理">2.5 权限管理</a>
+<ul>
+<li><a href="#2-5-3-grant">2.5.3 GRANT</a></li>
+<li><a href="#2-5-5-与众不同的特点">2.5.5 与众不同的特点</a></li>
+</ul></li>
+<li><a href="#2-6-扩展包机制">2.6 扩展包机制</a></li>
+<li><a href="#2-7-备份与恢复">2.7 备份与恢复</a>
+<ul>
+<li><a href="#2-7-3-数据恢复">2.7.3 数据恢复</a></li>
+</ul></li>
+<li><a href="#2-8-基于表空间机制进行存储管理">2.8 基于表空间机制进行存储管理</a>
+<ul>
+<li><a href="#2-8-1-表空间的创建">2.8.1 表空间的创建</a></li>
+<li><a href="#2-8-2-在表空间之间迁移对象">2.8.2 在表空间之间迁移对象</a></li>
+</ul></li>
+<li><a href="#2-9-禁止的行为">2.9 禁止的行为</a>
+<ul>
+<li><a href="#2-9-2-不要把操作系统管理员权限授予postgresql的系统账号-postgres">2.9.2 不要把操作系统管理员权限授予PostgreSQL的系统账号（postgres）</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#3-psql工具">3 psql工具</a>
+<ul>
+<li><a href="#3-2-交互模式和非交互模式">3.2 交互模式和非交互模式</a></li>
+<li><a href="#3-3-定制psql操作环境">3.3 定制psql操作环境</a>
+<ul>
+<li><a href="#3-3-1-自定义psql界面提示符">3.3.1 自定义psql界面提示符</a></li>
+<li><a href="#3-3-2-语句执行时间统计">3.3.2 语句执行时间统计</a></li>
+<li><a href="#3-3-4-命令别名">3.3.4 命令别名</a></li>
+</ul></li>
+<li><a href="#3-4-psql使用技巧">3.4 psql使用技巧</a></li>
+</ul></li>
+<li><a href="#5-数据类型">5 数据类型</a>
+<ul>
+<li>
+<ul>
+<li><a href="#5-1-1-serial类型">5.1.1 serial类型</a></li>
+</ul></li>
+<li><a href="#5-2-字符和字符串">5.2 字符和字符串</a>
+<ul>
+<li><a href="#5-2-1-字符串函数">5.2.1 字符串函数</a></li>
+</ul></li>
+<li><a href="#5-3-时间类型">5.3 时间类型</a></li>
+<li><a href="#5-4-数组类型">5.4 数组类型</a></li>
+<li><a href="#5-6-json数据类型">5.6 JSON数据类型</a>
+<ul>
+<li><a href="#5-6-1-插入json数据">5.6.1 插入JSON数据</a></li>
+<li><a href="#5-6-2-查询json数据">5.6.2 查询JSON数据</a></li>
+<li><a href="#5-6-3-输出json数据">5.6.3 输出JSON数据</a></li>
+<li><a href="#5-6-4-json类型的二进制版本-jsonb">5.6.4 JSON类型的二进制版本: jsonb</a></li>
+</ul></li>
+<li><a href="#5-8-自定义数据类型和复合数据类型">5.8 自定义数据类型和复合数据类型</a>
+<ul>
+<li><a href="#5-8-1-所有表都有一个对应的自定义数据类型">5.8.1 所有表都有一个对应的自定义数据类型</a></li>
+<li><a href="#5-8-2-构建自定义数据类型">5.8.2 构建自定义数据类型</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#6-表-约束和索引">6 表、 约束和索引</a>
+<ul>
+<li><a href="#6-1-表">6.1 表</a>
+<ul>
+<li><a href="#6-1-2-继承表">6.1.2 继承表</a></li>
+<li><a href="#6-1-3-无日志表">6.1.3 无日志表</a></li>
+<li><a href="#6-1-4-type-of">6.1.4 TYPE OF</a></li>
+</ul></li>
+<li><a href="#6-2-约束机制">6.2 约束机制</a>
+<ul>
+<li><a href="#6-2-2-唯一性约束">6.2.2 唯一性约束</a></li>
+<li><a href="#6-2-3-check约束">6.2.3 check约束</a></li>
+<li><a href="#6-2-4-排他性约束">6.2.4 排他性约束</a></li>
+</ul></li>
+<li><a href="#6-3-索引">6.3 索引</a>
+<ul>
+<li><a href="#6-3-1-postgresql原生支持的索引类型">6.3.1 PostgreSQL原生支持的索引类型</a></li>
+<li><a href="#6-3-2-运算符类">6.3.2 运算符类</a></li>
+<li><a href="#6-3-3-函数索引">6.3.3 函数索引</a></li>
+<li><a href="#6-3-4-基于部分记录的索引">6.3.4 基于部分记录的索引</a></li>
+<li><a href="#6-3-5-多列索引">6.3.5 多列索引</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#7-postgresql-的特色-sql-语法">7 PostgreSQL 的特色 SQL 语法</a>
+<ul>
+<li><a href="#7-1-视图">7.1 视图</a></li>
+<li><a href="#7-2-灵活易用的postgresql专有sql语法">7.2 灵活易用的PostgreSQL专有SQL语法</a>
+<ul>
+<li><a href="#7-2-2-limit和offset关键字">7.2.2 LIMIT和OFFSET关键字</a></li>
+<li><a href="#7-2-4-一次性插入多条记录">7.2.4 一次性插入多条记录</a></li>
+<li><a href="#7-2-7-限制对继承表的delete-update-insert操作的影响范围">7.2.7 限制对继承表的DELETE、 UPDATE、 INSERT操作的影响范围</a></li>
+<li><a href="#7-2-9-将修改影响到的记录行返回给用户">7.2.9 将修改影响到的记录行返回给用户</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+
+<h1 id="1-基础知识">1 基础知识</h1>
+
+<h2 id="1-2-管理工具">1.2 管理工具</h2>
+
+<p>PostgreSQL 常用的管理工具有四种: psql、 pgAdmin、 phpPgAdmin 和 Adminer.PostgreSQL 的核心开发团队维护着前三种, 因此它们一般会随着 PostgreSQL 的版本发布而同步更新.</p>
+
+<h2 id="1-3-数据库对象">1.3 数据库对象</h2>
+
+<p><strong>schema</strong>: ANSI SQL 标准中对 schema 有着明确的定义, database 的下一层逻辑结构就是 schema. 如果把 database 比作一个国家, 那么 schema 就是一些独立的州（或者是省、 府、 辖区等, 具体取决于各国的实际情况） . 大多数对象是隶属于某个 schema 的, 然后 schema 又隶属于某个 database. 在创建一个新的 database 时, PostgreSQL 会自动为其创 建一个名为 public 的 schema. 如果未设置 search_path 变量（后续会介绍该变量的 含义） , 那么 PostgreSQL 会将你创建的所有对象默认放入 public schema 中. 如果表 的数量较少, 这是没问题的, 但如果你有几千张表, 那么我们还是建议你将它们分门别 类放入不同的 schema 中.</p>
+
+<p><strong>catalog</strong>: catalog 是系统级的 schema, 用于存储系统函数和系统元数据. 每个 database创建好 以后默认都会含有两个 catalog: 一个名为 pg_catalog, 用于存储 PostgreSQL 系统自 带的函数、 表、 系统视图、 数据类型转换器以及数据类型定义等元数据； 另一个是 information_schema, 用于存储 ANSI 标准中所要求提供的元数据查询视图, 这些视 图遵从 ANSI SQL 标准的要求, 以指定的格式向外界提供 PostgreSQL 元数据信息.<br />
+PostgreSQL Information_schema 中最常用的视图一般有以下几个: columns 视图, 列出了数据 库中的所有表列； tables 视图, 列出了数据库中的所有表（包括视图） ； views 视 图, 列出了所有视图以及用于构建或重新构建该视图的关联 SQL.</p>
+
+<p><strong>变量</strong>: 变量是 PostgreSQL 统一配置机制（GUC） 的一部分, 是可以在多个级别进行设置的 各种选项, 这些级别包括服务级、 database 级以及其他级别.<br />
+如果在 search_path 中指定
+了 schema 的名称, 那么该 schema 资产在使用时就无需显式指定其 schema 名, 系统会按 照 search_path 中登记的 schema 名按顺序逐个搜索</p>
+
+<p><strong>表</strong>: 在 PostgreSQL 中, 表首 先属于某个 schema, 而 schema 又属于某个 database, 这样就构成了一种三级存储结构. PostgreSQL 的表支持两种很强大的功能. 第一种是表继承, 即一张表可以有父表和 子表. 第二种是创建一张表的同时, 系统会自动为此表创建一种对应的自定义数据类型. 换 句话说, 你可以将某个完整的数据结构定义为一个表, 然后将该表用作另一个表中的一 个列.</p>
+
+<p><strong>外部表和外部数据封装器</strong>: 外部表的首次亮相是在 9.1 版中. 它们是一些虚拟表, 通过它们可以直接在本地数据 库中访问来自外部数据源的数据. 只要数据映射关系配置正确, 那么外部表的用法就与 普通表没有任何区别. 外部表支持映射到以下类型的数据源: CSV 文件、 另一个服务器 上的 PostgreSQL 表、 SQL Server 或 Oracle 这些异构数据库中的表、 Redis 这样的 NoSQL 数据库或者甚至像 Twitter 或 Salesforce 这样的 Web 服务. 外部表映射关系的建立是通过 配置外部数据封装器（Foreign Data Wrapper, FDW） 实现的. FDW 是 PostgreSQL 和外 部数据源之间的一架“魔法桥”, 可实现两边数据的互联互通</p>
+
+<p><strong>运算符</strong>: 运算符本质上是符号化的已命名函数（例如 =、 &amp;&amp; 等） , 它需要一个或者两个实参 （argument） , 底层有一个相应的函数来实现其运算逻辑</p>
+
+<p><strong>数据类型转换器</strong>: cast 是数据类型转换器, 就是将一种数据类型转换为另一种类型的工具. 转换器在其 底层其实是通过调用转换函数来实现真正的转换逻辑的. PostgreSQL 的独到之处在于支 持用户自定义转换器, 这样就可以改变系统默认的转换行为.</p>
+
+<p><strong>序列</strong>: 序列控制 serial 数据类型的自动递增. 在 PostgreSQL 中定义 serial 列时, PostgreSQL 会自动创建序列, 但你很容易更改初始值、 增量和下一个值. 因为序列是独立对象, 所 以多个表可以使用同一个序列对象. 这样你可以创建跨越多个表的独特键值</p>
+
+<h1 id="2-数据库管理">2 数据库管理</h1>
+
+<h2 id="2-1-配置文件">2.1 配置文件</h2>
+
+<p>配置文件控制着一个 PostgreSQL 服务器实例的基本行为, 主要包含以下几个文件.</p>
+
+<ul>
+<li><p><strong>postgresql.conf</strong>: 该文件包含一些通用设置, 比如内存分配、 新建 database 的默认存储位置、 PostgreSQL 服务器的 IP 地址、 日志的位置以及许多其他设置. 9.4 版中引入了一个新的 postgresql.auto.conf 文件, 任何时候执行 ALTER SYSTEM SQL 命令, 都会创建或重写该 文件. 该文件中的设置会替代 postgresql.conf 文件中的设置.</p></li>
+
+<li><p><strong>pg_hba.conf</strong>: 该文件用于控制访问安全性, 管理客户端对 PostgreSQL 服务器的访问权限, 内容包 括: 允许哪些用户连接到哪个数据库, 允许哪些 IP 或者哪个网段的 IP 连接到本服务 器, 以及指定连接时使用的身份验证模式.</p></li>
+
+<li><p><strong>pg_ident.conf</strong>: pg_hba.conf 的权限控制信息中的身份验证模式字段如果指定为 ident 方式, 则用户连 接时系统会尝试访问 pg_ident 文件, 如果该文件存在, 则系统会基于文件内容将当前执 行登录操作的操作系统用户映射为一个 PostgreSQL 数据库内部用户的身份来登录. 有些 人会把操作系统的 root 用户映射为 PostgreSQL 的 postgres 超级用户账号. pg_hba.conf 中的每条权限控制信息均可以指定一个独立的 pg_ident.conf 文件作为用户映 射信息数据源</p></li>
+</ul>
+
+<p>获取配置文件位置:</p>
+
+<pre><code class="language-sql">SELECT name, setting FROM pg_settings WHERE category = 'File Locations';
+</code></pre>
+
+<h3 id="2-1-2-pg-hba-conf">2.1.2 pg_hba.conf</h3>
+
+<p>身份验证方式:</p>
+
+<ul>
+<li><p><strong>trust</strong></p></li>
+
+<li><p><strong>md5</strong>: 该模式很常用, 要求连接发起者携带用 md5 算法加密的密码.</p></li>
+
+<li><p><strong>password</strong>: 不推荐, 因为该模式使用明文密码进行身份验证, 不安全.</p></li>
+
+<li><p><strong>ident</strong>: 该身份验证模式下, 系统会将请求发起者的操作系统用户映射为 PostgreSQL 数据库 内部用户, 并以该内部用户的权限登录, 且此时无需提供登录密码. 操作系统用户与数 据库内部用户之间的映射关系会记录在 pg_ident.conf 文件中.</p></li>
+
+<li><p><strong>peer</strong>: 该模式使用连接发起端的操作系统名进行身份验证. 仅可用于 Linux、 BSD、 Mac OS X 和 Solaris, 并且仅可用于本地服务器发起的连接</p></li>
+</ul>
+
+<p>多种身份验证模式是可以同时使用的, 即使是针对同一个 database 也可以这么做, 也就是 说我们可以针对同一个 database 设置多条身份验证规则, 并且每条规则的身份验证模式都不 一样.</p>
+
+<h3 id="2-1-3-配置文件重载">2.1.3 配置文件重载</h3>
+
+<p>很多（但非全部） 配置文件更改后必须要重启 postgres 服务才能生效, 但另外一些只 需要执行一次重新加载即可生效. 重新加载的过程并不会中断当前已建立的连接</p>
+
+<pre><code class="language-bash">pg_ctl reload -D your_data_directory_here
+</code></pre>
+
+<p>或</p>
+
+<pre><code class="language-bash">service postgresql-9.3 reload
+</code></pre>
+
+<h2 id="2-2-连接管理">2.2 连接管理</h2>
+
+<p>我们一般会使用以下三个 SQL 语句来取消正在运行的查询并终止连接. 以下是典型的流 程.</p>
+
+<p>(1) 查出活动连接列表及其进程 ID.</p>
+
+<pre><code class="language-sql">SELECT * FROM pg_stat_activity;
+</code></pre>
+
+<p>该命令还能查出每个连接上最近一次执行的语句、 使用的用户名（usename 字段） 、 所 在的 database 名（datname 字段） 以及语句开始执行的时间. 通过查询该视图可以找到需要 终止的会话所对应的进程 ID.</p>
+
+<p>(2) 取消连接上的活动查询.</p>
+
+<pre><code class="language-sql">SELECT pg_cancel_backend(procid);
+</code></pre>
+
+<p>该操作不会终止连接本身.</p>
+
+<p>(3) 终止该连接.</p>
+
+<pre><code class="language-sql">SELECT pg_terminate_backend(procid);
+</code></pre>
+
+<p>一次性终止某个用户的所有连接</p>
+
+<pre><code class="language-sql">SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE usename = 'some_role';
+</code></pre>
+
+<h2 id="2-3-角色">2.3 角色</h2>
+
+<p>PostgreSQL 中使用“角色”（role） 这个术语来表示用户账户的概念. 拥有登录数据库权限 的角色称为可登录角色（login role） . 一个角色可以继承其他角色的权限从而成为其成员角 色（member role） ； 一个拥有成员角色的角色被称为组角色（group role） .</p>
+
+<h3 id="2-3-1-可登录角色">2.3.1 可登录角色</h3>
+
+<p>ident 身份验证机制来将操作系统的 root 用户映射到数据库的 postgres 角色, 这样可以实现 root 用户无密码直接登录</p>
+
+<p>创建具备登录权限的角色</p>
+
+<pre><code class="language-sql">CREATE ROLE leo LOGIN PASSWORD 'king' CREATEDB VALID UNTIL 'infinity';
+</code></pre>
+
+<p>创建具备超级用户权限的角色</p>
+
+<pre><code class="language-sql">CREATE ROLE regina LOGIN PASSWORD 'queen' SUPERUSER VALID UNTIL '2020-1-1 00:00';
+</code></pre>
+
+<h3 id="2-3-2-组角色">2.3.2 组角色</h3>
+
+<p>用以下 SQL 创建组角色.</p>
+
+<pre><code class="language-sql">CREATE ROLE royalty INHERIT;
+</code></pre>
+
+<p>请注意术语 INHERIT 的用法. 它表示组角色 royalty 的任何一个成员角色都将自动继 承其除“超级用户权限”外的所有权限. 出于安全考虑, PostgreSQL 不允许超级用户权限通过 继承的方式传递.</p>
+
+<p>以下语句可以将组角色的权限授予其成员角色.</p>
+
+<pre><code class="language-sql">GRANT royalty TO leo;
+GRANT royalty TO regina;
+</code></pre>
+
+<h2 id="2-4-创建database">2.4 创建database</h2>
+
+<h3 id="2-4-1-模板数据库">2.4.1 模板数据库</h3>
+
+<p>任何时候都不要对 template0 模板数据库做任何修改, 因为这是 原始的干净模板, 如果其他模板数据库被搞坏了, 基于这个数据库做一个副本就可以 了. 如果你希望定制自己的模板数据库, 那么请基于 template1 进行修改, 或者自己 另外创建一个模板数据库再修改. 对基于 template1 或你自建的模板数据库创建出来 的数据库来说, 你不能修改其字符集编码和排序规则. 如果你希望这么干, 那么请基于 template0 模板来创建新数据库.</p>
+
+<p>以超 级用户身份运行以下 SQL 可使任何数据库成为模板数据库.</p>
+
+<pre><code class="language-sql">UPDATE pg_database SET datistemplate = TRUE WHERE datname = 'mydb'
+</code></pre>
+
+<h3 id="2-4-2-schema的使用">2.4.2 schema的使用</h3>
+
+<p>创建一个 schema.</p>
+
+<pre><code class="language-sql">CREATE SCHEMA my_extensions;
+</code></pre>
+
+<p>然后把这个新的 schema 加入 search_path:</p>
+
+<pre><code class="language-sql">ALTER DATABASE mydb SET search_path='&quot;$user&quot;, public, my_extensions';
+</code></pre>
+
+<h2 id="2-5-权限管理">2.5 权限管理</h2>
+
+<h3 id="2-5-3-grant">2.5.3 GRANT</h3>
+
+<p>GRANT 命令可以将权限授予他人. 基本用法如下.</p>
+
+<pre><code class="language-sql">GRANT some_privilege TO some_role;
+</code></pre>
+
+<p>请牢记以下几条关于 GRANT 的使用原则.
+- 只有权限的拥有者才能将权限授予别人, 并且拥有者自身还得有 GRANT 操作的权 限. 这一点是不言而喻的, 因为自己没有的东西当然给不了别人.
+- 有些权限只有对象的所有者才能拥有, 任何情况下都不能授予别人. 这类权限包括 DROP 和 ALTER.
+- 对象的所有者天然拥有此对象的所有权限, 不需要再次授予.
+- 授权时可以加上 WITH GRANT 子句, 这意味着被授权者可以将得到的权限再次授予 别人. 示例如下.</p>
+
+<pre><code class="language-sql">GRANT ALL ON ALL TABLES IN SCHEMA public TO mydb_admin WITH GRANT OPTION;
+</code></pre>
+
+<ul>
+<li>如果希望一次性将某个对象的所有权限都授予某人, 可以使用 ALL 关键字, 而不需 要一个个权限都写下来 .
+<code>sql
+GRANT ALL ON my_schema.my_table TO mydb_admin;
+</code></li>
+<li>ALL 关键字还可以用于指代某个 database 或者 schema 中的所有对象.
+<code>sql
+GRANT SELECT, UPDATE ON ALL SEQUENCES IN SCHEMA my_schema TO PUBLIC;
+</code></li>
+<li>如果希望将权限授予所有人, 可以用 PUBLIC 关键字来指代所有角色.
+<code>sql
+GRANT USAGE ON SCHEMA my_schema TO PUBLIC;
+</code></li>
+</ul>
+
+<p>取消一些默认权限, 那么可以使用 REVOKE 命令:</p>
+
+<pre><code class="language-sql">REVOKE EXECUTE ON ALL FUNCTIONS IN SCHEMA my_schema FROM PUBLIC;
+</code></pre>
+
+<h3 id="2-5-5-与众不同的特点">2.5.5 与众不同的特点</h3>
+
+<p>一个 database 的所有者仅对自己在本库中所创建的对象拥有控制权, 对其他角色在本库中所创建的对象却没有访问权限</p>
+
+<h2 id="2-6-扩展包机制">2.6 扩展包机制</h2>
+
+<p>显示服务器上已安装的扩展</p>
+
+<pre><code class="language-sql">SELECT name, default_version, installed_version, left(comment,30) As comment FROM pg_available_extensions WHERE installed_version IS NOT NULL ORDER BY name;
+</code></pre>
+
+<h2 id="2-7-备份与恢复">2.7 备份与恢复</h2>
+
+<p>PostgreSQL 自身附带了两个备份工具: pg_dump 和 pg_dumpall</p>
+
+<p>pg_dump 和 pg_dumpall 工具不支持在命令行选项中设定登录密码, 因此为了便于执行 自动任务, 你需要在 postgres 操作系统账号的 home 文件夹下创建一个密码文件 .pgpass 来存 储密码； 或者也可以用 PGPASSWORD 环境变量来设定密码.</p>
+
+<p>pg_dump 可以将数据备份为 SQL 文本文件格式, 也支持备份为用户自定义压缩格式或者是 TAR 包格式</p>
+
+<h3 id="2-7-3-数据恢复">2.7.3 数据恢复</h3>
+
+<p>PostgreSQL 支持以下两种数据恢复方法:
+- 使用 psql 来恢复 pg_dump 或者 pg_dumpall 工具生成的 SQL 文本格式的数据备 份；
+- 使用 pg_restore 工具来恢复由 pg_dump 工具生成的自定义压缩格式、 TAR 包格 式或者目录格式备份.</p>
+
+<h2 id="2-8-基于表空间机制进行存储管理">2.8 基于表空间机制进行存储管理</h2>
+
+<p>PostgreSQL 使用“表空间”这一概念来将逻辑存储空间映射到磁盘上的物理存储空间. PostgreSQL 在安装阶段会自动生成两个表空间: 一个是 pg_default, 用于存储所有的用户 级数据； 另一个是 pg_global, 用于存储所有的系统级数据.</p>
+
+<h3 id="2-8-1-表空间的创建">2.8.1 表空间的创建</h3>
+
+<pre><code class="language-sql">CREATE TABLESPACE secondary LOCATION '/usr/data/pgdata94_secondary';
+</code></pre>
+
+<h3 id="2-8-2-在表空间之间迁移对象">2.8.2 在表空间之间迁移对象</h3>
+
+<pre><code class="language-sql">ALTER DATABASE mydb SET TABLESPACE secondary;
+</code></pre>
+
+<p>在迁移过程中所涉及的 database 和表会被锁定.</p>
+
+<h2 id="2-9-禁止的行为">2.9 禁止的行为</h2>
+
+<p>如果你的 PostgreSQL 服务启动失败, 请尝
+试执行以下操作系统命令.</p>
+
+<pre><code class="language-bash">path/to/your/bin/pg_ctl -D your_postgresql_data_folder
+</code></pre>
+
+<h3 id="2-9-2-不要把操作系统管理员权限授予postgresql的系统账号-postgres">2.9.2 不要把操作系统管理员权限授予PostgreSQL的系统账号（postgres）</h3>
+
+<h1 id="3-psql工具">3 psql工具</h1>
+
+<h2 id="3-2-交互模式和非交互模式">3.2 交互模式和非交互模式</h2>
+
+<p>要在非 交互模式下执行脚本文件, 只需使用 -f 选项即可:</p>
+
+<pre><code class="language-bash">psql -f some_script_file
+</code></pre>
+
+<p>要在非交互模式下执行 SQL 语句, 只需使用 -c 选项即可, 如果要一次执行多个语句, 语 句之间请用分号分隔:</p>
+
+<pre><code class="language-bash">psql -d postgresql_book -c &quot;DROP TABLE IF EXISTS dross; CREATE SCHEMA staging;
+</code></pre>
+
+<h2 id="3-3-定制psql操作环境">3.3 定制psql操作环境</h2>
+
+<p>psql 在启动阶段会搜索一个名为 psqlrc 的配置文件, 如果找到则会顺 序执行其中的配置动作, 这些配置决定了 psql 的一些行为模式. 在 Linux/Unix 环境中, 该文件一般会被命名为 .psqlrc 并放置在 postgres 用户的 home 目录 下.</p>
+
+<h3 id="3-3-1-自定义psql界面提示符">3.3.1 自定义psql界面提示符</h3>
+
+<p>定制后的 psql 界面提示符可以告诉你当前连接的是哪 台服务器上的哪个 database, 从而避免误操作的发生</p>
+
+<p>把提示符设成这样:</p>
+
+<pre><code>\set PROMPT1 '%n@%M:%&gt;%x %/# '
+</code></pre>
+
+<p>其中包括了几个元素: 登录角色（%n） , 主机名（%M） , 侦听端口（%&gt;） , 事务状态 （%x） 以及当前使用的 database 名（%/） .</p>
+
+<h3 id="3-3-2-语句执行时间统计">3.3.2 语句执行时间统计</h3>
+
+<p>打开执行时间统计开关时, 每个查询执行完毕的输出结果中都会附带执行时长.</p>
+
+<h3 id="3-3-4-命令别名">3.3.4 命令别名</h3>
+
+<pre><code>\set eav 'EXPLAIN ANALYZE VERBOSE'
+</code></pre>
+
+<p>这样在任何需要用到 EXPLAIN ANALYZE VERBOSE 命令的地方, 都可键入 :eav 替代 （前面的冒号表示这是一个需要展开的命令变量） .</p>
+
+<pre><code>:eav SELECT COUNT(*) FROM pg_tables
+</code></pre>
+
+<h2 id="3-4-psql使用技巧">3.4 psql使用技巧</h2>
+
+<ul>
+<li>psql 中通过 ! 可以直接执行操作系统命令</li>
+<li>用watch命令重复执行语句</li>
+<li>使用 \dt+ 命令列出表信息</li>
+<li>通过 \d+ 命令得到对象的详细信息</li>
+</ul>
+
+<h1 id="5-数据类型">5 数据类型</h1>
+
+<h3 id="5-1-1-serial类型">5.1.1 serial类型</h3>
+
+<p>建表时如果指定了一个字段类型为 serial, 那么 PostgreSQL 会首先将其作 为整型处理, 同时自动在该表所在 schema 中创建一个名为 table_name_column_name_seq 的序列. 然后设定该序列为该整型字段的取值来源. 如 果修改了表定义并删除此 serial 字段, 那么系统同时也会自动删除掉附属的序列.</p>
+
+<p>通过 CREATE SEQUENCE 命令来创建序列, 还可以在多张表间共用同一个序列.</p>
+
+<p>要实现多表共用同一个序列, 请先将字段定义为 integer 或者 bigint 类型, 然后指定 其默认值为 nextval(sequence_name) 即可.</p>
+
+<p>使用 generate_series() 函数生成步长为 13 的整数序列</p>
+
+<pre><code class="language-sql">SELECT x FROM generate_series(1,51,13) As x;
+</code></pre>
+
+<h2 id="5-2-字符和字符串">5.2 字符和字符串</h2>
+
+<p>PostgreSQL 有三种最基础的数据类型: character（也称为 char） 、 character varying（也称为 varchar） 和 text. varchar 和 text 适用于存储长度可变化的文本, 每一行记录需要多大空间就分配多大空间. 这两种类型的存储方式是完全一致的, 性能表现 也没有差别</p>
+
+<h3 id="5-2-1-字符串函数">5.2.1 字符串函数</h3>
+
+<p>常见的字符串操作包括: 填充（lpad、 rpad） 、 修整空白 （rtrim、 ltrim、 trim、 btrim） 、 提取子字符串（substring） 以及连接（||） .</p>
+
+<h2 id="5-3-时间类型">5.3 时间类型</h2>
+
+<ul>
+<li><p><strong>date</strong><br />
+该类型仅存储月、 日、 年, 没有时区、 小时、 分和秒的信息.</p></li>
+
+<li><p><strong>time</strong>（又称time without time zone<br />
+该类型仅存储小时、 分、 秒信息, 不带日期和时区信息.</p></li>
+
+<li><p><strong>timestamp</strong>（又称timestamp without time zone）<br />
+该类型存储了日期（年、 月、 日） 和时间（时、 分、 秒） 数据, 但不带时区信息. 因 此, 即使你修改了数据库服务器所在的时区信息, 该类字段查询出来显示的值也是固定 不变的.</p></li>
+
+<li><p><strong>timestamptz</strong>（又称timestamp with time zone）<br />
+该类型同时存储了日期、 时间以及时区信息. 在系统内部, 该类型的字段值是以 UTC 世界标准时间格式存储的, 但当查询显示时, 会按照服务器的时区设置进行换算后 再显示（时区也可以在库级 / 用户级 / 会话级分别进行设置） . 如果你输入的时间戳不带 时区数据, 那么存入 timestamptz 类型字段中时, PostgreSQL 会自动使用当前数据库 服务器的时区信息来补充. 如果修改了数据库服务器的时区设置, 你可以看到查询出来 的时间数据发生了变化.</p></li>
+
+<li><p><strong>timetz</strong>（又称time with time zone）<br />
+与 timestamptz 类型类似, 但该类型的使用频率较低, 因为它虽然携带了时区信息 但却没有日期信息. 该类型永远假设当前时间是夏令时. 有的编程语言不支持这种仅有 时间而无日期的数据类型, 因此可能会将其自动转换为带时区的时间戳类型, 转换时日 期就取计算机系统时间的初始值（例如, Unix 时间纪元起始于 1970 年, 因此转换后的 日期就是 1970 年 1 月 1 日, 时区和时间不变, 夏令时） .</p></li>
+
+<li><p><strong>interval</strong><br />
+该类型描述了一个时间段的长度, 单位可以是小时、 天、 月、 分钟或者其他粒度. 该 类型适用于对日期和时间进行数学运算的场景. 例如, 假设从现在开始 666 天之后世界 就会灭亡, 那么你可以在现在的时刻上加上长度为 666 天的一个 interval 类型值就可 以知道世界灭亡的准确时刻.</p></li>
+
+<li><p><strong>tsrange</strong><br />
+该类型是 9.2 版新引入的, 可用于定义 timestamp with no timezone 的开区间 和闭区间. 该类型包含两个时间戳以及开区间和闭区间限定符. 例如, &lsquo;[2012-01-01 14:00 2012-01-01 15:00)&rsquo;::tsrange 定义了从 14:00 开始到 15:00 之前结束的一 个时间段.</p></li>
+
+<li><p><strong>tstzrange</strong><br />
+该类型也是 9.2 版新引入的, 可用于定义 timestamp with timezone 的开区间和 闭区间.</p></li>
+
+<li><p><strong>daterange</strong><br />
+该类型也是 9.2 版引入的, 可用于定义日期的开区间和闭区间.</p></li>
+</ul>
+
+<p>PostgreSQL 并没有存储时区信息而仅是使用时区信息来把日期和时间转换为 UTC 标准时间再存储下来. 此后时区信息就丢失了. 当 PostgreSQL 需要显示该日期时间信息 时, 它会按顺序查找当前会话级、 用户级、 数据库级、 服务器级的时区设置, 然后使用找到 的第一个时区来将 UTC 标准时间转换为对应时区的时间值后再显示.</p>
+
+<h2 id="5-4-数组类型">5.4 数组类型</h2>
+
+<p>在 PostgreSQL 中, 每种数据类 型都有相应的以该类型为基础的数组类型. 如果你自定义了一个数据类型, 那么 PostgreSQL 会在后台自动为此类型创建一个数组类型.</p>
+
+<p>PostgreSQL 的数组下标从 1 开始. 如果你试图越界访问一个数组, 也就是说数组下标已经超过了数组元素的个数, 那么 不会返回错误, 而是会得到一个空值 NULL.</p>
+
+<p>使用 array_upper 函数来获取数组元素的个数</p>
+
+<p>PostgreSQL 支持使用 start:end 语法对数组进行拆分. 操作结果是原数组的一个子数 组.</p>
+
+<p>如果要将两个数组连接到一起, 可以使用连接运算符 ||:</p>
+
+<pre><code class="language-sql">SELECT fact_subcats[1:2] || fact_subcats[3:4] FROM census.lu_fact_types;
+</code></pre>
+
+<p>一个常用的数组操作函数是 unnest, 通过它可以将数组元素纵向展开成一个包含若 干条记录的结果集</p>
+
+<pre><code class="language-sql">SELECT unnest('{XOX,OXO,XOX}'::char(3)[]) As tic_tac_toe;
+tic_tac_toe
+---
+XOX
+OX
+</code></pre>
+
+<h2 id="5-6-json数据类型">5.6 JSON数据类型</h2>
+
+<h3 id="5-6-1-插入json数据">5.6.1 插入JSON数据</h3>
+
+<p>要想在表中存储 json 数据, 只需建一个 json 类型的字段即可, 语法如下:</p>
+
+<pre><code class="language-sql">CREATE TABLE families_j (id serial PRIMARY KEY, profile json);
+</code></pre>
+
+<p>插入一条 JSON 数据记录</p>
+
+<pre><code class="language-sql">INSERT INTO families_j (profile) VALUES ( '{&quot;name&quot;:&quot;Gomez&quot;, &quot;members&quot;:[ {&quot;member&quot;:{&quot;relation&quot;:&quot;padre&quot;, &quot;name&quot;:&quot;Alex&quot;}}, {&quot;member&quot;:{&quot;relation&quot;:&quot;madre&quot;, &quot;name&quot;:&quot;Sonia&quot;}}, {&quot;member&quot;:{&quot;relation&quot;:&quot;hijo&quot;, &quot;name&quot;:&quot;Brandon&quot;}}, {&quot;member&quot;:{&quot;relation&quot;:&quot;hija&quot;, &quot;name&quot;:&quot;Azaleah&quot;}} ]}');
+</code></pre>
+
+<h3 id="5-6-2-查询json数据">5.6.2 查询JSON数据</h3>
+
+<p>运算符 -&gt;&gt; 和 #&gt;&gt; 是 json_extract_path_text 的简写. #&gt;&gt; 取用某个路径数组.</p>
+
+<p>json_extract_path 是 json_extract_path_text 的兄弟函数, 它对应的运算符是 -&gt; 和 #&gt;.<br />
+该函数输出的执行结果是当前 JSON 对象的子对象. 如果要把一个复合 JSON 对象（即包 含多条记录的 JSON 对象, 比如本例中的 members 对象就是一个包含了多条家庭成员信息记 录的复合 JSON 对象） 剥离出来并传递给别的函数做进一步处理, 就需要使用 json_extract_path 函数</p>
+
+<p>示例: 查询 members 对象的子对象</p>
+
+<pre><code class="language-sql">SELECT id, json_array_length(profile-&gt;'members') As numero, profile-&gt;'members'-
+&gt;0#&gt;&gt;'{member,name}'::text[] As primero
+FROM families_j;
+id | numero | primero
+---+--------+-----------
+1 | 4 | Alex
+</code></pre>
+
+<p>示例中使用了 -&gt; 运算符的两种形式. -&gt; 运算符的返回结果永远是一个 json 或者 jsonb 对象, 但该运算符的第二个实参要么是一个 text 字段（json_object_field 的简 写） , 要么是一个 integer（json_array_element 的简写） . 因此 profile- &gt;&lsquo;members&rsquo; 会返回 JSON 对象的 members 字段, 该字段本身是一个包含多条记录的 JSON 数组. -&gt;0 操作提取出了 JSON 对象数组的首个元素. 在本例中, -&gt;0 得到的是首个家庭成 员的信息. #&gt;&gt;&lsquo;{member,name}&rsquo;::text[] 就是 json_extract_path_text 操作, 得 到的结果是首个家庭成员 JSON 对象中按照“member/name”路径寻址到的节点的文本格式的 值. 通过这个例子你应该可以看出来, 这些运算符是可以级联使用的. jsonb 类型也有相同 的运算符, 不过其对应的函数分别是 jsonb_object_field 和 jsonb_array_element, 可以看到就是把函数名中的“json”换成了“jsonb”, 其他函数以此 类推</p>
+
+<p>JSON 数组下标是从 0 开始, 但 PostgreSQL 的数组下标是从 1 开始.</p>
+
+<h3 id="5-6-3-输出json数据">5.6.3 输出JSON数据</h3>
+
+<p>将多条记录转换为单个 JSON 对象（PostgreSQL 9.3 及之后的版本才支持 该语句）</p>
+
+<pre><code class="language-sql">SELECT row_to_json(f) As x FROM (SELECT id, profile-&gt;&gt;'name' As name FROM families_j) As f;
+</code></pre>
+
+<h3 id="5-6-4-json类型的二进制版本-jsonb">5.6.4 JSON类型的二进制版本: jsonb</h3>
+
+<ul>
+<li><p>jsonb 数 据类型和 json 数据类型的关键区别如下所示.
+json 是以原始文本格式存储的, 而 jsonb 存储的是原始文本解析以后生成的二进 制数据结构, 该二进制结构中不再保存原始文本中的空格, 存储下来的数字的形式也发 生一定的变化, 并且对其内部记录属性值进行了排序. 例如, 文本中的 e-5 这种数字会 被转换为对应的小数存储.</p></li>
+
+<li><p>jsonb 不允许其内部记录的键值重复, 如果出现重复则会从中自动选择一条, 其余 的重复记录会被丢弃, 但 json 类型中记录键值重复是允许的. Michael Paquier 的“利用 jsonb 类型不允许键值重复的特性来管理 jsonb 数据”博文 （<a href="http://michael.otacoo.com/postgresql-2/manipulating-jsonb-data-with-key-unique/）">http://michael.otacoo.com/postgresql-2/manipulating-jsonb-data-with-key-unique/）</a> 中演示 了若干例子.</p></li>
+
+<li><p>jsonb 的性能远好于 json. 因为 jsonb 类型在处理过程中不需要再进行文本解 析.</p></li>
+
+<li><p>jsonb 类型由于是解析过的二进制结构, 因此 jsonb 类型的字段上可以直接建立 GIN 索引（该类索引在 6.3 节中有相关介绍） , 但 json 类型字段上却只能建立函数索 引, 因为只有通过函数才能从 JSON 的字符串中提取出具体字段值.</p></li>
+</ul>
+
+<p>jsonb 与 json 的处理函数一一对应, 但函数名略有不同； jsonb 支持的运算符集合是 json 支持的运算符集合的超集. 例如 json 适用的 json_extract_path_text 和 json_each 函数对应于 jsonb 适用的 jsonb_extract_path_text 和 jsonb_each 函 数. 除了 jsonb 特有的那几个运算符以外, 二者的运算符完全相同</p>
+
+<p>jsonb 比 json 多支持的运算符有以下几个: 等值运算符（=） 、 包含关系运算符 （@&gt;） 、 被包含关系运算符（&lt;@） 、 键值已存在运算符（?） 、 一组键值中是否有任意一个 已存在运算符（?|） 、 一组键值中的每一个是否均已存在运算符（?&amp;） .</p>
+
+<h2 id="5-8-自定义数据类型和复合数据类型">5.8 自定义数据类型和复合数据类型</h2>
+
+<h3 id="5-8-1-所有表都有一个对应的自定义数据类型">5.8.1 所有表都有一个对应的自定义数据类型</h3>
+
+<p>PostgreSQL 在建表时会自动创建一个与表结构完全相同的自定义数据类型, 而且这种类型 与其他的数据类型在使用上毫无区别. 可以在建表时指定某字段为表类型或者表数组类型, 也就是说可以把一张表的字段定义为另一张表.</p>
+
+<p>PostgreSQL 内部维护着数据库对象之间的依赖关系. 前述 ducks 表的 chickens 字段依 赖于 chickens 表, turkeys 表的 ducks 记录依赖于 ducks 表. 要想删除 chickens 表 有两个方法, 要么在 drop 语句中带上 CASCADE 关键字, 要么先删除 ducks 表中的 chickens 字段. 如果使用前一个方法, 那么 ducks 表的 chickens 字段会被自动删除, 而且此过程中无告警信息. 相应地, turkeys 表的 ducks 字段的定义也将自动跟着改变</p>
+
+<h3 id="5-8-2-构建自定义数据类型">5.8.2 构建自定义数据类型</h3>
+
+<p>使用以下语句可以构建一个复杂数字数据类型:</p>
+
+<pre><code class="language-sql">CREATE TYPE complex_number AS (r double precision, i double precision);
+</code></pre>
+
+<p>可以将此类型作为字段类型定义使用:</p>
+
+<pre><code class="language-sql">CREATE TABLE circuits (circuit_id serial PRIMARY KEY, ac_volt complex_number);
+</code></pre>
+
+<p>可以使用如下语法对这个表进行查询:</p>
+
+<pre><code class="language-sql">SELECT circuit_id, (ac_volt).* FROM circuits;
+</code></pre>
+
+<p>或者这种语法也可以:</p>
+
+<pre><code class="language-sql">SELECT circuit_id, (ac_volt).r, (ac_volt).i FROM circuits;
+</code></pre>
+
+<p>(加括号的原因是为了不让 PostgreSQL 将其理解为表名.)</p>
+
+<h1 id="6-表-约束和索引">6 表、 约束和索引</h1>
+
+<h2 id="6-1-表">6.1 表</h2>
+
+<p>text 是一种不定长度的字符串, 无最大长度限制</p>
+
+<h3 id="6-1-2-继承表">6.1.2 继承表</h3>
+
+<p>PostgreSQL 是唯一提供表继承功能的数据库. 如果创建一张表（子表） 时指定为继承自另 一张表（父表） , 则建好的子表除了含有自己的字段外还会含有父表的所有字段. PostgreSQL 会记录下这个继承关系, 这样一旦父表的结构发生了变化, 子表的结构也会自动 跟着变化. 这种父子继承结构的表可以完美地适用于需要数据分区的场景. 当查询父表时, PostgreSQL 会自动把子表的记录也取出来. 值得注意的是, 并不是所有父表的特征都会被子 表继承下来, 比如主表的主键约束、 唯一性约束以及索引就不会被继承. Check 约束会被继 承, 但子表还可以另建自己的 check 约束</p>
+
+<h3 id="6-1-3-无日志表">6.1.3 无日志表</h3>
+
+<p>创建无日志表</p>
+
+<pre><code class="language-sql">CREATE UNLOGGED TABLE web_sessions ( session_id text PRIMARY KEY, add_ts time stamptz, upd_ts timestamptz)
+</code></pre>
+
+<p>无日志表的一大优势就是对其写入数据要远远快于往普通表中写数据. 按照我们的经验, 一般要快大约 15 倍. 请牢记使用无日志表的缺点. 如果数据库服务器崩溃, PostgreSQL 将截断所有无日志表（截断的意思是擦除所有 行） . 无日志表不支持 GiST 索引（6.3.1 节会讨论此索引类型） , 因此它就不适用于依赖 GiST 索引的数据类型. 但无日志表上可以建常用的 B- 树索引和 GIN 索引.</p>
+
+<h3 id="6-1-4-type-of">6.1.4 TYPE OF</h3>
+
+<p>PostgreSQL 在创建一张表时, 会自动在后台创建一个结构完全相同的复合数据类型, 反之 则不是这样.</p>
+
+<p>以复合数据类型为模板来创建一张表</p>
+
+<pre><code class="language-sql">CREATE TABLE super_users OF basic_user (CONSTRAINT pk_su PRIMARY KEY (user_name));
+</code></pre>
+
+<p>当基于数据类型来创建表时, 你不能指定表字段的定义, 一切以数据类型本身的定义为 准. 然而, 为复合数据类型新增或者移除字段时, PostgreSQL 会自动修改相应的表结构. 这 种机制的优点是, 如果你的系统中有很多结构相同的表, 而你可能会需要同时对所有表结构 进行相同的修改, 那么此时只需要修改此基础数据类型即可, 这一点与表继承机制很相似</p>
+
+<p>修改建表时所使用的数据类型以修改表字段</p>
+
+<pre><code class="language-sql">ALTER TYPE basic_user ADD ATTRIBUTE phone varchar(10) CASCADE;
+</code></pre>
+
+<p>通常, 如果表依赖于某个类型, 那么你就不能更改该类型的定义. CASCADE 修饰符凌驾 于此限制之上, 对所有相关表应用相同的更改.</p>
+
+<h2 id="6-2-约束机制">6.2 约束机制</h2>
+
+<h3 id="6-2-2-唯一性约束">6.2.2 唯一性约束</h3>
+
+<p>建立唯一性约束时会自动在后台 创建一个相应的唯一索引. 与主键字段类似, 建立了唯一性约束的字段不允许为空, 并且可 以作为外键字段被别的表引用. 不过请注意: 建了唯一索引但却没有唯一性约束的字段是可 以输入空值的. 下面的例子演示了如何建一个唯一索引.</p>
+
+<pre><code class="language-sql">ALTER TABLE logs_2011 ADD CONSTRAINT uq UNIQUE (user_name,log_ts);
+</code></pre>
+
+<p>你可能经常会遇到仅需要保证表中部分记录行唯一的情况, PostgreSQL 不支持带筛选条件 的唯一性约束, 但你可以通过使用唯一性的部分索引来达到相同目的</p>
+
+<h3 id="6-2-3-check约束">6.2.3 check约束</h3>
+
+<p>查询规划器也会利用 check 约束来优化执行速度, 比如有些查询附带的条件与待查询表 的 check 约束无交集, 那么规划器会立即认定该查询未命中目标并返回</p>
+
+<p>check 约束支持基 于函数和布尔表达式的条件,</p>
+
+<p>当表间存在继承关系时, 子表会继承父表的 check 约束, 但主 键、 外键、 唯一性这三种约束却不会继承</p>
+
+<h3 id="6-2-4-排他性约束">6.2.4 排他性约束</h3>
+
+<p>区间数据类型, 该类型特别适合使用排他性约束</p>
+
+<h2 id="6-3-索引">6.3 索引</h2>
+
+<h3 id="6-3-1-postgresql原生支持的索引类型">6.3.1 PostgreSQL原生支持的索引类型</h3>
+
+<ul>
+<li><p><strong>B-树索引</strong>: 主键约束和唯一性约 束唯一支持的后台索引就是 B- 树索引.</p></li>
+
+<li><p><strong>GiST索引</strong>: GiST 的全称是 Generalized Search Tree, 意即通用搜索树. 它主要的适用场景包括全 文搜索以及空间数据、 科学数据、 非结构化数据和层次化数据的搜索. 该类索引不能用 于保障字段的唯一性, 也就是说建立了该类型索引的字段上可插入重复值, 但如果把该 类索引用于排他性约束就可以实现唯一性保障. GiST 是一种有损索引, 也就是说它不存 储被索引字段的值, 而仅仅存储字段值的一个取样, 这种取样是失真的, 就像把一个盒 子变成了一个多边形. 这就意味着需要一个额外的查找步骤以获得真正记录的值.</p></li>
+
+<li><p><strong>GIN索引</strong>: GIN 的全称是 Generalized Inverted Index（GIN） , 即通用逆序索引. 它主要适用于 PostgreSQL 内置的全文搜索引擎以及 jsonb 数据类型</p></li>
+
+<li><p><strong>哈希索引</strong>: PostgreSQL 已将哈希索引列为不推荐使用状态. 在别的数据库中你可能仍会见到该 索引类型, 但在 PostgreSQL 中最好避免使用它.</p></li>
+</ul>
+
+<h3 id="6-3-2-运算符类">6.3.2 运算符类</h3>
+
+<p>PostgreSQL 把一类应用领域相近的运算符以及这些运算符适用的数据类型 组合在一起称为一个运算符类（简称 opclass） . 例如, int4_ops 运算符类包含适用于 int4 类型的 = &lt; &gt; &gt; &lt; 运算符.</p>
+
+<p>B- 树索引默认的 text_ops 运算符类（又名 varchar_ops） 中并不支持 ~~ 运算符（即 LIKE 运算符） , 所以如果建 B- 树索引时选择了该运算符类, 那么所有使用 LIKE 的 查询都无法在 text_ops 运算符类中使用索引. 因此, 如果你的业务场景需要对 varchar 或者 text 类型进行大量 LIKE 模糊查询, 那么建索引时最好是显式指定使用 text_pattern_ops 或者 varchar_pattern_ops 这两个运算符类. 指定运算符类的语法 很简单, 只需要在建索引时加在被索引字段名的后面即可, 参考示例如下:</p>
+
+<pre><code class="language-sql">CREATE INDEX idx1 ON census.lu_tracts USING btree (tract_name text_pattern_ops);
+</code></pre>
+
+<p>varchar 类型本质上就是加了长度 限制的 text 类型, 二者可以共用一套运算符. varchar_ops 和 varchar_pattern_ops 实质上就是 text_ops 和 text_pattern_ops 的别名</p>
+
+<p>你创建的每一个索引都只会使用一个运算符类. 如果希望一个字段上 的索引使用多个运算符类, 那么请创建多个索引. 要将默认索引 text_ops 添加到表中, 请 运行以下代码:</p>
+
+<pre><code class="language-sql">CREATE INDEX idx2 ON census.lu_tracts USING btree (tract_name);
+</code></pre>
+
+<h3 id="6-3-3-函数索引">6.3.3 函数索引</h3>
+
+<p>PostgreSQL 的函数索引功能可以基于字段值的函数运算结果建立索引. 函数索引的用途也 是很广泛的, 例如可用于对大小写混杂的文本数据建立索引. PostgreSQL 是一个区分大小写 的数据库, 如果要实现不区分大小写的查询, 那么可以借助如下的函数索引:</p>
+
+<pre><code class="language-sql">CREATE INDEX fidx ON featnames_short
+USING btree (upper(fullname) varchar_pattern_ops);
+</code></pre>
+
+<h3 id="6-3-4-基于部分记录的索引">6.3.4 基于部分记录的索引</h3>
+
+<p>索引的 WHERE 条件中使用的函数必须是确定性函数, 即固定的输入一定能 够得到固定输出的函数. 这意味着有几类函数是不能用作筛选条件的: 一类是 CURRENT_DATE 这种输出结果不停在变的函数； 一类是依赖于其他表数据进行运算的函 数, 其输出结果受其他表的数据的影响, 因此输出也是不固定的； 还有一类是依赖当前 表中的其他记录行进行运算的函数, 其输出也不会受控.</p>
+
+<p>当使用 SELECT 语句查询数据时, 创建索引时所使用的条件 必须是你的 WHERE 条件的子集. 这看起来比较麻烦也容易出错, 那么有一个办法可以让事情 变得简单一些, 那就是建一个视图, 视图条件就是建索引的条件, 那么针对此视图进行查询 就永远不会漏掉条件了.</p>
+
+<h3 id="6-3-5-多列索引">6.3.5 多列索引</h3>
+
+<p>PostgreSQL 的规划器在语句执行过程中会自动使用一种被称为“位图索引扫描”的策略来同 时使用多个索引. 该策略可以使得多个单列索引同时发挥作用, 达到的效果与使用单个复合 索引相同. 如果你不能确定业务的应用模式是以单列作为查询条件的场景多一些还是同时以 多列作为查询条件的场景多一些, 那么最好针对可能作为查询条件的每个列单独建立索引, 这样是最灵活的做法, 规划器会决定如何组合使用这些索引.</p>
+
+<h1 id="7-postgresql-的特色-sql-语法">7 PostgreSQL 的特色 SQL 语法</h1>
+
+<h2 id="7-1-视图">7.1 视图</h2>
+
+<h2 id="7-2-灵活易用的postgresql专有sql语法">7.2 灵活易用的PostgreSQL专有SQL语法</h2>
+
+<h3 id="7-2-2-limit和offset关键字">7.2.2 LIMIT和OFFSET关键字</h3>
+
+<p>与mysql一致</p>
+
+<h3 id="7-2-4-一次性插入多条记录">7.2.4 一次性插入多条记录</h3>
+
+<p>在 PostgreSQL 中 VALUES 子句并不是只能作为 INSERT 语句的一部分来使用,它其实是一个动态生成的临时结果集, 可用于多种场合, 如示例 7-12 所示.
+示例 7-12: 使用 VALUES 语法来模拟一个虚拟表</p>
+
+<pre><code class="language-sql">SELECT *
+FROM (
+VALUES
+('robe', 'logged in', '2011-01-10 10:15 AM EST'::timestamptz),
+('lhsu', 'logged out', '2011-01-11 10:20 AM EST'::timestamptz)
+) AS l (user_name, description, log_ts);
+</code></pre>
+
+<h3 id="7-2-7-限制对继承表的delete-update-insert操作的影响范围">7.2.7 限制对继承表的DELETE、 UPDATE、 INSERT操作的影响范围</h3>
+
+<p>如果表间是继承关系, 那么查询父表时就会将子表中满足条件的记录也查出来. DELETE 和 UPDATE 操作也遵循类似逻辑, 即对父表的修改操作也会影响子表的记录. 有时你可能希 望操作仅限定于主表范围之内而并不希望子表受到波及.<br />
+PostgreSQL 提供了 ONLY 关键字以实现此功能.</p>
+
+<h3 id="7-2-9-将修改影响到的记录行返回给用户">7.2.9 将修改影响到的记录行返回给用户</h3>
+
+<p>RETURNING 是 ANSI SQL 规定的标准语法, 但支持该语法的数据库却不多. 在示例 7-30 中, 我们通过 RETURNING 子句将在 DELETE 操作中被删除的记录返回给了用户. 当 然, INSERT 和 UPDATE 操作也是可以使用 RETURNING 的. 对于带 serial 类型字段的表 来说, RETURNING 语法是很有用的, 因为向这类表中插入记录时, serial 字段是临时生成 而非用户指定的. 也就是说在插入动作完成之前, 用户也不知道 serial 字段的值会是多 少, 除非是再查询一遍. 而 RETURNING 语法使得用户不用再次查询就立即得到了 serial 字段的值. 最常见的 用法一般是 RETURNING *, 即返回所有字段的值, 但也可以指定仅返 回特定字段,</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="/tags/postgresql/">postgreSQL</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2018/09/%E6%8F%90%E9%AB%98pdf%E7%9A%84%E5%AF%B9%E6%AF%94%E5%BA%A6/" data-tooltip="提高PDF的对比度">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2019 润民. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2018/09/%E6%8F%90%E9%AB%98pdf%E7%9A%84%E5%AF%B9%E6%AF%94%E5%BA%A6/" data-tooltip="提高PDF的对比度">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="/author.jpg" alt="作者的图片" />
+    
+    <h4 id="about-card-name">润民</h4>
+    
+      <div id="about-card-bio">Don&rsquo;t Panic</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        DEV
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        GuangZhou
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/10/postgresql%E5%8D%B3%E5%AD%A6%E5%8D%B3%E7%94%A8%E6%91%98%E5%BD%95/">
+                <h3 class="media-heading">《PostgreSQL即学即用》摘录</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Oct 10, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>摘录了部分我觉得容易遗忘或者值得注意的点. 详细信息还应查阅原文或官方文档.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/09/%E6%8F%90%E9%AB%98pdf%E7%9A%84%E5%AF%B9%E6%AF%94%E5%BA%A6/">
+                <h3 class="media-heading">提高PDF的对比度</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>借助imageMagick这个工具可以实现, 该工具支持多个平台(windows, MacOS, Linux, IOS)
+<div class="alert success no-icon ">
+  <p><strong>用到的所有工具都是免费的</strong></p>
+</div>
+
+<!--toc--></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/09/%E6%AD%A6%E5%8A%9F%E5%B1%B1%E4%B8%A4%E6%97%A5%E5%8F%8D%E7%A9%BF/">
+                <h3 class="media-heading">武功山两日反穿</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>武功山在江西萍乡, 主峰金顶海拔1918.3米, 距广州大约3小时的高铁车程.<br />
+武功山素有&rdquo;户外天堂&rdquo;的美称, 最主要是可以看到高山草甸. 驴友们开辟了多条穿越路线, 难度各有不同. 这次穿越选择的是从龙山村到景区大门的2日反穿路线.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/%E5%A4%A7%E8%AF%9D%E5%AD%98%E5%82%A8%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+                <h3 class="media-heading">《大话存储》读书笔记</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/go%E7%9A%84%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/">
+                <h3 class="media-heading">Go的依赖管理工具</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>go语言与js和python类似, 依靠社区来丰富自己的组件库, 各种第三方库遍地开花. 因为go还是一门相当年轻的语言, 特性和接口还在不断更新, 加上社区活跃程度高, 就出现了这样的场景: 新的第三方库不断增加, 旧有的库的特性和接口也频繁变更.(这一点跟目前js社区一片热火朝天的景象很类似)</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/restful-api%E7%9A%84%E8%AE%BE%E8%AE%A1/">
+                <h3 class="media-heading">RESTful API的设计</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这是一篇写于两年多前的旧文了. 这里先贴下, 有空再更新</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/docker%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/">
+                <h3 class="media-heading">Docker常用指令</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>接触docker到现在也有很长一段时间了. 因为不经常用以至于每次使用都需要查找相关操作指令, 这里先将其罗列出来</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/go%E4%B8%AD%E6%95%B0%E7%BB%84%E5%92%8C%E5%88%87%E7%89%87%E7%9A%84%E5%A3%B0%E6%98%8E%E6%96%B9%E5%BC%8F/">
+                <h3 class="media-heading">Go中数组和切片的声明方式</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>在go中, 数组和切片是两种不同的数据类型, 这两种类型表现类似, 声明方法也只存在细微差异</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/postgresql%E5%B0%8F%E8%AE%B0/">
+                <h3 class="media-heading">PostgreSQL小记</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>postgresql是一个强大的数据库, 支持多种复杂的数据结构和数学计算.
+mysql的使用者迁移到postgresql不是零成本的, 需要注意一些差异.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/07/%E7%AC%AC%E4%B8%80%E5%BA%A7%E9%9B%AA%E5%B1%B1-%E5%9B%9B%E5%A7%91%E5%A8%98%E5%B1%B1%E4%BA%8C%E5%B3%B0/">
+                <h3 class="media-heading">第一座雪山 四姑娘山二峰</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>登雪山是一件看上去非常酷非常专业的事情. 不过雪山攀登难度也有分等级的, 最好的例子就是四姑娘山的四个峰, 难度从大峰开始到幺妹峰依次递增, 大峰二峰有一定户外经验的非专业人士即可登顶, 而幺妹峰即便专业人士也很难登顶. 像我等战五渣要爬雪山, 大峰二峰是个不错的选择.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         71 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('/images/cover.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/languages/go.min.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = '\/2018\/10\/postgresql%E5%8D%B3%E5%AD%A6%E5%8D%B3%E7%94%A8%E6%91%98%E5%BD%95\/';
+          
+            this.page.identifier = '\/2018\/10\/postgresql%E5%8D%B3%E5%AD%A6%E5%8D%B3%E7%94%A8%E6%91%98%E5%BD%95\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'dont-panic-1';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

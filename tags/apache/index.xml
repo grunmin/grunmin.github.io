@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Apache on Don&#39;t Panic</title>
+    <link>/tags/apache/</link>
+    <description>Recent content in Apache on Don&#39;t Panic</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 02 Jan 2014 16:16:00 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/apache/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>apache服务器个人主页的设置</title>
+      <link>/2014/01/apache%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5%E7%9A%84%E8%AE%BE%E7%BD%AE/</link>
+      <pubDate>Thu, 02 Jan 2014 16:16:00 +0800</pubDate>
+      
+      <guid>/2014/01/apache%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5%E7%9A%84%E8%AE%BE%E7%BD%AE/</guid>
+      <description>&lt;h3 id=&#34;准备工作&#34;&gt;准备工作&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;查看apache版本
+&lt;code&gt;
+httpd -v
+&lt;/code&gt;
+我的版本是2.4.6，个人主页相关的配置文件在&lt;br /&gt;
+&lt;code&gt;/etc/httpd/conf.modules.d/00-base.conf&lt;/code&gt;&lt;br /&gt;
+和
+&lt;code&gt;etc/httpd/conf.d/userdir.conf&lt;/code&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

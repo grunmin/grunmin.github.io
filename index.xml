@@ -1,0 +1,960 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Don&#39;t Panic</title>
+    <link>/</link>
+    <description>Recent content on Don&#39;t Panic</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 04 Oct 2018 16:30:20 +0800</lastBuildDate>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>《PostgreSQL即学即用》摘录</title>
+      <link>/2018/10/postgresql%E5%8D%B3%E5%AD%A6%E5%8D%B3%E7%94%A8%E6%91%98%E5%BD%95/</link>
+      <pubDate>Thu, 04 Oct 2018 16:30:20 +0800</pubDate>
+      
+      <guid>/2018/10/postgresql%E5%8D%B3%E5%AD%A6%E5%8D%B3%E7%94%A8%E6%91%98%E5%BD%95/</guid>
+      <description>&lt;p&gt;摘录了部分我觉得容易遗忘或者值得注意的点. 详细信息还应查阅原文或官方文档.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>提高PDF的对比度</title>
+      <link>/2018/09/%E6%8F%90%E9%AB%98pdf%E7%9A%84%E5%AF%B9%E6%AF%94%E5%BA%A6/</link>
+      <pubDate>Wed, 05 Sep 2018 12:19:04 +0800</pubDate>
+      
+      <guid>/2018/09/%E6%8F%90%E9%AB%98pdf%E7%9A%84%E5%AF%B9%E6%AF%94%E5%BA%A6/</guid>
+      <description>&lt;p&gt;借助imageMagick这个工具可以实现, 该工具支持多个平台(windows, MacOS, Linux, IOS)
+&lt;div class=&#34;alert success no-icon &#34;&gt;
+  &lt;p&gt;&lt;strong&gt;用到的所有工具都是免费的&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!--toc--&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>武功山两日反穿</title>
+      <link>/2018/09/%E6%AD%A6%E5%8A%9F%E5%B1%B1%E4%B8%A4%E6%97%A5%E5%8F%8D%E7%A9%BF/</link>
+      <pubDate>Tue, 04 Sep 2018 17:10:35 +0800</pubDate>
+      
+      <guid>/2018/09/%E6%AD%A6%E5%8A%9F%E5%B1%B1%E4%B8%A4%E6%97%A5%E5%8F%8D%E7%A9%BF/</guid>
+      <description>&lt;p&gt;武功山在江西萍乡, 主峰金顶海拔1918.3米, 距广州大约3小时的高铁车程.&lt;br /&gt;
+武功山素有&amp;rdquo;户外天堂&amp;rdquo;的美称, 最主要是可以看到高山草甸. 驴友们开辟了多条穿越路线, 难度各有不同. 这次穿越选择的是从龙山村到景区大门的2日反穿路线.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《大话存储》读书笔记</title>
+      <link>/2018/07/%E5%A4%A7%E8%AF%9D%E5%AD%98%E5%82%A8%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Sat, 21 Jul 2018 09:37:51 +0800</pubDate>
+      
+      <guid>/2018/07/%E5%A4%A7%E8%AF%9D%E5%AD%98%E5%82%A8%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</guid>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Go的依赖管理工具</title>
+      <link>/2018/07/go%E7%9A%84%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/</link>
+      <pubDate>Fri, 20 Jul 2018 10:52:48 +0800</pubDate>
+      
+      <guid>/2018/07/go%E7%9A%84%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/</guid>
+      <description>&lt;p&gt;go语言与js和python类似, 依靠社区来丰富自己的组件库, 各种第三方库遍地开花. 因为go还是一门相当年轻的语言, 特性和接口还在不断更新, 加上社区活跃程度高, 就出现了这样的场景: 新的第三方库不断增加, 旧有的库的特性和接口也频繁变更.(这一点跟目前js社区一片热火朝天的景象很类似)&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>RESTful API的设计</title>
+      <link>/2018/07/restful-api%E7%9A%84%E8%AE%BE%E8%AE%A1/</link>
+      <pubDate>Thu, 19 Jul 2018 12:18:31 +0800</pubDate>
+      
+      <guid>/2018/07/restful-api%E7%9A%84%E8%AE%BE%E8%AE%A1/</guid>
+      <description>&lt;p&gt;这是一篇写于两年多前的旧文了. 这里先贴下, 有空再更新&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Docker常用指令</title>
+      <link>/2018/07/docker%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</link>
+      <pubDate>Thu, 19 Jul 2018 08:20:52 +0800</pubDate>
+      
+      <guid>/2018/07/docker%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</guid>
+      <description>&lt;p&gt;接触docker到现在也有很长一段时间了. 因为不经常用以至于每次使用都需要查找相关操作指令, 这里先将其罗列出来&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Go中数组和切片的声明方式</title>
+      <link>/2018/07/go%E4%B8%AD%E6%95%B0%E7%BB%84%E5%92%8C%E5%88%87%E7%89%87%E7%9A%84%E5%A3%B0%E6%98%8E%E6%96%B9%E5%BC%8F/</link>
+      <pubDate>Thu, 19 Jul 2018 07:32:26 +0800</pubDate>
+      
+      <guid>/2018/07/go%E4%B8%AD%E6%95%B0%E7%BB%84%E5%92%8C%E5%88%87%E7%89%87%E7%9A%84%E5%A3%B0%E6%98%8E%E6%96%B9%E5%BC%8F/</guid>
+      <description>&lt;p&gt;在go中, 数组和切片是两种不同的数据类型, 这两种类型表现类似, 声明方法也只存在细微差异&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PostgreSQL小记</title>
+      <link>/2018/07/postgresql%E5%B0%8F%E8%AE%B0/</link>
+      <pubDate>Wed, 18 Jul 2018 12:00:41 +0800</pubDate>
+      
+      <guid>/2018/07/postgresql%E5%B0%8F%E8%AE%B0/</guid>
+      <description>&lt;p&gt;postgresql是一个强大的数据库, 支持多种复杂的数据结构和数学计算.
+mysql的使用者迁移到postgresql不是零成本的, 需要注意一些差异.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>第一座雪山 四姑娘山二峰</title>
+      <link>/2018/07/%E7%AC%AC%E4%B8%80%E5%BA%A7%E9%9B%AA%E5%B1%B1-%E5%9B%9B%E5%A7%91%E5%A8%98%E5%B1%B1%E4%BA%8C%E5%B3%B0/</link>
+      <pubDate>Tue, 17 Jul 2018 12:19:38 +0800</pubDate>
+      
+      <guid>/2018/07/%E7%AC%AC%E4%B8%80%E5%BA%A7%E9%9B%AA%E5%B1%B1-%E5%9B%9B%E5%A7%91%E5%A8%98%E5%B1%B1%E4%BA%8C%E5%B3%B0/</guid>
+      <description>&lt;p&gt;登雪山是一件看上去非常酷非常专业的事情. 不过雪山攀登难度也有分等级的, 最好的例子就是四姑娘山的四个峰, 难度从大峰开始到幺妹峰依次递增, 大峰二峰有一定户外经验的非专业人士即可登顶, 而幺妹峰即便专业人士也很难登顶. 像我等战五渣要爬雪山, 大峰二峰是个不错的选择.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>一个人旅行 华山</title>
+      <link>/2018/07/%E4%B8%80%E4%B8%AA%E4%BA%BA%E6%97%85%E8%A1%8C-%E5%8D%8E%E5%B1%B1/</link>
+      <pubDate>Mon, 16 Jul 2018 08:28:13 +0800</pubDate>
+      
+      <guid>/2018/07/%E4%B8%80%E4%B8%AA%E4%BA%BA%E6%97%85%E8%A1%8C-%E5%8D%8E%E5%B1%B1/</guid>
+      <description>&lt;p&gt;陕西比较出名的山就是西岳华山和太白山. 华山算是游客景点, 太白山更倾向于户外路线. 从西安到太白没有到华山那么快捷, 华山的名气也更大一些, 因此我选择登华山.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>一个人旅行 上海</title>
+      <link>/2018/07/%E4%B8%80%E4%B8%AA%E4%BA%BA%E6%97%85%E8%A1%8C-%E4%B8%8A%E6%B5%B7/</link>
+      <pubDate>Mon, 16 Jul 2018 08:27:52 +0800</pubDate>
+      
+      <guid>/2018/07/%E4%B8%80%E4%B8%AA%E4%BA%BA%E6%97%85%E8%A1%8C-%E4%B8%8A%E6%B5%B7/</guid>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>一个人旅行 四姑娘山</title>
+      <link>/2018/07/%E4%B8%80%E4%B8%AA%E4%BA%BA%E6%97%85%E8%A1%8C-%E5%9B%9B%E5%A7%91%E5%A8%98%E5%B1%B1/</link>
+      <pubDate>Fri, 13 Jul 2018 13:17:34 +0800</pubDate>
+      
+      <guid>/2018/07/%E4%B8%80%E4%B8%AA%E4%BA%BA%E6%97%85%E8%A1%8C-%E5%9B%9B%E5%A7%91%E5%A8%98%E5%B1%B1/</guid>
+      <description>&lt;p&gt;四姑娘山位于四川省阿坝藏族羌族自治州四姑娘山镇(旧称日隆镇), 是国内外户外爱好者眼中的天堂, 有着&amp;rdquo;东方阿尔卑斯&amp;rdquo;的美称.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>一个人旅行</title>
+      <link>/2018/07/%E4%B8%80%E4%B8%AA%E4%BA%BA%E6%97%85%E8%A1%8C/</link>
+      <pubDate>Fri, 13 Jul 2018 10:27:41 +0800</pubDate>
+      
+      <guid>/2018/07/%E4%B8%80%E4%B8%AA%E4%BA%BA%E6%97%85%E8%A1%8C/</guid>
+      <description>&lt;p&gt;去做一件事情, 并不总是因为热爱或不得不做, 而只是因为觉得有用. 就比如游泳, 我不喜欢游泳, 大热天下水我也会感觉恶寒. 只因为我觉得游泳是个有用的技能, 所以我坚持每周去学习. 又比如旅行, 一个人旅行是这样累人, 以至于坐在高铁座位上我都希望列车晚点到站好多休息一会. 因为旅行需要查攻略, 防盗防骗, 顶着骄阳走很长的路, 还要花钱. 但是出趟远门旅行是有必要的, 所以我去了.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Go中的包和python中的模块</title>
+      <link>/2018/05/go%E4%B8%AD%E7%9A%84%E5%8C%85%E5%92%8Cpython%E4%B8%AD%E7%9A%84%E6%A8%A1%E5%9D%97/</link>
+      <pubDate>Sun, 27 May 2018 10:53:05 +0800</pubDate>
+      
+      <guid>/2018/05/go%E4%B8%AD%E7%9A%84%E5%8C%85%E5%92%8Cpython%E4%B8%AD%E7%9A%84%E6%A8%A1%E5%9D%97/</guid>
+      <description>&lt;p&gt;在python中， 程序由模块组成， 一个文件就是一个模块.&lt;/p&gt;
+
+&lt;p&gt;在go中, 程序是由包组成, 一个目录是一个包, 弱化单一文件的概念. 在同一个包内, 包级变量和函数在哪里声明都一样. 对于python开发者而言， go中的一个包都可以视为python的一个文件.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Go中slice编码为JSON</title>
+      <link>/2018/05/go%E4%B8%ADslice%E7%BC%96%E7%A0%81%E4%B8%BAjson/</link>
+      <pubDate>Sun, 27 May 2018 09:58:01 +0800</pubDate>
+      
+      <guid>/2018/05/go%E4%B8%ADslice%E7%BC%96%E7%A0%81%E4%B8%BAjson/</guid>
+      <description>&lt;p&gt;考虑如下场景:
+用户调用API获取文章列表, 服务端返回的格式是JSON&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>免费泛域名证书获取</title>
+      <link>/2018/05/%E5%85%8D%E8%B4%B9%E6%B3%9B%E5%9F%9F%E5%90%8D%E8%AF%81%E4%B9%A6%E8%8E%B7%E5%8F%96/</link>
+      <pubDate>Sun, 27 May 2018 09:31:26 +0800</pubDate>
+      
+      <guid>/2018/05/%E5%85%8D%E8%B4%B9%E6%B3%9B%E5%9F%9F%E5%90%8D%E8%AF%81%E4%B9%A6%E8%8E%B7%E5%8F%96/</guid>
+      <description>&lt;p&gt;let&amp;rsquo;s encrypt由ISRC公益组织发起, 提供免费的开放的证书签发服务, 并且得到了包括Mozilla, Cisco, Chrome等公司或机构的支持. 目前它也支持签发泛域名证书&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Go入门指引</title>
+      <link>/2018/05/go%E5%85%A5%E9%97%A8%E6%8C%87%E5%BC%95/</link>
+      <pubDate>Sat, 26 May 2018 19:59:04 +0800</pubDate>
+      
+      <guid>/2018/05/go%E5%85%A5%E9%97%A8%E6%8C%87%E5%BC%95/</guid>
+      <description>&lt;p&gt;python语言被称为&amp;rdquo;自带电池&amp;rdquo;, 意思是有现成好用的标准库和第三方模块提供了大量常用功能的封装, 只需导入并调用就能实现在其他语言中需要大量编码的功能.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>关于博客的一点想法</title>
+      <link>/2018/05/%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%80%E7%82%B9%E6%83%B3%E6%B3%95/</link>
+      <pubDate>Fri, 18 May 2018 19:25:11 +0800</pubDate>
+      
+      <guid>/2018/05/%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%80%E7%82%B9%E6%83%B3%E6%B3%95/</guid>
+      <description>&lt;p&gt;前段时间有感于维护自己的一张名片的重要性. 就想借助gitbook将博客做成一本书的形式. 之前的想法是在这本书里包罗技术, 想法, 经历, 借助这本书来记录保存自己某个时期的状态. 这样做的好处是, 提醒自己获取知识和感悟应该持续而丰富, 不可点到为止.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Hugo使用</title>
+      <link>/2018/05/hugo%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Fri, 18 May 2018 13:19:11 +0800</pubDate>
+      
+      <guid>/2018/05/hugo%E4%BD%BF%E7%94%A8/</guid>
+      <description>&lt;p&gt;hugo是一个静态网站生成器, 类似hexo&lt;/p&gt;
+
+&lt;p&gt;本文假设读者已经了解静态页面的含义, 也接触过Jekyll, octopress或hexo.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Elasticsearch中types的变更</title>
+      <link>/2018/03/elasticsearch%E4%B8%ADtypes%E7%9A%84%E5%8F%98%E6%9B%B4/</link>
+      <pubDate>Sun, 25 Mar 2018 16:22:34 +0800</pubDate>
+      
+      <guid>/2018/03/elasticsearch%E4%B8%ADtypes%E7%9A%84%E5%8F%98%E6%9B%B4/</guid>
+      <description>&lt;p&gt;升级es到6.0之后, 像往常一样创建索引, es可能会返回错误信息&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python实现的一个验证码服务降级的简单例子</title>
+      <link>/2018/03/python%E5%AE%9E%E7%8E%B0%E7%9A%84%E4%B8%80%E4%B8%AA%E9%AA%8C%E8%AF%81%E7%A0%81%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E7%9A%84%E7%AE%80%E5%8D%95%E4%BE%8B%E5%AD%90/</link>
+      <pubDate>Sun, 25 Mar 2018 16:19:58 +0800</pubDate>
+      
+      <guid>/2018/03/python%E5%AE%9E%E7%8E%B0%E7%9A%84%E4%B8%80%E4%B8%AA%E9%AA%8C%E8%AF%81%E7%A0%81%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E7%9A%84%E7%AE%80%E5%8D%95%E4%BE%8B%E5%AD%90/</guid>
+      <description>&lt;p&gt;在微服务设计场景, 当系统负载较高时, 可以通过抛弃部分非核心服务来保证核心服务高可用.&lt;/p&gt;
+
+&lt;p&gt;网上的文章都是讲降级的策略, 基本没有讲到如何具体去实现. 我自己用python为验证码服务写了一个例子.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>python shell md5生成注意事项</title>
+      <link>/2016/06/python-shell-md5%E7%94%9F%E6%88%90%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</link>
+      <pubDate>Sun, 05 Jun 2016 16:14:29 +0800</pubDate>
+      
+      <guid>/2016/06/python-shell-md5%E7%94%9F%E6%88%90%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</guid>
+      <description>python的md5加密类似这样
+import hashlib h = hashlib.md5() h.update(&#39;sweet &#39;) h.update(&#39;girl&#39;) h.hexdigest()  shell 的md5加密类似这样
+echo -n &#39;sweet girl&#39;|md5sum  需要注意的是，echo命令会自动在字符串后加换行符\n，因此需要加-n参数 另外，shell下的双引号和单引号作用不同，如果字符串中带有特殊字符比如$等，会被shell解析为变量，因此建议echo后的字符串统一用单引号</description>
+    </item>
+    
+    <item>
+      <title>hexo静态资源文件目录(Asset Folders)的使用</title>
+      <link>/2016/06/hexo%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95asset-folders%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Sun, 05 Jun 2016 11:47:27 +0800</pubDate>
+      
+      <guid>/2016/06/hexo%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95asset-folders%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <description>&lt;p&gt;Markdown写文档最不方便的地方在于无法将图片嵌入到文档中。解决这个痛点通常的做法是将图片先上传到图床，然后引用url。我早期的博文就是这么做的。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>运维业务报警微信接口开发(基于微信企业号)</title>
+      <link>/2016/06/%E8%BF%90%E7%BB%B4%E4%B8%9A%E5%8A%A1%E6%8A%A5%E8%AD%A6%E5%BE%AE%E4%BF%A1%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91%E5%9F%BA%E4%BA%8E%E5%BE%AE%E4%BF%A1%E4%BC%81%E4%B8%9A%E5%8F%B7/</link>
+      <pubDate>Sun, 05 Jun 2016 11:31:59 +0800</pubDate>
+      
+      <guid>/2016/06/%E8%BF%90%E7%BB%B4%E4%B8%9A%E5%8A%A1%E6%8A%A5%E8%AD%A6%E5%BE%AE%E4%BF%A1%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91%E5%9F%BA%E4%BA%8E%E5%BE%AE%E4%BF%A1%E4%BC%81%E4%B8%9A%E5%8F%B7/</guid>
+      <description>&lt;p&gt;当前业务场景中，如有需要及时处理的事务，通常结合邮件和qq弹窗提醒负责人。现在我们考虑多一种通知方式，以应对无法使用pc端qq时的紧急事务处理。经过查找，现在暂时锁定微信企业号。&lt;/p&gt;
+
+&lt;p&gt;微信企业号是微信公众号一种，另外两种分别是服务号和订阅号。类型不同，定位也不同。目前看来，微信企业号是比较适合当前需求的。比如发消息的自由度高，有组织结构和权限管理等。官方网站看&lt;a href=&#34;https://qy.weixin.qq.com&#34;&gt;这里&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Atom sftp类远程文件同步插件</title>
+      <link>/2016/06/atom-sftp%E7%B1%BB%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%90%8C%E6%AD%A5%E6%8F%92%E4%BB%B6/</link>
+      <pubDate>Thu, 02 Jun 2016 20:10:50 +0800</pubDate>
+      
+      <guid>/2016/06/atom-sftp%E7%B1%BB%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%90%8C%E6%AD%A5%E6%8F%92%E4%BB%B6/</guid>
+      <description>&lt;p&gt;sublime text 下babel插件好像优化不好，有一些性能问题。特别是在创建文件的时候，即便没有打开，插件也会尝试把文件树里的js类文件重新渲染一遍。因为js项目所用组件繁多，导致sublime text经常卡死。因此尝试用atom。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>nginx X-Accel-Redirect头的利用</title>
+      <link>/2016/06/nginx-x-accel-redirect%E5%A4%B4%E7%9A%84%E5%88%A9%E7%94%A8/</link>
+      <pubDate>Wed, 01 Jun 2016 22:45:39 +0800</pubDate>
+      
+      <guid>/2016/06/nginx-x-accel-redirect%E5%A4%B4%E7%9A%84%E5%88%A9%E7%94%A8/</guid>
+      <description>&lt;p&gt;通常后端程序响应文件下载请求时，可以通过设定响应头和文件类型，读取文件内容加载到内容，然后在响应内容中输出文件流的方式实现。例如&lt;code&gt;python&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;self.set_header(&amp;quot;Content-Type&amp;quot;, &#39;application/dat; charset=&amp;quot;utf-8&amp;quot;&#39;)
+self.set_header(&amp;quot;Content-Disposition&amp;quot;, &amp;quot;attachment; filename=%s&amp;quot; % filename)
+self.set_status(200)
+with open(File, &#39;r&#39;) as f:
+    content = f.read()
+self.write(content)
+return
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>IP地理位置查询API收集</title>
+      <link>/2016/05/ip%E5%9C%B0%E7%90%86%E4%BD%8D%E7%BD%AE%E6%9F%A5%E8%AF%A2api%E6%94%B6%E9%9B%86/</link>
+      <pubDate>Tue, 31 May 2016 20:54:12 +0800</pubDate>
+      
+      <guid>/2016/05/ip%E5%9C%B0%E7%90%86%E4%BD%8D%E7%BD%AE%E6%9F%A5%E8%AF%A2api%E6%94%B6%E9%9B%86/</guid>
+      <description>&lt;p&gt;日前在跟进一个提供ip查询的内部项目，主数据库用的ipip，在查询页面同时提供一些第三方提供查询结果，收集了部分api&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>git修改和合并历史提交</title>
+      <link>/2016/05/git%E4%BF%AE%E6%94%B9%E5%92%8C%E5%90%88%E5%B9%B6%E5%8E%86%E5%8F%B2%E6%8F%90%E4%BA%A4/</link>
+      <pubDate>Mon, 30 May 2016 20:56:26 +0800</pubDate>
+      
+      <guid>/2016/05/git%E4%BF%AE%E6%94%B9%E5%92%8C%E5%90%88%E5%B9%B6%E5%8E%86%E5%8F%B2%E6%8F%90%E4%BA%A4/</guid>
+      <description>&lt;p&gt;git忠实记录自己提交的每一次修改，修改历史记录不是一个好习惯。不过在日常使用中，偶尔也有遇到需要修改过去提交记录的情况，比如，commit之后发现message少写了一些功能说明（如果想撤回整个commit修改，请自行搜索*git revert*哈），有时候甚至是在十几次提交之后才发现某次提交说明有误。又比如，因为某个功能比较复杂，作者想通过多次commit来记录修改以便方便回退，但是在推到项目仓库，发出合并请求的时候，意识到主仓库不需要记录太多commit时，就有了将请求合并的需求。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Hexo博客迁移</title>
+      <link>/2016/05/hexo%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB/</link>
+      <pubDate>Mon, 30 May 2016 20:23:54 +0800</pubDate>
+      
+      <guid>/2016/05/hexo%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB/</guid>
+      <description>&lt;p&gt;托管我的博客的gitcafe已经不提供服务了，只好将博客迁移到coding上。
+得益于近期了解一些npm和js相关的技术，对hexo搭建和安装不再一脸懵逼的状况。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>用highcharts实现数据统计中时间对比功能</title>
+      <link>/2015/12/%E7%94%A8highcharts%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%E7%BB%9F%E8%AE%A1%E4%B8%AD%E6%97%B6%E9%97%B4%E5%AF%B9%E6%AF%94%E5%8A%9F%E8%83%BD/</link>
+      <pubDate>Thu, 03 Dec 2015 20:56:37 +0800</pubDate>
+      
+      <guid>/2015/12/%E7%94%A8highcharts%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%E7%BB%9F%E8%AE%A1%E4%B8%AD%E6%97%B6%E9%97%B4%E5%AF%B9%E6%AF%94%E5%8A%9F%E8%83%BD/</guid>
+      <description>&lt;h2 id=&#34;时间对比的错位问题&#34;&gt;时间对比的错位问题&lt;/h2&gt;
+
+&lt;p&gt;如果某个数据系列以某个时间为固定周期波动变化，我们通常会对其进行纵向的时间对比，比如某个生产服务器的带宽数据等等。&lt;/p&gt;
+
+&lt;p&gt;用echarts可以简单地实现多条数据系列同时显示，进行横向对比。但是在用其实现时间对比的时候遇到了麻烦，比如下图&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>windows和linux间共享互传文件</title>
+      <link>/2015/09/windows%E5%92%8Clinux%E9%97%B4%E5%85%B1%E4%BA%AB%E4%BA%92%E4%BC%A0%E6%96%87%E4%BB%B6/</link>
+      <pubDate>Wed, 16 Sep 2015 18:35:46 +0800</pubDate>
+      
+      <guid>/2015/09/windows%E5%92%8Clinux%E9%97%B4%E5%85%B1%E4%BA%AB%E4%BA%92%E4%BC%A0%E6%96%87%E4%BB%B6/</guid>
+      <description>&lt;p&gt;windows物理机与linux虚拟机间可以通过共享文件的方式互传文件.vmware和vbox虚拟机软件提供了这一特性.另外,我们可以通过简单的设置进行两机之间的文件共享,从而避免了诸如安装vmvare tools这些繁琐的操作.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>sublime text高级应用-自定义快捷键</title>
+      <link>/2015/09/sublime-text%E9%AB%98%E7%BA%A7%E5%BA%94%E7%94%A8-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BF%AB%E6%8D%B7%E9%94%AE/</link>
+      <pubDate>Fri, 11 Sep 2015 19:24:28 +0800</pubDate>
+      
+      <guid>/2015/09/sublime-text%E9%AB%98%E7%BA%A7%E5%BA%94%E7%94%A8-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid>
+      <description>&lt;p&gt;sublime text有很多内置的快捷键, 比如&lt;strong&gt;ctrl+n&lt;/strong&gt;是新建一个标签,&lt;strong&gt;ctrl-f&lt;/strong&gt;是页内搜索等等.&lt;/p&gt;
+
+&lt;p&gt;但是有些时候,这些快捷键的设置和我们的使用习惯格格不入.比如,sublime text有个&lt;strong&gt;toggle sidebar&lt;/strong&gt;的快捷键&lt;strong&gt;ctrl+k,ctrl+b&lt;/strong&gt;,用于显示/隐藏侧边栏.当开两栏编辑的时候,我想隐藏侧边栏,需要先按一次&lt;strong&gt;ctrl+k&lt;/strong&gt;,再按一次&lt;strong&gt;ctrl+b&lt;/strong&gt;,有没有办法让我们自定义快捷键呢?&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>tornado 上传文件实例</title>
+      <link>/2015/09/tornado-%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E5%AE%9E%E4%BE%8B/</link>
+      <pubDate>Wed, 02 Sep 2015 19:00:53 +0800</pubDate>
+      
+      <guid>/2015/09/tornado-%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E5%AE%9E%E4%BE%8B/</guid>
+      <description>&lt;p&gt;使用tornado编程,有上传文件需求时一般有两种方案,一种是tornado自带的方法,一种是借助反向代理,比如nginx的上传模块.在业务需求简单的时候,用tornado自带的方法不失为一种高效的选择.&lt;/p&gt;
+
+&lt;p&gt;下面的代码实现了简单的文件上传,将上传的文件保存在配置文件规定的静态文件存放目录的子目录img下.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>用ajax提交包含&#39;type=file&#39;字段的表单</title>
+      <link>/2015/09/%E7%94%A8ajax%E6%8F%90%E4%BA%A4%E5%8C%85%E5%90%ABtypefile%E5%AD%97%E6%AE%B5%E7%9A%84%E8%A1%A8%E5%8D%95/</link>
+      <pubDate>Wed, 02 Sep 2015 18:28:49 +0800</pubDate>
+      
+      <guid>/2015/09/%E7%94%A8ajax%E6%8F%90%E4%BA%A4%E5%8C%85%E5%90%ABtypefile%E5%AD%97%E6%AE%B5%E7%9A%84%E8%A1%A8%E5%8D%95/</guid>
+      <description>&lt;p&gt;html5提供了新的表单类型&lt;code&gt;&amp;lt;input type=&amp;quot;file&amp;quot; /&amp;gt;&lt;/code&gt;,用于上传文件.一般我们用诸如fileinput控件独立上传文件,与表单内的其他内容分开上传.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>分享一个纯css实现的loading效果</title>
+      <link>/2015/08/%E5%88%86%E4%BA%AB%E4%B8%80%E4%B8%AA%E7%BA%AFcss%E5%AE%9E%E7%8E%B0%E7%9A%84loading%E6%95%88%E6%9E%9C/</link>
+      <pubDate>Fri, 28 Aug 2015 20:41:23 +0800</pubDate>
+      
+      <guid>/2015/08/%E5%88%86%E4%BA%AB%E4%B8%80%E4%B8%AA%E7%BA%AFcss%E5%AE%9E%E7%8E%B0%E7%9A%84loading%E6%95%88%E6%9E%9C/</guid>
+      <description>&lt;p&gt;纯css动态效果,没有一行javascript代码哦&lt;/p&gt;
+
+&lt;p&gt;来自&lt;a href=&#34;http://codepen.io/malhadi/pen/WvmrRz&#34;&gt;codepen&lt;/a&gt;和&lt;a href=&#34;http://thecodeplayer.com/walkthrough/make-a-stopwatch-using-css3-without-images-or-javascript&#34;&gt;thecodeplayer&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Echarts使用记录-实例</title>
+      <link>/2015/08/echarts%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95-%E5%AE%9E%E4%BE%8B/</link>
+      <pubDate>Fri, 28 Aug 2015 18:42:19 +0800</pubDate>
+      
+      <guid>/2015/08/echarts%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95-%E5%AE%9E%E4%BE%8B/</guid>
+      <description>&lt;h2 id=&#34;图片标记&#34;&gt;图片标记&lt;/h2&gt;
+
+&lt;p&gt;Echarts中markPoint用于标记特定的数据,比如地图上的描点,折线图的最值点等.第二版的Echarts支持用图片做为标记样式,例如&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;markPoint : {
+    symbol: &#39;image:///assets/admin/images/details.png&#39;,
+    itemStyle:{normal:{label:{show:true,textStyle:{fontSize:&#39;20&#39;}}},emphasis:{label:{show:false}}},
+    data : [
+        {name : &#39;详情&#39;, x:&#39;10%&#39;, y:50, symbolSize:25}
+    ]
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;markPoint 二级元素,在series内部&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Echarts使用记录-概念和参数</title>
+      <link>/2015/08/echarts%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95-%E6%A6%82%E5%BF%B5%E5%92%8C%E5%8F%82%E6%95%B0/</link>
+      <pubDate>Thu, 27 Aug 2015 20:02:44 +0800</pubDate>
+      
+      <guid>/2015/08/echarts%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95-%E6%A6%82%E5%BF%B5%E5%92%8C%E5%8F%82%E6%95%B0/</guid>
+      <description>&lt;p&gt;option对象包含一个图表的所需配置参数,这是一个多级嵌套的类json对象.&lt;/p&gt;
+
+&lt;h2 id=&#34;常用的第一级子元素&#34;&gt;常用的第一级子元素&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;名称&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;calculable&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;是否启用拖拽重计算特性，默认关闭&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;title&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;图表标题&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;toolbox&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;工具箱&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;toolip&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;提示框&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;legend&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;图例&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;dataRange&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;值域(作用于通常的y值)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;dataZoom&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;数据区域缩放(作用于通常的x值)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;grid&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;直角坐标系内绘图网格&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;xAxis&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;直角坐标系中横轴数组(x轴)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;yAxis&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;直角坐标系中纵轴数组(y轴)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;series&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;数据内容&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Echarts使用记录-导入</title>
+      <link>/2015/08/echarts%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95-%E5%AF%BC%E5%85%A5/</link>
+      <pubDate>Thu, 27 Aug 2015 19:18:34 +0800</pubDate>
+      
+      <guid>/2015/08/echarts%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95-%E5%AF%BC%E5%85%A5/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://echarts.baidu.com&#34;&gt;Echarts&lt;/a&gt;是百度商业前端数据可视化团队开发 的商业级数据图表,提供折线,柱状,散点,K线,饼图,雷达,和铉,力导向分布图,地图,仪表盘等多种数据图表.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>搭建hexo博客记录</title>
+      <link>/2015/08/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Wed, 26 Aug 2015 21:06:54 +0800</pubDate>
+      
+      <guid>/2015/08/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2%E8%AE%B0%E5%BD%95/</guid>
+      <description>&lt;h2 id=&#34;前期工作&#34;&gt;前期工作&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;安装&lt;a href=&#34;https://nodejs.org/download/&#34;&gt;nodejs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;安装&lt;a href=&#34;https://git-scm.com/download/win&#34;&gt;git&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;环境安装&#34;&gt;环境安装&lt;/h2&gt;
+
+&lt;p&gt;可在git bash里执行&lt;code&gt;mkdir blog&lt;/code&gt;或者直接图形界面创建博客文件存放目录
+进入该目录,按住shift键点击鼠标右键,在当前位置打开命令窗口,或者鼠标右键后选择git bash here,输入下列命令&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>我的fedora应用列表</title>
+      <link>/2014/11/%E6%88%91%E7%9A%84fedora%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8/</link>
+      <pubDate>Thu, 13 Nov 2014 23:11:00 +0800</pubDate>
+      
+      <guid>/2014/11/%E6%88%91%E7%9A%84fedora%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8/</guid>
+      <description>&lt;p&gt;用fedora也有接近两年时间了，现在将自己所用的应用都列出来供参考。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>瞎扯，关于意识的连续</title>
+      <link>/2014/11/%E7%9E%8E%E6%89%AF%E5%85%B3%E4%BA%8E%E6%84%8F%E8%AF%86%E7%9A%84%E8%BF%9E%E7%BB%AD/</link>
+      <pubDate>Thu, 13 Nov 2014 23:10:00 +0800</pubDate>
+      
+      <guid>/2014/11/%E7%9E%8E%E6%89%AF%E5%85%B3%E4%BA%8E%E6%84%8F%E8%AF%86%E7%9A%84%E8%BF%9E%E7%BB%AD/</guid>
+      <description>&lt;p&gt;今晚做期末复习的时候打起瞌睡。看着PPT不自觉失去意识，不知多久以后突然惊醒，如此反复。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《牧羊少年奇幻之旅》</title>
+      <link>/2014/11/%E7%89%A7%E7%BE%8A%E5%B0%91%E5%B9%B4%E5%A5%87%E5%B9%BB%E4%B9%8B%E6%97%85/</link>
+      <pubDate>Thu, 13 Nov 2014 23:09:00 +0800</pubDate>
+      
+      <guid>/2014/11/%E7%89%A7%E7%BE%8A%E5%B0%91%E5%B9%B4%E5%A5%87%E5%B9%BB%E4%B9%8B%E6%97%85/</guid>
+      <description>&lt;p&gt;《牧羊少年奇幻之旅》是一部朴素而不普通的童话。故事主人公，一位牧羊的少年，梦见在遥远的埃及藏有一批宝藏。他在耶路撒冷之王的指导下踏上了寻宝的道路。在经历了欺骗和对心上人思念的煎熬以及战争死亡的威胁后，在绿洲遇到炼金术士，通过他的教导，明晰了自己的天命，最终克服困难找到属于自己的宝藏。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Fedora 下安装金山快盘同步盘</title>
+      <link>/2014/11/fedora-%E4%B8%8B%E5%AE%89%E8%A3%85%E9%87%91%E5%B1%B1%E5%BF%AB%E7%9B%98%E5%90%8C%E6%AD%A5%E7%9B%98/</link>
+      <pubDate>Thu, 13 Nov 2014 23:07:00 +0800</pubDate>
+      
+      <guid>/2014/11/fedora-%E4%B8%8B%E5%AE%89%E8%A3%85%E9%87%91%E5%B1%B1%E5%BF%AB%E7%9B%98%E5%90%8C%E6%AD%A5%E7%9B%98/</guid>
+      <description>&lt;p&gt;金山快盘推出了linux系统下的同步盘客户端，但是很遗憾没有红帽系的rpm安装包。尽管如此，我们可以通过一些操作在fedora下安装（mate桌面）（其他红帽系的没有尝试）&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>linux服务器本地和百度云备份脚本小试</title>
+      <link>/2014/11/linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%9C%AC%E5%9C%B0%E5%92%8C%E7%99%BE%E5%BA%A6%E4%BA%91%E5%A4%87%E4%BB%BD%E8%84%9A%E6%9C%AC%E5%B0%8F%E8%AF%95/</link>
+      <pubDate>Thu, 13 Nov 2014 23:06:00 +0800</pubDate>
+      
+      <guid>/2014/11/linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%9C%AC%E5%9C%B0%E5%92%8C%E7%99%BE%E5%BA%A6%E4%BA%91%E5%A4%87%E4%BB%BD%E8%84%9A%E6%9C%AC%E5%B0%8F%E8%AF%95/</guid>
+      <description>&lt;h3 id=&#34;本地单文件上传脚本&#34;&gt;本地单文件上传脚本&lt;/h3&gt;
+
+&lt;p&gt;命名uf
+这是在本机上做的测试，利用&lt;code&gt;bpcs_uploader&lt;/code&gt;脚本实现，只是进行简单的封装，自动完善云端文件路径。&lt;/p&gt;
+
+&lt;p&gt;技术要点：使用&lt;code&gt;dirname&lt;/code&gt;获取文件所在目录，使用&lt;code&gt;pwd&lt;/code&gt;获取文件完整路径，并作为云端文件路径。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>我为什么想考研</title>
+      <link>/2014/11/%E6%88%91%E4%B8%BA%E4%BB%80%E4%B9%88%E6%83%B3%E8%80%83%E7%A0%94/</link>
+      <pubDate>Thu, 13 Nov 2014 23:02:00 +0800</pubDate>
+      
+      <guid>/2014/11/%E6%88%91%E4%B8%BA%E4%BB%80%E4%B9%88%E6%83%B3%E8%80%83%E7%A0%94/</guid>
+      <description>&lt;p&gt;先列出想要考研的&lt;strong&gt;原因&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;本科觉得没有学到什么，希望有更多学习机会&lt;/li&gt;
+&lt;li&gt;完善自己，全面提高自己，文理双修&lt;/li&gt;
+&lt;li&gt;不喜欢现在的专业，想换个就业方向&lt;/li&gt;
+&lt;li&gt;不擅长编程和抽象思维，倾向形象思维&lt;/li&gt;
+&lt;li&gt;比较喜欢文科&lt;/li&gt;
+&lt;li&gt;想从事文科类的工作&lt;/li&gt;
+&lt;li&gt;希望路越走越宽，而不是越走越窄&lt;/li&gt;
+&lt;li&gt;名校情结,高学位情结
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>双系统下修复grub2引导</title>
+      <link>/2014/11/%E5%8F%8C%E7%B3%BB%E7%BB%9F%E4%B8%8B%E4%BF%AE%E5%A4%8Dgrub2%E5%BC%95%E5%AF%BC/</link>
+      <pubDate>Thu, 13 Nov 2014 22:28:00 +0800</pubDate>
+      
+      <guid>/2014/11/%E5%8F%8C%E7%B3%BB%E7%BB%9F%E4%B8%8B%E4%BF%AE%E5%A4%8Dgrub2%E5%BC%95%E5%AF%BC/</guid>
+      <description>&lt;p&gt;我的电脑上装有fedora和windows两个系统。一般装系统的时候windows先装而linxu后装，因为linux能够查找windows系统并为其提供启动引导，而windows不能。因此当需要重装windows的时候需要修复grub2引导。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>矛盾体(1)</title>
+      <link>/2014/04/%E7%9F%9B%E7%9B%BE%E4%BD%931/</link>
+      <pubDate>Tue, 08 Apr 2014 16:10:00 +0800</pubDate>
+      
+      <guid>/2014/04/%E7%9F%9B%E7%9B%BE%E4%BD%931/</guid>
+      <description>当我跟人交往时，我会想不该想的事吗？
+会的，每一次我都在跟自己打架。不过没关系，我已长于此道。</description>
+    </item>
+    
+    <item>
+      <title>失眠</title>
+      <link>/2014/04/%E5%A4%B1%E7%9C%A0/</link>
+      <pubDate>Tue, 08 Apr 2014 16:08:00 +0800</pubDate>
+      
+      <guid>/2014/04/%E5%A4%B1%E7%9C%A0/</guid>
+      <description>反正这一天就结束了
+那我就最后再努力一下</description>
+    </item>
+    
+    <item>
+      <title>技术改变生活(1)</title>
+      <link>/2014/04/%E6%8A%80%E6%9C%AF%E6%94%B9%E5%8F%98%E7%94%9F%E6%B4%BB1/</link>
+      <pubDate>Tue, 08 Apr 2014 16:06:00 +0800</pubDate>
+      
+      <guid>/2014/04/%E6%8A%80%E6%9C%AF%E6%94%B9%E5%8F%98%E7%94%9F%E6%B4%BB1/</guid>
+      <description>&lt;p&gt;早晨躺在床上看书的时候，脑子忽的又想起那个问题：我垫钱帮人交四六级报名费，却找不出这位不缴费的同学是谁。心里突然老大不愿意——这可是我半个星期的伙食费呢！于是开始思考对策，务必要找出漏网之鱼。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Openshift 安装使用教程</title>
+      <link>/2014/03/openshift-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</link>
+      <pubDate>Sun, 16 Mar 2014 21:09:00 +0800</pubDate>
+      
+      <guid>/2014/03/openshift-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</guid>
+      <description>&lt;p&gt;声明：配置环境是fedora 20，这里是&lt;a href=&#34;https://access.redhat.com/site/documentation/en-US/OpenShift_Online/2.0/html/User_Guide/index.html&#34;&gt;官方文档&lt;/a&gt;，找文档是解决问题最有效的方式。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>android 下用脚本备份文件到dropbox的实现</title>
+      <link>/2014/03/android-%E4%B8%8B%E7%94%A8%E8%84%9A%E6%9C%AC%E5%A4%87%E4%BB%BD%E6%96%87%E4%BB%B6%E5%88%B0dropbox%E7%9A%84%E5%AE%9E%E7%8E%B0/</link>
+      <pubDate>Sat, 15 Mar 2014 23:28:00 +0800</pubDate>
+      
+      <guid>/2014/03/android-%E4%B8%8B%E7%94%A8%E8%84%9A%E6%9C%AC%E5%A4%87%E4%BB%BD%E6%96%87%E4%BB%B6%E5%88%B0dropbox%E7%9A%84%E5%AE%9E%E7%8E%B0/</guid>
+      <description>&lt;p&gt;前些日子寻找linux下上传文件到云的脚本，以实现远程服务器上资料的云端备份。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>fedora 下调节外放音量和屏幕亮度</title>
+      <link>/2014/03/fedora-%E4%B8%8B%E8%B0%83%E8%8A%82%E5%A4%96%E6%94%BE%E9%9F%B3%E9%87%8F%E5%92%8C%E5%B1%8F%E5%B9%95%E4%BA%AE%E5%BA%A6/</link>
+      <pubDate>Thu, 13 Mar 2014 00:43:00 +0800</pubDate>
+      
+      <guid>/2014/03/fedora-%E4%B8%8B%E8%B0%83%E8%8A%82%E5%A4%96%E6%94%BE%E9%9F%B3%E9%87%8F%E5%92%8C%E5%B1%8F%E5%B9%95%E4%BA%AE%E5%BA%A6/</guid>
+      <description>&lt;h3 id=&#34;声音&#34;&gt;声音&lt;/h3&gt;
+
+&lt;p&gt;fedora系统下笔记本外放功能可能有受到一些限制。接耳机的时候声音是正常的，但是拔下耳机后电脑并不能外放声音。网上搜到的方法是：&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>sublime text 2 下的Markdown写作</title>
+      <link>/2014/03/sublime-text-2-%E4%B8%8B%E7%9A%84markdown%E5%86%99%E4%BD%9C/</link>
+      <pubDate>Wed, 12 Mar 2014 22:48:00 +0800</pubDate>
+      
+      <guid>/2014/03/sublime-text-2-%E4%B8%8B%E7%9A%84markdown%E5%86%99%E4%BD%9C/</guid>
+      <description>&lt;p&gt;作为Windows/Mac/Linux下强大的文本编辑器，st提供了对Markdown语言的支持。通过设置可实现markdown预览和转换功能。而本文介绍的&lt;code&gt;Markdown Preview&lt;/code&gt;支持Mathjax语法和目录自动生成。(Windows下）&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>wamp apache无法启动的解决方法</title>
+      <link>/2014/03/wamp-apache%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Wed, 12 Mar 2014 22:48:00 +0800</pubDate>
+      
+      <guid>/2014/03/wamp-apache%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</guid>
+      <description>&lt;p&gt;如题，近日在安装wamp的时候出现了apache无法启动的情况。wamp图标一直显示橙色。网上搜索了许多资料都无效，最后还是我自己发现问题并予以解决了。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>apache服务器个人主页的设置</title>
+      <link>/2014/01/apache%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5%E7%9A%84%E8%AE%BE%E7%BD%AE/</link>
+      <pubDate>Thu, 02 Jan 2014 16:16:00 +0800</pubDate>
+      
+      <guid>/2014/01/apache%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5%E7%9A%84%E8%AE%BE%E7%BD%AE/</guid>
+      <description>&lt;h3 id=&#34;准备工作&#34;&gt;准备工作&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;查看apache版本
+&lt;code&gt;
+httpd -v
+&lt;/code&gt;
+我的版本是2.4.6，个人主页相关的配置文件在&lt;br /&gt;
+&lt;code&gt;/etc/httpd/conf.modules.d/00-base.conf&lt;/code&gt;&lt;br /&gt;
+和
+&lt;code&gt;etc/httpd/conf.d/userdir.conf&lt;/code&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>我应该如何去学习</title>
+      <link>/2014/01/%E6%88%91%E5%BA%94%E8%AF%A5%E5%A6%82%E4%BD%95%E5%8E%BB%E5%AD%A6%E4%B9%A0/</link>
+      <pubDate>Wed, 01 Jan 2014 17:15:00 +0800</pubDate>
+      
+      <guid>/2014/01/%E6%88%91%E5%BA%94%E8%AF%A5%E5%A6%82%E4%BD%95%E5%8E%BB%E5%AD%A6%E4%B9%A0/</guid>
+      <description>&lt;p&gt;面试或考试过后，没有人记得我考的怎样。多年后不会有人问我，大学排名多少。我也无法从成绩中再取得什么收获。就像现在不会有人问我，中考考多少分，高考多少分。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>小短文</title>
+      <link>/2014/01/%E5%B0%8F%E7%9F%AD%E6%96%87/</link>
+      <pubDate>Wed, 01 Jan 2014 17:11:00 +0800</pubDate>
+      
+      <guid>/2014/01/%E5%B0%8F%E7%9F%AD%E6%96%87/</guid>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>一年来使用工具的感想</title>
+      <link>/2013/12/%E4%B8%80%E5%B9%B4%E6%9D%A5%E4%BD%BF%E7%94%A8%E5%B7%A5%E5%85%B7%E7%9A%84%E6%84%9F%E6%83%B3/</link>
+      <pubDate>Wed, 25 Dec 2013 12:56:00 +0800</pubDate>
+      
+      <guid>/2013/12/%E4%B8%80%E5%B9%B4%E6%9D%A5%E4%BD%BF%E7%94%A8%E5%B7%A5%E5%85%B7%E7%9A%84%E6%84%9F%E6%83%B3/</guid>
+      <description>&lt;p&gt;只有当收集的资料转化为内在的知识和技能，成为成长进步的阶梯后，它才称得上是有益有用的。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>用stackedit保存笔记</title>
+      <link>/2013/11/%E7%94%A8stackedit%E4%BF%9D%E5%AD%98%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Sat, 23 Nov 2013 16:49:00 +0800</pubDate>
+      
+      <guid>/2013/11/%E7%94%A8stackedit%E4%BF%9D%E5%AD%98%E7%AC%94%E8%AE%B0/</guid>
+      <description>&lt;p&gt;在&lt;a href=&#34;http://grunmin.github.io/blog/2013/11/23/yong-ma-ke-fei-xiang-xie-bo-ke/&#34;&gt;上一篇文章&lt;/a&gt;里写到用马克飞象写博客，不知对用印象笔记的读者有没有帮助。我对工具有近乎狂热的追求，花了很多时间来尝试不同工具，试图找出其中最高效率的，最简约的，最人性化的。比如云盘，云相册，linux发行版，以及各种编辑器等。在写上一篇博客的时候其实也用到了其他的工具，我在此将其写下来。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>用马克飞象写博客</title>
+      <link>/2013/11/%E7%94%A8%E9%A9%AC%E5%85%8B%E9%A3%9E%E8%B1%A1%E5%86%99%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Sat, 23 Nov 2013 15:46:00 +0800</pubDate>
+      
+      <guid>/2013/11/%E7%94%A8%E9%A9%AC%E5%85%8B%E9%A3%9E%E8%B1%A1%E5%86%99%E5%8D%9A%E5%AE%A2/</guid>
+      <description>&lt;p&gt;用octopress搭建博客之后，大爱markdown的简约，因此我对云笔记的要求又多了一项：支持markdown格式编辑和保存。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>我的gvim安装和配置</title>
+      <link>/2013/11/%E6%88%91%E7%9A%84gvim%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Sun, 17 Nov 2013 17:14:00 +0800</pubDate>
+      
+      <guid>/2013/11/%E6%88%91%E7%9A%84gvim%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/</guid>
+      <description>&lt;p&gt;我将自己正在学习的小东西放到了github上，想要充分发挥云端服务器的优势，希望在其他windows电脑也能coding，因此草草配置了一下gvim。
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>广工打铁记</title>
+      <link>/2013/11/%E5%B9%BF%E5%B7%A5%E6%89%93%E9%93%81%E8%AE%B0/</link>
+      <pubDate>Fri, 15 Nov 2013 21:30:00 +0800</pubDate>
+      
+      <guid>/2013/11/%E5%B9%BF%E5%B7%A5%E6%89%93%E9%93%81%E8%AE%B0/</guid>
+      <description>&lt;h3 id=&#34;day1&#34;&gt;day1&lt;/h3&gt;</description>
+    </item>
+    
+    <item>
+      <title>octopress博客搭建和个性化配置</title>
+      <link>/2013/11/octopress%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%92%8C%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Mon, 04 Nov 2013 15:02:00 +0800</pubDate>
+      
+      <guid>/2013/11/octopress%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%92%8C%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/</guid>
+      <description>&lt;p&gt;使用octopress搭建博客的人，大概都会喜欢写关于如何搭建配置octopress的文章。因为它的高定制性，为极客们带来很多乐趣。从首页的配置，到分类，评论，个人信息，社会化分享等的配置，内容繁多。而且这是我第二次搭建octopress环境了，发现上一次的配置有一部分不能clone到本机上。因此，把配置的过程记录下来是十分有必要的。&lt;br /&gt;
+我的意愿是记录配置的过程，顺便整理大牛们关于这方面的一些说明。网络上相关资料有很多，没有实践过的没有摘录在这里。所有的代码实现都是直接引用前辈们的。另外，本博的配置环境是linux fedora 18.&lt;br /&gt;
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>RHCE note 9</title>
+      <link>/2013/11/rhce-note-9/</link>
+      <pubDate>Sun, 03 Nov 2013 23:20:00 +0800</pubDate>
+      
+      <guid>/2013/11/rhce-note-9/</guid>
+      <description>&lt;h2 id=&#34;unit-2&#34;&gt;unit 2&lt;/h2&gt;
+
+&lt;h3 id=&#34;配置sudoers&#34;&gt;配置sudoers&lt;/h3&gt;
+
+&lt;p&gt;文件/etc/sudoers是只读文件，保存时需加！强制保存.&lt;br /&gt;
+实例：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[root@desktop31 ~]# ll /etc/sudoers
+-r--r-----. 1 root root 4002 Mar  2  2012 /etc/sudoers
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>RHCE note 1</title>
+      <link>/2013/11/rhce-note-1/</link>
+      <pubDate>Sun, 03 Nov 2013 02:07:00 +0800</pubDate>
+      
+      <guid>/2013/11/rhce-note-1/</guid>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>关于知道不知道的几点理解</title>
+      <link>/2013/08/%E5%85%B3%E4%BA%8E%E7%9F%A5%E9%81%93%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E5%87%A0%E7%82%B9%E7%90%86%E8%A7%A3/</link>
+      <pubDate>Mon, 05 Aug 2013 11:24:00 +0800</pubDate>
+      
+      <guid>/2013/08/%E5%85%B3%E4%BA%8E%E7%9F%A5%E9%81%93%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E5%87%A0%E7%82%B9%E7%90%86%E8%A7%A3/</guid>
+      <description>&lt;p&gt;关于大学学习的四个层次:&lt;br /&gt;
+&lt;strong&gt;不知道自己不知道&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;知道自己不知道&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;不知道自己知道&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;知道自己知道&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>linux安装 Zend Frame 笔记</title>
+      <link>/2013/08/linux%E5%AE%89%E8%A3%85-zend-frame-%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Fri, 02 Aug 2013 00:15:00 +0800</pubDate>
+      
+      <guid>/2013/08/linux%E5%AE%89%E8%A3%85-zend-frame-%E7%AC%94%E8%AE%B0/</guid>
+      <description>&lt;h3 id=&#34;新建项目&#34;&gt;新建项目&lt;/h3&gt;
+
+&lt;p&gt;下载Zend Frame安装包(现在下载ZF要注册！可以用这条命令直接下载)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ wget http://framework.zend.com/releases/ZendFramework-1.11.11/ZendFramework-1.11.11-minimal.tar.gz
+$ php -i | grep include_path 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;(用源码包安装的php，若显示php命令不存在，就把php安装目录里bin文件下的php文件复制到可执行目录下，如/bin或/usr/bin)&lt;br /&gt;
+
+在服务器文件根目录apache2/htdocs下执行&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>linux安装wecenter笔记</title>
+      <link>/2013/07/linux%E5%AE%89%E8%A3%85wecenter%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Thu, 25 Jul 2013 20:32:00 +0800</pubDate>
+      
+      <guid>/2013/07/linux%E5%AE%89%E8%A3%85wecenter%E7%AC%94%E8%AE%B0/</guid>
+      <description>&lt;p&gt;&lt;em&gt;此文是前文配置lamp的延伸&lt;/em&gt;&lt;br /&gt;
+在前面的一片文章里，用源码包安装的方式搭建了lamp环境，wecenter需要服务器支持mysqli或者pdo模块,支持curl,GD图像处理库，原来安装lamp过程中并无相关方面的配置，鼓捣了半天之后其他条件都已满足，唯独GD图像处理库不能安装。&lt;br /&gt;
+
+谷歌了许多结果，一一尝试，一一失败，最后看到&lt;a href=&#34;http://tech.soft6.com/665/16/78687.html&#34;&gt;这篇文章&lt;/a&gt;，果断把之前编好的php删除了按照文中方法重装一遍，居然成功了！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>linux搭建lamp环境笔记</title>
+      <link>/2013/07/linux%E6%90%AD%E5%BB%BAlamp%E7%8E%AF%E5%A2%83%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Sun, 21 Jul 2013 11:20:00 +0800</pubDate>
+      
+      <guid>/2013/07/linux%E6%90%AD%E5%BB%BAlamp%E7%8E%AF%E5%A2%83%E7%AC%94%E8%AE%B0/</guid>
+      <description>&lt;p&gt;在学习php编程的过程中，了解了lamp环境的重要性，因此尝试自行搭建。在这个过程中经历了很多困难，为了便于查阅和再次搭建，在此将过程都记录下来。有错漏或可以改进的地方，欢迎指出拨正。&lt;br /&gt;
+
+此前都是用源码包安装，其实用rpm包安装省时省力。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>为知笔记使用笔记(1)-启动方式</title>
+      <link>/2013/07/%E4%B8%BA%E7%9F%A5%E7%AC%94%E8%AE%B0%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B01-%E5%90%AF%E5%8A%A8%E6%96%B9%E5%BC%8F/</link>
+      <pubDate>Sun, 21 Jul 2013 10:40:00 +0800</pubDate>
+      
+      <guid>/2013/07/%E4%B8%BA%E7%9F%A5%E7%AC%94%E8%AE%B0%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B01-%E5%90%AF%E5%8A%A8%E6%96%B9%E5%BC%8F/</guid>
+      <description>&lt;p&gt;linux下软件的启动方式有多种，双击快捷方式对为知笔记这个软件并不管用，因此我们寻求其他更有linux风格的方式。&lt;br /&gt;
+文中的方法对于所有应用程序都是通用的。
+&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

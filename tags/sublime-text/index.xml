@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sublime Text on Don&#39;t Panic</title>
+    <link>/tags/sublime-text/</link>
+    <description>Recent content in Sublime Text on Don&#39;t Panic</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 11 Sep 2015 19:24:28 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/sublime-text/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>sublime text高级应用-自定义快捷键</title>
+      <link>/2015/09/sublime-text%E9%AB%98%E7%BA%A7%E5%BA%94%E7%94%A8-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BF%AB%E6%8D%B7%E9%94%AE/</link>
+      <pubDate>Fri, 11 Sep 2015 19:24:28 +0800</pubDate>
+      
+      <guid>/2015/09/sublime-text%E9%AB%98%E7%BA%A7%E5%BA%94%E7%94%A8-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid>
+      <description>&lt;p&gt;sublime text有很多内置的快捷键, 比如&lt;strong&gt;ctrl+n&lt;/strong&gt;是新建一个标签,&lt;strong&gt;ctrl-f&lt;/strong&gt;是页内搜索等等.&lt;/p&gt;
+
+&lt;p&gt;但是有些时候,这些快捷键的设置和我们的使用习惯格格不入.比如,sublime text有个&lt;strong&gt;toggle sidebar&lt;/strong&gt;的快捷键&lt;strong&gt;ctrl+k,ctrl+b&lt;/strong&gt;,用于显示/隐藏侧边栏.当开两栏编辑的时候,我想隐藏侧边栏,需要先按一次&lt;strong&gt;ctrl+k&lt;/strong&gt;,再按一次&lt;strong&gt;ctrl+b&lt;/strong&gt;,有没有办法让我们自定义快捷键呢?&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>sublime text 2 下的Markdown写作</title>
+      <link>/2014/03/sublime-text-2-%E4%B8%8B%E7%9A%84markdown%E5%86%99%E4%BD%9C/</link>
+      <pubDate>Wed, 12 Mar 2014 22:48:00 +0800</pubDate>
+      
+      <guid>/2014/03/sublime-text-2-%E4%B8%8B%E7%9A%84markdown%E5%86%99%E4%BD%9C/</guid>
+      <description>&lt;p&gt;作为Windows/Mac/Linux下强大的文本编辑器，st提供了对Markdown语言的支持。通过设置可实现markdown预览和转换功能。而本文介绍的&lt;code&gt;Markdown Preview&lt;/code&gt;支持Mathjax语法和目录自动生成。(Windows下）&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

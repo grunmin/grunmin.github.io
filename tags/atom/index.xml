@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Atom on Don&#39;t Panic</title>
+    <link>/tags/atom/</link>
+    <description>Recent content in Atom on Don&#39;t Panic</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 02 Jun 2016 20:10:50 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/atom/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Atom sftp类远程文件同步插件</title>
+      <link>/2016/06/atom-sftp%E7%B1%BB%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%90%8C%E6%AD%A5%E6%8F%92%E4%BB%B6/</link>
+      <pubDate>Thu, 02 Jun 2016 20:10:50 +0800</pubDate>
+      
+      <guid>/2016/06/atom-sftp%E7%B1%BB%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%90%8C%E6%AD%A5%E6%8F%92%E4%BB%B6/</guid>
+      <description>&lt;p&gt;sublime text 下babel插件好像优化不好，有一些性能问题。特别是在创建文件的时候，即便没有打开，插件也会尝试把文件树里的js类文件重新渲染一遍。因为js项目所用组件繁多，导致sublime text经常卡死。因此尝试用atom。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

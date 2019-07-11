@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tornado on Don&#39;t Panic</title>
+    <link>/tags/tornado/</link>
+    <description>Recent content in Tornado on Don&#39;t Panic</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 02 Sep 2015 19:00:53 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/tornado/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>tornado 上传文件实例</title>
+      <link>/2015/09/tornado-%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E5%AE%9E%E4%BE%8B/</link>
+      <pubDate>Wed, 02 Sep 2015 19:00:53 +0800</pubDate>
+      
+      <guid>/2015/09/tornado-%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E5%AE%9E%E4%BE%8B/</guid>
+      <description>&lt;p&gt;使用tornado编程,有上传文件需求时一般有两种方案,一种是tornado自带的方法,一种是借助反向代理,比如nginx的上传模块.在业务需求简单的时候,用tornado自带的方法不失为一种高效的选择.&lt;/p&gt;
+
+&lt;p&gt;下面的代码实现了简单的文件上传,将上传的文件保存在配置文件规定的静态文件存放目录的子目录img下.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

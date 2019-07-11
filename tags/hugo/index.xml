@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hugo on Don&#39;t Panic</title>
+    <link>/tags/hugo/</link>
+    <description>Recent content in Hugo on Don&#39;t Panic</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 18 May 2018 13:19:11 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hugo使用</title>
+      <link>/2018/05/hugo%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Fri, 18 May 2018 13:19:11 +0800</pubDate>
+      
+      <guid>/2018/05/hugo%E4%BD%BF%E7%94%A8/</guid>
+      <description>&lt;p&gt;hugo是一个静态网站生成器, 类似hexo&lt;/p&gt;
+
+&lt;p&gt;本文假设读者已经了解静态页面的含义, 也接触过Jekyll, octopress或hexo.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
